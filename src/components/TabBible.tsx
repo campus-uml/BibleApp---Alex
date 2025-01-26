@@ -7,9 +7,6 @@ import { newTestamentIds, oldTestamentIds } from "../utils/Abreviations";
 export const TabBible = () => {
   const { bibleVerse, handleBook } = useBibleVerse();
 
-
- 
-
   const oldTestamentBooks = bibleVerse.filter((book) =>
     oldTestamentIds.includes(book.id)
   );

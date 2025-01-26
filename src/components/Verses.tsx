@@ -1,75 +1,60 @@
-import { MoreVertical } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { bibleData } from "../Data/bible-data";
-import type { Verse } from "../types";
-import { useEffect, useState } from "react";
+"use client";
+
+import { useEffect, useRef } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+
+import { useBibleVerse } from "../Hooks/useBibleVerse";
 
 export default function BibleApp() {
-  const [currentChapter, setCurrentChapter] = useState("1");
-  const [currentVerses, setCurrentVerses] = useState<Verse[]>([]);
+  const { handleBook, bibleVerseChapters } = useBibleVerse();
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const chapter = bibleData.chapters.find((c) => c.number === currentChapter);
-    if (chapter) {
-      setCurrentVerses(chapter.verses);
-    }
-  }, [currentChapter]);
-
-  const handleChapterChange = (value: string) => {
-    setCurrentChapter(value);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    const defaultBookId =  "MAT";
+    handleBook(defaultBookId);
+  }, [handleBook]);
 
   return (
-    <div className="min-h-screen bg-gray-50 rounded-xl">
-      <Tabs
-        value={currentChapter}
-        onValueChange={handleChapterChange}
-        className="w-full sticky top-0 z-30 "
-      >
-        <TabsList className="w-full justify-start p-2 rounded-xl  text-white  h-auto flex-wrap">
-          {bibleData.chapters.map((chapter) => (
-            <TabsTrigger
-              key={chapter.number}
-              value={chapter.number}
-              className="text-gray-800 "
+    <div className="min-h-screen bg-gray-50 p-4 md:p-6 overflow-hidden">
+      <Tabs defaultValue="1" className="w-full max-w-72 md:max-w-5xl mx-auto">
+        <div className="relative">
+          <TabsList className=" h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
+            <ScrollArea
+              ref={scrollAreaRef}
+              className="w-full whitespace-nowrap"
             >
-              Capítulo {chapter.number}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
+              {bibleVerseChapters.map((chapter) => (
+                <TabsTrigger
+                  key={chapter.id}
+                  value={chapter.number.toString()}
+                  className="ring-offset-background focus-visible:ring-ring data-[state=active]:bg-background data-[state=active]:text-foreground px-3 py-1.5"
+                >
+                  {chapter.number}
+                </TabsTrigger>
+              ))}
+              <ScrollBar orientation="horizontal" />
+            </ScrollArea>
+          </TabsList>
+        </div>
 
-      <div className="p-4 space-y-4">
-        {currentVerses.map((verse) => (
-          <Card key={verse.number} className="shadow-sm">
-            <CardContent className="p-4 flex gap-4">
-              <span className="font-bold text-xl">{verse.number}</span>
-              <p className="flex-1 text-lg">{verse.text}</p>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <MoreVertical className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem>Copiar</DropdownMenuItem>
-                  <DropdownMenuItem>Compartir</DropdownMenuItem>
-                  <DropdownMenuItem>Marcador</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+        <div className="mt-4 p-4">
+          {bibleVerseChapters.map((chapter) => (
+            <TabsContent
+              key={chapter.id}
+              value={chapter.number.toString()}
+              className="bg-white rounded-lg shadow-sm p-4"
+            >
+              <h2 className="text-xl font-semibold mb-2 text-gray-800">
+               Capitulo {chapter.number}
+              </h2>
+              <p className="text-gray-700 leading-relaxed">
+                {chapter.reference || "No content available for this chapter."}
+              </p>
+            </TabsContent>
+          ))}
+        </div>
+      </Tabs>
     </div>
   );
 }

@@ -13,26 +13,30 @@ export type Ids = {
 
 export interface BibleVerse {
   id: string;
+  bibleId: string;
   bookId: string;
-  chapter: number;
-  verse: number;
-  text: string;
+  chapterId: string;
+  reference: string;
+  content: string;
+  verse: string;
+  next: string;
+  previous: string;
+  testament: string;
+  book: BibleBooks;
 }
 
-
-//tipos de prueba
-export interface Verse {
-  number: string
-  text: string
-}
-
-export interface Chapter {
-  number: string
-  verses: Verse[]
-}
-
-export interface Book {
-  name: string
-  chapters: Chapter[]
+export interface BibleChapter {
+  versesCount: number;
+  id: string;
+  bibleId: string;
+  number: string;
+  bookId: string;
+  reference: string;
+  content: string;
+  next: string;
+  previous: string;
+  testament: string;
+  book: BibleBooks;
+  verses: BibleVerse[];
 }
 

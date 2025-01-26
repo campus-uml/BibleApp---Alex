@@ -17,7 +17,7 @@ const getBibles = async () => {
   }
 };
 
-const getBiblesVerses = async (bookId: string) => {
+const getBiblesChapters = async (bookId: string) => {
   try {
     const response = await axios.get(
       `${API_URL}/v1/bibles/592420522e16049f-01/books/${bookId}/chapters`,
@@ -33,4 +33,4 @@ const getBiblesVerses = async (bookId: string) => {
   }
 };
 
-export { getBibles, getBiblesVerses };
+export { getBibles, getBiblesChapters };

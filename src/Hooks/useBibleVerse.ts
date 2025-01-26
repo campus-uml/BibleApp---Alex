@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
-import { getBibles, getBiblesVerses } from "../services/getData";
-import { BibleBooks, BibleVerse } from "../types/index";
+import { getBibles, getBiblesChapters } from "../services/getData";
+import { BibleBooks, BibleChapter } from "../types/index";
 
 export const useBibleVerse = () => {
   const [bibleVerse, setBibleVerse] = useState<BibleBooks[]>([]);
-  const [bibleVerseChapters, setBibleVerseChapters] = useState<BibleVerse[]>(
+  const [bibleVerseChapters, setBibleVerseChapters] = useState<BibleChapter[]>(
     []
   );
   const [seletedBook, setSelectedBook] = useState<string | null>(null);
 
-console.log(bibleVerseChapters)
-
   useEffect(() => {
     fetchData();
     if (seletedBook) {
-      fetchVerse(seletedBook);
+      fetchChapters(seletedBook);
     }
   }, [seletedBook]);
 
@@ -31,9 +29,9 @@ console.log(bibleVerseChapters)
     }
   };
 
-  const fetchVerse = async (bookId: string) => {
+  const fetchChapters = async (bookId: string) => {
     try {
-      const response = await getBiblesVerses(bookId);
+      const response = await getBiblesChapters(bookId);
       if (response && response.data) {
         setBibleVerseChapters(response.data);
       } else {
@@ -52,5 +50,6 @@ console.log(bibleVerseChapters)
     handleBook,
     bibleVerse,
     bibleVerseChapters,
+    seletedBook,
   };
 };
