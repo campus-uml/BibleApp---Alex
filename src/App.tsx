@@ -1,17 +1,14 @@
-
-import Page from "./layout/Page";
-
+import Verses from "./components/Verses";
+import { MainLayout } from "./layout/MainLayout";
 
 function App() {
-
-
-
-
   return (
     <>
-      <Page/>
+      <MainLayout>
+        <Verses />
+      </MainLayout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

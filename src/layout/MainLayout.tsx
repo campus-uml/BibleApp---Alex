@@ -1,3 +1,4 @@
+import { FC, PropsWithChildren } from "react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -6,7 +7,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-export default function Page() {
+export const MainLayout: FC<PropsWithChildren> = ({ children: Children }) => {
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -21,10 +22,11 @@ export default function Page() {
           <div className="grid auto-rows-min gap-4 md:grid-cols-3">
             <h1></h1>
           </div>
-          <h1>BibleApp</h1>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min"></div>
+          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
+            {Children}
+          </div>
         </div>
       </SidebarInset>
     </SidebarProvider>
   );
-}
+};
