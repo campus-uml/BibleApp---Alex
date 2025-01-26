@@ -3,7 +3,6 @@ import { useBibleVerse } from "@/Hooks/useBibleVerse";
 import { Button } from "./ui/button";
 import { newTestamentIds, oldTestamentIds } from "../utils/Abreviations";
 
-
 export const TabBible = () => {
   const { bibleVerse, handleBook } = useBibleVerse();
 

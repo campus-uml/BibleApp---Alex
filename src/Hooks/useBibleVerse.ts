@@ -1,20 +1,71 @@
-import { useEffect, useState } from "react";
-import { getBibles, getBiblesChapters } from "../services/getData";
-import { BibleBooks, BibleChapter } from "../types/index";
+import { useEffect, useRef, useState } from "react";
+import {
+  getBibles,
+  getChapters,
+  loadChapterVersesFromAPI,
+} from "../services/getData";
+import { BibleBooks, Chapter, Verse } from "../types/index";
+
+const formatVerseText = (text: string) => {
+  return text.toLowerCase().replace(/^([a-z])/, (match) => match.toUpperCase());
+};
+
+const isTitleOrHeading = (text: string) => {
+  const titleKeywords = ["Capítulo", "Libro", "Título"];
+  return titleKeywords.some((keyword) => text.includes(keyword));
+};
 
 export const useBibleVerse = () => {
   const [bibleVerse, setBibleVerse] = useState<BibleBooks[]>([]);
-  const [bibleVerseChapters, setBibleVerseChapters] = useState<BibleChapter[]>(
-    []
-  );
-  const [seletedBook, setSelectedBook] = useState<string | null>(null);
+  const [selectedBook, setSelectedBook] = useState<string | null>(null);
+  const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
+  const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchData();
-    if (seletedBook) {
-      fetchChapters(seletedBook);
+  }, [selectedBook]);
+
+  useEffect(() => {
+    if (selectedBook) {
+      loadChapters(selectedBook);
     }
-  }, [seletedBook]);
+  }, [selectedBook]);
+
+  const loadChapterVerses = async (chapterId: string) => {
+    try {
+      const response = await loadChapterVersesFromAPI(chapterId);
+      if (!response.data) {
+        console.error(
+          "Error: No se encontró contenido en los versículos",
+          response
+        );
+        return;
+      }
+
+      const content = response.data.content.replace(/<\/?[^>]+(>|$)/g, "");
+      const versePattern = /(\d+)([^0-9]+)/g;
+      const versesArray: Verse[] = [];
+      let match;
+
+      while ((match = versePattern.exec(content)) !== null) {
+        const verseNumber = match[1];
+        const verseText = formatVerseText(match[2].trim());
+
+        if (!isTitleOrHeading(verseText)) {
+          versesArray.push({
+            id: `${chapterId}-${verseNumber}`,
+            reference: `Versículo ${verseNumber}`,
+            text: verseText,
+          });
+        }
+      }
+
+      setChapterVerses(versesArray);
+    } catch (error) {
+      console.error("Error fetching chapter content:", error);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -25,20 +76,7 @@ export const useBibleVerse = () => {
         console.error("Unexpected API response structure:", response);
       }
     } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchChapters = async (bookId: string) => {
-    try {
-      const response = await getBiblesChapters(bookId);
-      if (response && response.data) {
-        setBibleVerseChapters(response.data);
-      } else {
-        console.error("Unexpected API response structure:", response);
-      }
-    } catch (error) {
-      console.error(error);
+      console.error("Error fetching bibles:", error);
     }
   };
 
@@ -46,10 +84,32 @@ export const useBibleVerse = () => {
     setSelectedBook(bookId);
   };
 
+  const loadChapters = async (bookId: string) => {
+    try {
+      const response = await getChapters(bookId);
+      if (response && response.data) {
+        setBibleVerseChapters(response.data);
+      } else {
+        console.error("Unexpected API response structure:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching chapters:", error);
+    }
+  };
+
+  useEffect(() => {
+    const defaultBookId = "PSA";
+    setSelectedBook(defaultBookId);
+    loadChapters(defaultBookId);
+  }, []);
+
   return {
     handleBook,
     bibleVerse,
     bibleVerseChapters,
-    seletedBook,
+    selectedBook,
+    chapterVerses,
+    loadChapterVerses,
+    scrollAreaRef,
   };
 };

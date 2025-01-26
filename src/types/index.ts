@@ -15,6 +15,7 @@ export interface BibleVerse {
   id: string;
   bibleId: string;
   bookId: string;
+  number: string;
   chapterId: string;
   reference: string;
   content: string;
@@ -22,7 +23,9 @@ export interface BibleVerse {
   next: string;
   previous: string;
   testament: string;
-  book: BibleBooks;
+ 
+
+
 }
 
 export interface BibleChapter {
@@ -40,3 +43,29 @@ export interface BibleChapter {
   verses: BibleVerse[];
 }
 
+
+export interface verses {
+  id: string;
+  bibleId: string;
+  bookId: string;
+  chapterId: string;
+  reference: string;
+  content: string;
+  verse: string;
+  next: string;
+  previous: string;
+  testament: string;
+  book: BibleBooks;
+}
+
+
+export interface Chapter {
+  id: string;
+  number: string;
+}
+
+export interface Verse {
+  id: string;
+  reference: string;
+  text: string;
+}
