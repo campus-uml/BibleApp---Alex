@@ -1,8 +1,15 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   getBibles,
   getChapters,
   loadChapterVersesFromAPI,
+  searchBible,
 } from "../services/getData";
 import { BibleBooks, Chapter, Verse } from "../types/index";
 
@@ -23,6 +30,7 @@ interface BibleContextProps {
   scrollAreaRef: React.RefObject<HTMLDivElement>;
   handleBook: (bookId: string) => void;
   loadChapterVerses: (chapterId: string) => void;
+  searchBibleVerse: (query: string) => void;
 }
 
 const BibleContext = createContext<BibleContextProps | undefined>(undefined);
@@ -33,7 +41,7 @@ interface BibleProviderProps {
 
 export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [bibleVerse, setBibleVerse] = useState<BibleBooks[]>([]);
-  const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("MAT");
+  const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("GEN");
   const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
   const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
@@ -58,7 +66,10 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
     try {
       const response = await loadChapterVersesFromAPI(chapterId);
       if (!response.data) {
-        console.error("Error: No se encontró contenido en los versículos", response);
+        console.error(
+          "Error: No se encontró contenido en los versículos",
+          response
+        );
         return;
       }
 
@@ -116,6 +127,19 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
     }
   };
 
+  const searchBibleVerse = async (query: string) => {
+    try {
+      const response = await searchBible(query);
+      if (response && response.data) {
+        setBibleVerse(response.data);
+      } else {
+        console.error("Unexpected API response structure:", response);
+      }
+    } catch (error) {
+      console.error("Error fetching bible verse:", error);
+    }
+
+  };
   return (
     <BibleContext.Provider
       value={{
@@ -126,6 +150,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
         handleBook,
         loadChapterVerses,
         scrollAreaRef,
+        searchBibleVerse,
       }}
     >
       {children}

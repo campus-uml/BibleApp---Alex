@@ -12,23 +12,28 @@ export default function BibleApp() {
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
-      <Tabs defaultValue="1" className="w-full max-w-72 md:max-w-5xl mx-auto">
+      <Tabs
+        defaultValue="1"
+        className="w-full max-w-[22rem] md:max-w-6xl mx-auto"
+      >
         <div className="relative">
           <TabsList className="h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
             <ScrollArea
               ref={scrollAreaRef}
-              className="w-full whitespace-nowrap"
+              className="w-full overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
             >
-              {bibleVerseChapters.map((chapter) => (
-                <TabsTrigger
-                  key={chapter.id}
-                  value={chapter.number.toString()}
-                  onClick={() => loadChapterVerses(chapter.id)}
-                  className="ring-offset-background focus-visible:ring-ring data-[state=active]:bg-background data-[state=active]:text-foreground px-3 py-1.5"
-                >
-                  {chapter.number}
-                </TabsTrigger>
-              ))}
+              <div className="flex items-center gap-2">
+                {bibleVerseChapters.map((chapter) => (
+                  <TabsTrigger
+                    key={chapter.id}
+                    value={chapter.number.toString()}
+                    onClick={() => loadChapterVerses(chapter.id)}
+                    className="ring-offset-background focus-visible:ring-ring data-[state=active]:bg-background data-[state=active]:text-foreground px-3 py-1.5"
+                  >
+                    {chapter.number}
+                  </TabsTrigger>
+                ))}
+              </div>
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
           </TabsList>
@@ -51,7 +56,7 @@ export default function BibleApp() {
                       key={index}
                       className="bg-white shadow-md rounded-lg p-4"
                     >
-                      <h3 className="text-lg font-semibold mb-2">
+                      <h3 className="text-xs font-semibold mb-2">
                         {verse.reference}
                       </h3>
                       <p className="text-gray-700 leading-relaxed">
@@ -60,8 +65,8 @@ export default function BibleApp() {
                     </div>
                   ))
                 ) : (
-                  <p className="text-gray-500 text-center">
-                    Selecciona un Capitulo.
+                  <p className="text-gray-500 text-center font-semibold text-lg mt-4">
+                    Selecciona un Capítulo para ver los versículos.
                   </p>
                 )}
               </div>

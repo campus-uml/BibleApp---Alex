@@ -53,4 +53,23 @@ const loadChapterVersesFromAPI = async (chapterId: string) => {
   }
 };
 
-export { getBibles, getChapters, loadChapterVersesFromAPI };
+const searchBible = async (query: string) => {
+  try {
+    const response = await axios.get(
+      `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/${query}`,
+      {
+        headers: {
+          "api-key": apiKey,
+        },
+        params: {
+          query,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching search results:", error);
+  }
+};
+
+export { getBibles, getChapters, loadChapterVersesFromAPI, searchBible };
