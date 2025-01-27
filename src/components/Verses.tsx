@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { useBibleVerse } from "@/Hooks/useBibleVerse";
+import { useBible } from "../context/BIbleContext";
 
 export default function BibleApp() {
   const {
@@ -8,10 +8,30 @@ export default function BibleApp() {
     chapterVerses,
     loadChapterVerses,
     scrollAreaRef,
-  } = useBibleVerse();
+    bibleVerse,
+    selectedBook,
+    handleBook
+  } = useBible();
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-hidden">
+     
+      <div className="my-4 text-center">
+        <label htmlFor="bible-book" className="text-lg font-semibold">Selecciona un libro:</label>
+        <select
+          id="bible-book"
+          value={selectedBook}
+          onChange={(e) => handleBook(e.target.value)}
+          className="border border-gray-300 p-2 rounded-md"
+        >
+          {bibleVerse.map((book) => (
+            <option key={book.id} value={book.id}>
+              {book.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <Tabs defaultValue="1" className="w-full max-w-72 md:max-w-5xl mx-auto">
         <div className="relative">
           <TabsList className="h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
@@ -60,7 +80,7 @@ export default function BibleApp() {
                     </div>
                   ))
                 ) : (
-                    <p className="text-gray-500 text-center">Selecciona un Capitulo.</p>
+                  <p className="text-gray-500 text-center">Selecciona un Capitulo.</p>
                 )}
               </div>
             </TabsContent>

@@ -41,7 +41,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            <TabBible />
+            <TabBible  />
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>

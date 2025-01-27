@@ -1,10 +1,10 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useBibleVerse } from "@/Hooks/useBibleVerse";
+import { useBible } from "../context/BIbleContext";
 import { Button } from "./ui/button";
 import { newTestamentIds, oldTestamentIds } from "../utils/Abreviations";
 
 export const TabBible = () => {
-  const { bibleVerse, handleBook } = useBibleVerse();
+  const { bibleVerse, handleBook } = useBible();
 
   const oldTestamentBooks = bibleVerse.filter((book) =>
     oldTestamentIds.includes(book.id)
@@ -50,6 +50,7 @@ export const TabBible = () => {
               <Button
                 key={index}
                 className="flex items-center gap-2 p-2 bg-transparent text-black hover:bg-gray-200"
+                onClick={() => handleBook(v.id)}
               >
                 <h2 className="text-lg font-semibold">{v.name}</h2>
               </Button>

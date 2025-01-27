@@ -1,10 +1,13 @@
 import Verses from "./components/Verses";
+
 import { MainLayout } from "./layout/MainLayout";
 
 function App() {
+
+
   return (
     <>
-      <MainLayout>
+      <MainLayout >
         <Verses />
       </MainLayout>
     </>

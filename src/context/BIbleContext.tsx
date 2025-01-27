@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import {
   getBibles,
   getChapters,
@@ -15,16 +15,32 @@ const isTitleOrHeading = (text: string) => {
   return titleKeywords.some((keyword) => text.includes(keyword));
 };
 
-export const useBibleVerse = () => {
+interface BibleContextProps {
+  bibleVerse: BibleBooks[];
+  selectedBook: BibleBooks["id"];
+  bibleVerseChapters: Chapter[];
+  chapterVerses: Verse[];
+  scrollAreaRef: React.RefObject<HTMLDivElement>;
+  handleBook: (bookId: string) => void;
+  loadChapterVerses: (chapterId: string) => void;
+}
+
+const BibleContext = createContext<BibleContextProps | undefined>(undefined);
+
+interface BibleProviderProps {
+  children: React.ReactNode;
+}
+
+export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [bibleVerse, setBibleVerse] = useState<BibleBooks[]>([]);
-  const [selectedBook, setSelectedBook] = useState<string | null>(null);
+  const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("MAT");
   const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
   const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchData();
-  }, [selectedBook]);
+  }, []);
 
   useEffect(() => {
     if (selectedBook) {
@@ -32,14 +48,17 @@ export const useBibleVerse = () => {
     }
   }, [selectedBook]);
 
+  useEffect(() => {
+    if (bibleVerseChapters.length > 0) {
+      loadChapterVerses(bibleVerseChapters[0].id);
+    }
+  }, [bibleVerseChapters]);
+
   const loadChapterVerses = async (chapterId: string) => {
     try {
       const response = await loadChapterVersesFromAPI(chapterId);
       if (!response.data) {
-        console.error(
-          "Error: No se encontró contenido en los versículos",
-          response
-        );
+        console.error("Error: No se encontró contenido en los versículos", response);
         return;
       }
 
@@ -97,19 +116,28 @@ export const useBibleVerse = () => {
     }
   };
 
-  useEffect(() => {
-    const defaultBookId = "PSA";
-    setSelectedBook(defaultBookId);
-    loadChapters(defaultBookId);
-  }, []);
+  return (
+    <BibleContext.Provider
+      value={{
+        bibleVerse,
+        selectedBook,
+        bibleVerseChapters,
+        chapterVerses,
+        handleBook,
+        loadChapterVerses,
+        scrollAreaRef,
+      }}
+    >
+      {children}
+    </BibleContext.Provider>
+  );
+};
 
-  return {
-    handleBook,
-    bibleVerse,
-    bibleVerseChapters,
-    selectedBook,
-    chapterVerses,
-    loadChapterVerses,
-    scrollAreaRef,
-  };
+// eslint-disable-next-line react-refresh/only-export-components
+export const useBible = (): BibleContextProps => {
+  const context = useContext(BibleContext);
+  if (!context) {
+    throw new Error("useBible must be used within a BibleProvider");
+  }
+  return context;
 };
