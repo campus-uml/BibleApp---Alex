@@ -17,7 +17,6 @@ export default function BibleApp() {
     return book ? book.name : "Selecciona un libro";
   };
 
-
   return (
     <div className="min-h-screen bg-gray-50 overflow-auto">
       <Tabs
@@ -26,7 +25,7 @@ export default function BibleApp() {
       >
         <div className="relative">
           <div className=" ">
-            <h1 className="text-2xl font-bold text-center my-4 text-gray-800">
+            <h1 className="text-xl font-bold text-center text-gray-800">
               {bookName(selectedBook)}
             </h1>
           </div>
@@ -79,7 +78,7 @@ export default function BibleApp() {
                   ))
                 ) : (
                   <p className="text-gray-500 text-center font-semibold text-lg mt-4">
-                    Selecciona un Capítulo para ver los versículos.
+                    Selecciona un capítulo
                   </p>
                 )}
               </div>

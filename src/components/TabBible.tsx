@@ -36,7 +36,7 @@ export const TabBible = () => {
             oldTestamentBooks.map((v, index) => (
               <Button
                 key={index}
-                onClick={() => handleBook(v.id)}             
+                onClick={() => handleBook(v.id )}             
                 className="flex items-center gap-2 p-2 bg-transparent text-black hover:bg-gray-200"
               >
                 <h2 className="text-lg font-semibold">{v.name}</h2>
