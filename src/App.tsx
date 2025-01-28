@@ -1,14 +1,12 @@
-import Verses from "./components/Verses";
+import { TabHome } from "./components/home/TabHome";
 
 import { MainLayout } from "./layout/MainLayout";
 
 function App() {
-
-
   return (
     <>
-      <MainLayout >
-        <Verses />
+      <MainLayout>
+        <TabHome />
       </MainLayout>
     </>
   );
