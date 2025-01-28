@@ -1,8 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useBible } from "../context/BIbleContext";
 import { Button } from "./ui/button";
+import { ScrollArea } from "./ui/scroll-area";
 import { newTestamentIds, oldTestamentIds } from "../utils/Abreviations";
-
 
 export const TabBible = () => {
   const { bibleVerse, handleBook } = useBible();
@@ -13,58 +13,50 @@ export const TabBible = () => {
   const newTestamentBooks = bibleVerse.filter((book) =>
     newTestamentIds.includes(book.id)
   );
-  
 
-
+  const renderBookList = (books: typeof oldTestamentBooks) => (
+    <ScrollArea className="h-[80vh] w-full rounded-md border">
+      <div className="p-4">
+        {books.length > 0 ? (
+          books.map((v, index) => (
+            <Button
+              key={index}
+              onClick={() => handleBook(v.id)}
+              variant="ghost"
+              className="w-full justify-start text-left font-normal mb-2 hover:bg-accent hover:text-accent-foreground"
+            >
+              <span className="text-base">{v.name}</span>
+            </Button>
+          ))
+        ) : (
+          <p className="text-muted-foreground">No data available</p>
+        )}
+      </div>
+    </ScrollArea>
+  );
 
   return (
-    <Tabs defaultValue="Antiguo" className="w-full ">
-      <TabsList className="flex gap-2 ">
-        <TabsTrigger value="Antiguo" className="text-xs">
-          Antiguo
-        </TabsTrigger>
-        <TabsTrigger value="Nuevo" className="text-xs">
-          Nuevo
-        </TabsTrigger>
-        <TabsTrigger value="Frecuentes" className="text-xs">
-          Frecuentes
-        </TabsTrigger>
+    <Tabs defaultValue="Antiguo" className="w-full">
+      <TabsList className="grid w-full grid-cols-3 mb-4">
+        <TabsTrigger value="Antiguo">Antiguo</TabsTrigger>
+        <TabsTrigger value="Nuevo">Nuevo</TabsTrigger>
+        <TabsTrigger value="Frecuentes">Frecuentes</TabsTrigger>
       </TabsList>
       <TabsContent value="Antiguo">
-        <ul className="flex flex-col gap-2 p-2">
-          {oldTestamentBooks.length > 0 ? (
-            oldTestamentBooks.map((v, index) => (
-              <Button
-                key={index}
-                onClick={() => handleBook(v.id )}             
-                className="flex items-center gap-2 p-2 bg-transparent text-black hover:bg-gray-200"
-              >
-                <h2 className="text-lg font-semibold">{v.name}</h2>
-              </Button>
-            ))
-          ) : (
-            <p>No data available</p>
-          )}
-        </ul>
+        {renderBookList(oldTestamentBooks)}
       </TabsContent>
       <TabsContent value="Nuevo">
-        <ul className="flex flex-col gap-2 p-2">
-          {newTestamentBooks.length > 0 ? (
-            newTestamentBooks.map((v, index) => (
-              <Button
-                key={index}
-                className="flex items-center gap-2 p-2 bg-transparent text-black hover:bg-gray-200"
-                onClick={() => handleBook(v.id)}
-              >
-                <h2 className="text-lg font-semibold">{v.name}</h2>
-              </Button>
-            ))
-          ) : (
-            <p>No data available</p>
-          )}
-        </ul>
+        {renderBookList(newTestamentBooks)}
       </TabsContent>
-      <TabsContent value="Frecuentes">Informacion frecuente</TabsContent>
+      <TabsContent value="Frecuentes">
+        <div className="rounded-md border p-4">
+          <h3 className="text-lg font-medium mb-2">Información frecuente</h3>
+          <p className="text-muted-foreground">
+            Aquí puedes agregar información sobre los libros más frecuentemente
+            consultados o versículos populares.
+          </p>
+        </div>
+      </TabsContent>
     </Tabs>
   );
 };
