@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useBible } from "../context/BIbleContext";
+import { Copy, Forward, Heart, Play } from "lucide-react";
 
 export default function BibleApp() {
   const {
@@ -58,7 +59,7 @@ export default function BibleApp() {
               value={chapter.number.toString()}
               className="bg-white rounded-lg shadow-sm p-2"
             >
-              <h2 className="text-xl font-semibold mb-2 text-gray-800">
+              <h2 className="text-xl text-center font-semibold mb-2 text-gray-800">
                 Capítulo {chapter.number}
               </h2>
               <div className="space-y-4">
@@ -68,12 +69,26 @@ export default function BibleApp() {
                       key={index}
                       className="bg-white shadow-md rounded-lg p-4"
                     >
-                      <h3 className="text-xs font-semibold mb-2">
+                      <h3 className="text-xs text-slate-500 font-semibold mb-2">
                         {verse.reference}
                       </h3>
                       <p className="text-gray-700 leading-relaxed">
                         {verse.text}
                       </p>
+                      <div className="flex justify-end gap-4 mt-4">
+                        <button className="">
+                          <Heart />
+                        </button>
+                        <button className="">
+                          <Forward />
+                        </button>
+                        <button className="">
+                          <Copy />
+                        </button>
+                        <button className="">
+                          <Play />
+                        </button>
+                      </div>
                     </div>
                   ))
                 ) : (
