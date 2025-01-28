@@ -3,7 +3,7 @@ import BibleApp from "../Verses";
 
 export const TabHome = () => {
   return (
-    <div className="w-full max-w-4xl mx-auto p-4">
+    <div className="w-full max-w-4xl mx-auto">
       <Tabs defaultValue="Inicio" className="w-full">
         <TabsList className="w-full flex justify-center mb-6 bg-muted p-1 rounded-lg">
           <TabsTrigger
