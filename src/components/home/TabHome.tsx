@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import BibleApp from "../Verses";
+import BibleVerse from "../BibleVerse";
 import Welcome from "./Welcome";
 
 export const TabHome = () => {
@@ -34,7 +34,7 @@ export const TabHome = () => {
             <Welcome />
           </TabsContent>
           <TabsContent value="lectura">
-            <BibleApp />
+            <BibleVerse />
           </TabsContent>
           <TabsContent
             value="favoritos"

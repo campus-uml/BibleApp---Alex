@@ -42,7 +42,7 @@ const loadChapterVersesFromAPI = async (chapterId: string) => {
       `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/chapters/${chapterId}`,
       {
         headers: {
-          "api-key": apiKey, 
+          "api-key": apiKey,
         },
       }
     );
@@ -56,13 +56,14 @@ const loadChapterVersesFromAPI = async (chapterId: string) => {
 const searchBible = async (query: string) => {
   try {
     const response = await axios.get(
-      `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/${query}`,
+      `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/search?`,
       {
         headers: {
           "api-key": apiKey,
         },
         params: {
           query,
+          limit: 10,
         },
       }
     );

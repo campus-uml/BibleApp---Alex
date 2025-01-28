@@ -3,7 +3,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useBible } from "../context/BIbleContext";
 import { Copy, Forward, Heart, Play } from "lucide-react";
 
-export default function BibleApp() {
+export default function BibleVerse() {
   const {
     bibleVerseChapters,
     chapterVerses,
@@ -11,6 +11,7 @@ export default function BibleApp() {
     scrollAreaRef,
     selectedBook,
     bibleVerse,
+    searchResults,
   } = useBible();
 
   const bookName = (selectedBook: string) => {
@@ -30,7 +31,7 @@ export default function BibleApp() {
               {bookName(selectedBook)}
             </h1>
           </div>
-          <TabsList className="h-10  items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
+          <TabsList className="h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
             <ScrollArea
               ref={scrollAreaRef}
               className="w-full overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
@@ -51,6 +52,41 @@ export default function BibleApp() {
             </ScrollArea>
           </TabsList>
         </div>
+
+        {searchResults && searchResults.length > 0 && (
+          <TabsContent
+            value="search"
+            className="bg-white rounded-lg shadow-sm p-2"
+          >
+            <h2 className="text-xl text-center font-semibold mb-2 text-gray-800">
+              Resultados de Búsqueda
+            </h2>
+            <div className="space-y-4">
+              {searchResults.map((result, index) => (
+                <div key={index} className="bg-white shadow-md rounded-lg p-4">
+                  <h3 className="text-xs text-slate-500 font-semibold mb-2">
+                    {result.reference}
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">{result.text}</p>
+                  <div className="flex justify-end gap-4 mt-4">
+                    <button>
+                      <Heart />
+                    </button>
+                    <button>
+                      <Forward />
+                    </button>
+                    <button>
+                      <Copy />
+                    </button>
+                    <button>
+                      <Play />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </TabsContent>
+        )}
 
         <div className="flex flex-col gap-4">
           {bibleVerseChapters.map((chapter) => (
@@ -76,16 +112,16 @@ export default function BibleApp() {
                         {verse.text}
                       </p>
                       <div className="flex justify-end gap-4 mt-4">
-                        <button className="">
+                        <button>
                           <Heart />
                         </button>
-                        <button className="">
+                        <button>
                           <Forward />
                         </button>
-                        <button className="">
+                        <button>
                           <Copy />
                         </button>
-                        <button className="">
+                        <button>
                           <Play />
                         </button>
                       </div>

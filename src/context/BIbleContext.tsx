@@ -11,7 +11,7 @@ import {
   loadChapterVersesFromAPI,
   searchBible,
 } from "../services/getData";
-import { BibleBooks, Chapter, Verse } from "../types/index";
+import { BibleBooks, Chapter, SeachrResults, Verse } from "../types/index";
 import { useSidebar } from "@/components/ui/sidebar";
 
 const formatVerseText = (text: string) => {
@@ -33,6 +33,7 @@ interface BibleContextProps {
   loadChapterVerses: (chapterId: string) => void;
   searchBibleVerse: (query: string) => void;
   toggleSidebar: () => void;
+  searchResults: SeachrResults[];
 }
 
 const BibleContext = createContext<BibleContextProps | undefined>(undefined);
@@ -46,6 +47,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("GEN");
   const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
   const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
+  const [searchResults, setSearchResults] = useState<SeachrResults[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { toggleSidebar } = useSidebar();
 
@@ -72,7 +74,10 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
         }
         setChapterVerses(versesArray);
       } else {
-        console.error("No se encontraron datos en la respuesta del API:", response);
+        console.error(
+          "No se encontraron datos en la respuesta del API:",
+          response
+        );
       }
     } catch (error) {
       console.error("Error al cargar los versículos:", error);
@@ -85,7 +90,10 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
       if (response?.data) {
         setBibleVerse(response.data);
       } else {
-        console.error("Estructura inesperada en la respuesta del API:", response);
+        console.error(
+          "Estructura inesperada en la respuesta del API:",
+          response
+        );
       }
     } catch (error) {
       console.error("Error al obtener las biblias:", error);
@@ -98,7 +106,10 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
       if (response?.data) {
         setBibleVerseChapters(response.data);
       } else {
-        console.error("Estructura inesperada en la respuesta del API:", response);
+        console.error(
+          "Estructura inesperada en la respuesta del API:",
+          response
+        );
       }
     } catch (error) {
       console.error("Error al obtener los capítulos:", error);
@@ -109,9 +120,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
     try {
       const response = await searchBible(query);
       if (response?.data) {
-        setBibleVerse(response.data);
-      } else {
-        console.error("Estructura inesperada en la respuesta del API:", response);
+        setSearchResults(response.data);
       }
     } catch (error) {
       console.error("Error al buscar el versículo:", error);
@@ -128,6 +137,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
       loadChapterVerses(`${selectedBook}.1`);
     }
   }, [selectedBook]);
+
 
   useEffect(() => {
     if (bibleVerseChapters.length > 0 && bibleVerseChapters[0].id) {
@@ -153,6 +163,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
         scrollAreaRef,
         searchBibleVerse,
         toggleSidebar,
+        searchResults,
       }}
     >
       {children}
