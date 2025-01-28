@@ -21,7 +21,7 @@ const SearchBar: React.FC = () => {
         placeholder="Buscar en la Biblia..."
         className="border rounded-lg p-2 w-full"
       />
-      <Button onClick={handleSearch}>Buscar</Button>
+      <Button onClick={handleSearch} className="p-2  rounded-lg transition duration-300">Buscar</Button>
     </div>
   );
 };

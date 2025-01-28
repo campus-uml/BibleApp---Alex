@@ -30,12 +30,12 @@ export default function BibleApp() {
               {bookName(selectedBook)}
             </h1>
           </div>
-          <TabsList className="h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
+          <TabsList className="h-10  items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
             <ScrollArea
               ref={scrollAreaRef}
               className="w-full overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 pb-2 pt-2">
                 {bibleVerseChapters.map((chapter) => (
                   <TabsTrigger
                     key={chapter.id}
