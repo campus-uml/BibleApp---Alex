@@ -42,7 +42,7 @@ const loadChapterVersesFromAPI = async (chapterId: string) => {
       `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/chapters/${chapterId}`,
       {
         headers: {
-          "api-key": API_KEY, // Reemplaza con tu API Key
+          "api-key": apiKey, 
         },
       }
     );

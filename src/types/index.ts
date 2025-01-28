@@ -62,10 +62,12 @@ export interface verses {
 export interface Chapter {
   id: string;
   number: string;
+  verses: verses[];
 }
 
 export interface Verse {
   id: string;
   reference: string;
   text: string;
+
 }

@@ -8,15 +8,28 @@ export default function BibleApp() {
     chapterVerses,
     loadChapterVerses,
     scrollAreaRef,
+    selectedBook,
+    bibleVerse,
   } = useBible();
 
+  const bookName = (selectedBook: string) => {
+    const book = bibleVerse.find((book) => book.id === selectedBook);
+    return book ? book.name : "Selecciona un libro";
+  };
+
+
   return (
-    <div className="min-h-screen bg-gray-50 overflow-hidden">
+    <div className="min-h-screen bg-gray-50 overflow-auto">
       <Tabs
         defaultValue="1"
         className="w-full max-w-[22rem] md:max-w-6xl mx-auto"
       >
         <div className="relative">
+          <div className=" ">
+            <h1 className="text-2xl font-bold text-center my-4 text-gray-800">
+              {bookName(selectedBook)}
+            </h1>
+          </div>
           <TabsList className="h-10 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
             <ScrollArea
               ref={scrollAreaRef}

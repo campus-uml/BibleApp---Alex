@@ -12,6 +12,7 @@ import {
   searchBible,
 } from "../services/getData";
 import { BibleBooks, Chapter, Verse } from "../types/index";
+import { useSidebar } from "@/components/ui/sidebar";
 
 const formatVerseText = (text: string) => {
   return text.toLowerCase().replace(/^([a-z])/, (match) => match.toUpperCase());
@@ -31,6 +32,8 @@ interface BibleContextProps {
   handleBook: (bookId: string) => void;
   loadChapterVerses: (chapterId: string) => void;
   searchBibleVerse: (query: string) => void;
+  toggleSidebar: () => void;
+  
 }
 
 const BibleContext = createContext<BibleContextProps | undefined>(undefined);
@@ -45,6 +48,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
   const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const { toggleSidebar } = useSidebar();
 
   useEffect(() => {
     fetchData();
@@ -112,6 +116,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
 
   const handleBook = (bookId: string) => {
     setSelectedBook(bookId);
+    toggleSidebar();
   };
 
   const loadChapters = async (bookId: string) => {
@@ -138,7 +143,6 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
     } catch (error) {
       console.error("Error fetching bible verse:", error);
     }
-
   };
   return (
     <BibleContext.Provider
@@ -151,6 +155,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
         loadChapterVerses,
         scrollAreaRef,
         searchBibleVerse,
+        toggleSidebar,
       }}
     >
       {children}
