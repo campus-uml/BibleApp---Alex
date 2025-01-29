@@ -46,7 +46,7 @@ interface BibleProviderProps {
 
 export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [bibleVerse, setBibleVerse] = useState<BibleBooks[]>([]);
-  const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("GEN");
+  const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("");
   const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
   const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
   const [searchResults, setSearchResults] = useState<SearchResults | null>(
