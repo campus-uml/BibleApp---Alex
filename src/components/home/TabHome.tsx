@@ -60,9 +60,14 @@ export const TabHome = () => {
           </TabsTrigger>
           <TabsTrigger
             value="favoritos"
-            className="flex-1 px-6 py-3 text-sm font-medium transition-colors duration-100 ease-in-out rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50 data-[state=active]:shadow-sm"
+            className="relative flex-1 px-6 py-3 text-sm font-medium transition-colors duration-100 ease-in-out rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50 data-[state=active]:shadow-sm"
           >
             Favoritos
+            {favorites.length > 0 && (
+              <Heart className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-slate-900  rounded-full">
+                {favorites.length}
+              </Heart>
+            )}
           </TabsTrigger>
         </TabsList>
         <div className="min-h-[500px] overflow-y-auto">
@@ -79,7 +84,7 @@ export const TabHome = () => {
               favorites={favorites}
               addFavorite={addFavorite}
               removeFavorite={removeFavorite}
-            />
+         />
           </TabsContent>
           <TabsContent
             value="favoritos"
@@ -102,7 +107,6 @@ export const TabHome = () => {
                     <button className="mt-4 text-accent-foreground hover:text-accent">
                       <Heart size={20} />
                     </button>
-                    
                   </div>
                 ))}
               </div>

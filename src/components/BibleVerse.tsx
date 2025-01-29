@@ -9,7 +9,7 @@ import { useActions } from "@/Hooks/useActions";
 interface BibleVerseProps {
   searchResults: SearchResults | null;
   onClearSearch: () => void;
-  addFavorite: (verseId: string) => void;
+  addFavorite: (verse: Verse) => void
   removeFavorite: (verseId: string) => void;
   favorites: Verse[];
 }
@@ -18,6 +18,7 @@ export const BibleVerse = ({
   searchResults,
   onClearSearch,
   addFavorite,
+  favorites,
 }: BibleVerseProps) => {
   const {
     bibleVerseChapters,
@@ -33,6 +34,7 @@ export const BibleVerse = ({
     const book = bibleVerse.find((book) => book.id === selectedBook);
     return book ? book.name : "Selecciona un libro";
   };
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -96,10 +98,17 @@ export const BibleVerse = ({
                 <p className="text-base text-gray-700">{verse.text}</p>
                 <div className="flex justify-end gap-4 mt-4">
                   <button
-                    className="text-gray-600 hover:text-red-500 transition-colors"
-                    onClick={() => addFavorite(verse.id)}
+                    onClick={() => addFavorite({ ...verse, reference: verse.id })}
+                    className="mt-2 focus:outline-none"
+                    aria-label={favorites ? "remover" : "agregar"}
                   >
-                    <Heart size={20} />
+                    <Heart
+                      className={`w-6 h-6 ${
+                        favorites?.some((fav) => fav.id === verse.id)
+                          ? "text-red-500"
+                          : "text-gray-900"
+                      }`}
+                    />
                   </button>
                   <button className="text-gray-600 hover:text-blue-500 transition-colors">
                     <Play size={20} />
@@ -141,7 +150,7 @@ export const BibleVerse = ({
                         <h3 className="text-sm text-slate-500 font-semibold mb-2">
                           {verse.reference}
                         </h3>
-                        <p className="text-gray-700 leading-relaxed">
+                        <p className="text-gray-700 leading-relaxed italic">
                           {verse.text}
                         </p>
                         <div className="flex justify-end gap-4 mt-4">

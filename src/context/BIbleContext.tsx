@@ -34,7 +34,7 @@ interface BibleContextProps {
   query: string;
   onClearSearch: () => void;
   favorites: Verse[];
-  addFavorite: (verseId: string) => void;
+  addFavorite: (verse: Verse) => void
   removeFavorite: (verseId: string) => void;
 }
 

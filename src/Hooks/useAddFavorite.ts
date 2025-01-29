@@ -2,27 +2,21 @@ import { Verse } from "@/types";
 import { useState, useEffect } from "react";
 
 export const useAddFavorite = () => {
-  const [favorites, setFavorites] = useState<Verse[]>([
-    {
-      id: "1",
-      text: "En el principio Dios creo los cielos y la tierra.",
-      reference: "Genesis 1:1",
-    },
-  ]);
+  const [favorites, setFavorites] = useState<Verse[]>(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  const addFavorite = (verseId: string) => {
-    setFavorites((prev) => {
-      if (prev.some((fav) => fav.id === verseId)) {
-        return prev;
-      }
-
-      const verse = getVerseById(verseId);
-      return [...prev, verse];
-    });
+  const addFavorite = (verse: Verse) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.some((fav) => fav.id === verse.id)
+        ? prevFavorites
+        : [...prevFavorites, verse] // Ahora añadimos el objeto completo con datos reales
+    );
   };
 
   const removeFavorite = (verseId: string) => {
@@ -35,11 +29,3 @@ export const useAddFavorite = () => {
     removeFavorite,
   };
 };
-
-const getVerseById= (verseId: string): Verse => {
-  return {
-    id: verseId,
-    text: "En el principio Dios creo los cielos y la tierra.",
-    reference: "Genesis 1:1",
-  };
-}
