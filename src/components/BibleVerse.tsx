@@ -155,8 +155,20 @@ export const BibleVerse = ({
                           {verse.text}
                         </p>
                         <div className="flex justify-end gap-4 mt-4">
-                          <button className="text-gray-600 hover:text-red-500 transition-colors">
-                            <Heart size={20} />
+                          <button
+                            onClick={() =>
+                              addFavorite({ ...verse, reference: verse.id })
+                            }
+                            className="mt-2 focus:outline-none"
+                            aria-label={favorites ? "remover" : "agregar"}
+                          >
+                            <Heart
+                              className={`w-6 h-6 ${
+                                favorites?.some((fav) => fav.id === verse.id)
+                                  ? "text-red-500"
+                                  : "text-gray-900"
+                              }`}
+                            />
                           </button>
                           <button className="text-gray-600 hover:text-blue-500 transition-colors">
                             <Play size={20} />
