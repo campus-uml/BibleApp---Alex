@@ -19,7 +19,7 @@ const SearchBar: React.FC = () => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)} 
-        placeholder="Buscar en la Biblia..."
+        placeholder="Ejemplo: 'Dios', 'fe', 'esperanza"
         className="border rounded-lg p-2 flex-grow sm:max-w-[250px] w-4/5"
       />
       <Button

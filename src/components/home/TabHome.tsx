@@ -14,6 +14,12 @@ export const TabHome = () => {
     }
   }, [selectedBook]);
 
+  useEffect(() => {
+    if (searchResults) {
+      setActiveTab("lectura");
+    }
+  }, [searchResults]);
+
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     if (value !== "lectura") {
