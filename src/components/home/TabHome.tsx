@@ -64,9 +64,9 @@ export const TabHome = () => {
           >
             Favoritos
             {favorites.length > 0 && (
-              <Heart className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-slate-900  rounded-full">
+              <span className="absolute -top-2 -right-2 bg-accent bg-red-300 text-slate-900 text-xs font-semibold px-2 py-1 rounded-full">
                 {favorites.length}
-              </Heart>
+              </span>
             )}
           </TabsTrigger>
         </TabsList>
