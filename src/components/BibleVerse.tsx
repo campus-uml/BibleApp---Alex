@@ -9,7 +9,7 @@ import { useActions } from "@/Hooks/useActions";
 interface BibleVerseProps {
   searchResults: SearchResults | null;
   onClearSearch: () => void;
-  addFavorite: (verse: Verse) => void
+  addFavorite: (verse: Verse) => void;
   removeFavorite: (verseId: string) => void;
   favorites: Verse[];
 }
@@ -32,9 +32,8 @@ export const BibleVerse = ({
 
   const bookName = (selectedBook: string) => {
     const book = bibleVerse.find((book) => book.id === selectedBook);
-    return book ? book.name : "Selecciona un libro";
+    return book ? book.name : "Selecciona un libro en la pesataña de inicio";
   };
-
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -98,7 +97,9 @@ export const BibleVerse = ({
                 <p className="text-base text-gray-700">{verse.text}</p>
                 <div className="flex justify-end gap-4 mt-4">
                   <button
-                    onClick={() => addFavorite({ ...verse, reference: verse.id })}
+                    onClick={() =>
+                      addFavorite({ ...verse, reference: verse.id })
+                    }
                     className="mt-2 focus:outline-none"
                     aria-label={favorites ? "remover" : "agregar"}
                   >
