@@ -84,7 +84,7 @@ export const TabHome = () => {
               favorites={favorites}
               addFavorite={addFavorite}
               removeFavorite={removeFavorite}
-         />
+            />
           </TabsContent>
           <TabsContent
             value="favoritos"
@@ -104,8 +104,14 @@ export const TabHome = () => {
                     </p>
                     <p className="text-base text-slate-800">{favorite.text}</p>
 
-                    <button className="mt-4 text-accent-foreground hover:text-accent">
-                      <Heart size={20} />
+                    <button className="mt-4 text-accent-foreground hover:text-accent" onClick={() => removeFavorite(favorite.id)}>
+                      <Heart
+                        className={`w-6 h-6 ${
+                          favorites.some((fav) => fav.id === favorite.id)
+                            ? "text-red-500"
+                            : "text-gray-900"
+                        }`}
+                      />
                     </button>
                   </div>
                 ))}
