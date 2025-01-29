@@ -9,10 +9,11 @@ import {
   getBibles,
   getChapters,
   loadChapterVersesFromAPI,
-  searchBible,
 } from "../services/getData";
-import { BibleBooks, Chapter, SeachrResults, Verse } from "../types/index";
+import { BibleBooks, Chapter, SearchResults, Verse } from "../types/index";
 import { useSidebar } from "@/components/ui/sidebar";
+import axios from "axios";
+import { API_KEY } from "@/constants/api";
 
 const formatVerseText = (text: string) => {
   return text.toLowerCase().replace(/^([a-z])/, (match) => match.toUpperCase());
@@ -33,7 +34,8 @@ interface BibleContextProps {
   loadChapterVerses: (chapterId: string) => void;
   searchBibleVerse: (query: string) => void;
   toggleSidebar: () => void;
-  searchResults: SeachrResults[];
+  searchResults: SearchResults | null;
+  query: string;
 }
 
 const BibleContext = createContext<BibleContextProps | undefined>(undefined);
@@ -47,7 +49,10 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("GEN");
   const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
   const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
-  const [searchResults, setSearchResults] = useState<SeachrResults[]>([]);
+  const [searchResults, setSearchResults] = useState<SearchResults | null>(
+    null
+  );
+  const [query, setQuery] = useState<string>("");
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { toggleSidebar } = useSidebar();
 
@@ -100,6 +105,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
     }
   };
 
+  // Obtener capítulos de un libro
   const loadChapters = async (bookId: string) => {
     try {
       const response = await getChapters(bookId);
@@ -116,16 +122,78 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
     }
   };
 
-  const searchBibleVerse = async (query: string) => {
+  const searchBible = async (query: string) => {
     try {
-      const response = await searchBible(query);
-      if (response?.data) {
-        setSearchResults(response.data);
-      }
+      const response = await axios.get(
+        `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/search?`,
+        {
+          headers: {
+            "api-key": API_KEY,
+          },
+          params: {
+            query,
+            limit: 10,
+          },
+        }
+      );
+
+      return response.data.data;
     } catch (error) {
-      console.error("Error al buscar el versículo:", error);
+      console.error("Error fetching search results:", error);
+      return null;
     }
   };
+
+  const getVersesFromPassage = async (passageId: string) => {
+    const [book, range] = passageId.split(".");
+    const [startVerse, endVerse] = range
+      .split("-")
+      .map((v) => parseInt(v.split(".")[1]));
+    const verses: Verse[] = [];
+
+    for (let verse = startVerse; verse <= endVerse; verse++) {
+      try {
+        const response = await axios.get(
+          `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/verses/${book}.${verse}`,
+          {
+            headers: {
+              "api-key": API_KEY,
+            },
+          }
+        );
+        verses.push(response.data.data);
+      } catch (error) {
+        console.error("Error fetching verse:", error);
+      }
+    }
+
+    return verses;
+  };
+
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+      if (query.trim()) {
+        const data = await searchBible(query);
+        if (data) {
+          const passagesWithVerses = data.passages
+            ? await Promise.all(
+                data.passages.map(async (passage: { id: string }) => {
+                  const verses = await getVersesFromPassage(passage.id);
+                  return { ...passage, verses };
+                })
+              )
+            : [];
+
+          const verses = data.verses || [];
+          setSearchResults({ ...data, passages: passagesWithVerses, verses });
+        } else {
+          setSearchResults(null);
+        }
+      }
+    };
+
+    fetchSearchResults();
+  }, [query]);
 
   useEffect(() => {
     fetchData();
@@ -137,7 +205,6 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
       loadChapterVerses(`${selectedBook}.1`);
     }
   }, [selectedBook]);
-
 
   useEffect(() => {
     if (bibleVerseChapters.length > 0 && bibleVerseChapters[0].id) {
@@ -161,9 +228,10 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
         handleBook,
         loadChapterVerses,
         scrollAreaRef,
-        searchBibleVerse,
         toggleSidebar,
         searchResults,
+        searchBibleVerse: setQuery,
+        query,
       }}
     >
       {children}
@@ -171,6 +239,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   );
 };
 
+// Hook para acceder al contexto
 // eslint-disable-next-line react-refresh/only-export-components
 export const useBible = (): BibleContextProps => {
   const context = useContext(BibleContext);

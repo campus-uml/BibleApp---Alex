@@ -66,10 +66,33 @@ export interface Verse {
   text: string;
 }
 
-export interface SeachrResults {
+//---
+export interface VerseSearch {
   id: string;
-  reference: string;
-  text: string;
-  book: BibleBooks;
-  chapter: Chapter;
+  orgId: string;
+  bookId: string;
+  bibleId: string;
+  chapterId: string;
+  text: string; // Texto del versículo
+}
+
+export interface Passage {
+  id: string;
+  orgId: string;
+  bibleId: string;
+  bookId: string;
+  chapterIds: string[]; // Aquí manejamos los capítulos
+  text: string; // Texto general del pasaje
+  verses: VerseSearch[]; // Versículos detallados de ese pasaje
+}
+
+export interface SearchResults {
+  length: number;
+  query: string;
+  limit: number;
+  offset: number;
+  total: number;
+  verseCount: number;
+  verses: VerseSearch[]; // Versículos individuales
+  passages: Passage[]; // Pasajes completos
 }

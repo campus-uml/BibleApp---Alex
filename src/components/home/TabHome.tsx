@@ -1,8 +1,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import BibleVerse from "../BibleVerse";
 import Welcome from "./Welcome";
+import BibleVerse from "../BibleVerse";
+import { useBible } from "@/context/BIbleContext";
 
 export const TabHome = () => {
+  const {searchResults} = useBible();
+
+
+
   return (
     <div className="w-full max-w-4xl mx-auto">
       <Tabs defaultValue="Inicio" className="w-full mt-4">
@@ -34,7 +39,7 @@ export const TabHome = () => {
             <Welcome />
           </TabsContent>
           <TabsContent value="lectura">
-            <BibleVerse />
+            <BibleVerse searchResults={searchResults} />
           </TabsContent>
           <TabsContent
             value="favoritos"
