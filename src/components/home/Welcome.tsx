@@ -2,13 +2,33 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Search, Heart, BookMarked } from 'lucide-react';
+import { useBible } from "@/context/BIbleContext";
+import { useEffect, useState } from "react";
 
 const Welcome = () => {
+  const {  onClearSearch, selectedBook } = useBible();
+  const [activeTab, setActiveTab] = useState("Inicio");
+
+  useEffect(() => {
+    if (selectedBook) {
+      setActiveTab("lectura");
+    }
+  }, [selectedBook]);
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    if (value !== "lectura") {
+      onClearSearch();
+    }
+  };
+
+
+
   return (
     <div className="space-y-6">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center">Bienvenido a la Biblia Digital</CardTitle>
+          <CardTitle className="text-3xl font-bold text-center">Bienvenido a la BibliaApp</CardTitle>
           <CardDescription className="text-center text-lg">
             Explora, estudia y comparte la palabra de Dios
           </CardDescription>
@@ -19,13 +39,13 @@ const Welcome = () => {
           </p>
         </CardContent>
         <CardFooter className="flex justify-center space-x-4">
-          <Button variant="outline" className="flex items-center space-x-2">
+          <Button variant="outline" className="flex items-center space-x-2" value={activeTab} onClick={() => handleTabChange("lectura")}>
             <BookOpen className="w-4 h-4" />
             <span>Leer</span>
           </Button>
           <Button variant="outline" className="flex items-center space-x-2">
             <Search className="w-4 h-4" />
-            <span>Buscar</span>
+            <span>Usa el buscador</span>
           </Button>
         </CardFooter>
       </Card>
