@@ -26,7 +26,7 @@ Antes de comenzar, asegúrate de tener las siguientes herramientas instaladas en
 1. Clona el repositorio en tu máquina local:
 
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/campus-uml/BibleApp---Alex/tree/main
 
 2. Accede a la carpeta del proyecto:
 
