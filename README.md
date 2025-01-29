@@ -2,7 +2,7 @@
 
 # BibleApp
 
-BibleApp es una aplicación web para explorar la Biblia utilizando la API de [API.BIBLE](https://api.bible/). El proyecto está construido con React, Vite, TypeScript, Tailwind CSS, ShadCN.
+BibleApp es una aplicación web para explorar la Biblia utilizando la API de [API.BIBLE](https://scripture.api.bible/livedocs). El proyecto está construido con React, Vite, TypeScript, Tailwind CSS, ShadCN.
 
 ## Tecnologías utilizadas
 
@@ -41,6 +41,7 @@ yarn install
 4. Crea un archivo .env en la raíz del proyecto con las siguientes variables de entorno:
 
 VITE_API_URL=https://api.scripture.api.bible/v1
+
 VITE_API_KEY=<tu-api-key>
 
 Asegúrate de reemplazar <url-de-la-api> y <tu-api-key> con los valores correctos proporcionados por la API de API.BIBLE.
