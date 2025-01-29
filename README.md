@@ -1,50 +1,74 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+# BibleApp
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+BibleApp es una aplicación web para explorar la Biblia utilizando la API de [API.BIBLE](https://scripture.api.bible/livedocs). El proyecto está construido con React, Vite, TypeScript, Tailwind CSS, ShadCN.
 
-## Expanding the ESLint configuration
+Puedes ver la aplicación en producción en el siguiente enlace:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+[Acceder a BibleApp en Render](https://bibleapp-alex.onrender.com/)
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologías utilizadas
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React**: Librería para la construcción de interfaces de usuario.
+- **Vite**: Herramienta de construcción rápida para proyectos de frontend.
+- **TypeScript**: Superset de JavaScript que agrega tipado estático.
+- **Tailwind CSS**: Framework de diseño de CSS para crear interfaces personalizadas.
+- **ShadCN**: Conjunto de componentes UI listos para usar con Tailwind CSS.
+- **Axios**: Cliente HTTP para realizar solicitudes a la API.
+- **API.BIBLE**: API que proporciona acceso a versiones y datos de la Biblia.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Requisitos
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Antes de comenzar, asegúrate de tener las siguientes herramientas instaladas en tu máquina:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Node.js** (v14 o superior)
+- **Yarn** (gestor de dependencias)
+
+## Instalación
+
+1. Clona el repositorio en tu máquina local:
+
+   ```bash
+   git clone https://github.com/campus-uml/BibleApp---Alex/tree/main
+
+2. Accede a la carpeta del proyecto:
+
+cd bibleapp
+
+
+3. Instala las dependencias usando Yarn:
+
+yarn install
+
+
+4. Crea un archivo .env en la raíz del proyecto con las siguientes variables de entorno:
+
+VITE_API_URL=https://api.scripture.api.bible/v1
+
+VITE_API_KEY=<tu-api-key>
+
+Asegúrate de reemplazar <url-de-la-api> y <tu-api-key> con los valores correctos proporcionados por la API de API.BIBLE.
+
+
+
+Ejecución del proyecto
+
+Para ejecutar el proyecto en modo de desarrollo:
+
+yarn dev
+
+Esto iniciará el servidor en http://localhost:5173.
+
+Construcción para Producción
+
+Para crear una versión optimizada del proyecto para producción:
+
+yarn build
+
+Esto generará los archivos de producción en la carpeta dist.
+
+:)
+
+
+
