@@ -2,15 +2,32 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Welcome from "./Welcome";
 import BibleVerse from "../BibleVerse";
 import { useBible } from "@/context/BIbleContext";
+import { useEffect, useState } from "react";
 
 export const TabHome = () => {
-  const {searchResults , onClearSearch} = useBible();
+  const { searchResults, onClearSearch, selectedBook } = useBible();
+  const [activeTab, setActiveTab] = useState("Inicio");
 
+  useEffect(() => {
+    if (selectedBook) {
+      setActiveTab("lectura");
+    }
+  }, [selectedBook]);
 
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    if (value !== "lectura") {
+      onClearSearch();
+    }
+  };
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <Tabs defaultValue="Inicio" className="w-full mt-4">
+      <Tabs
+        value={activeTab}
+        onValueChange={handleTabChange}
+        className="w-full mt-4"
+      >
         <TabsList className="w-full flex justify-center mb-6 bg-muted p-1 rounded-lg">
           <TabsTrigger
             value="Inicio"
@@ -39,7 +56,10 @@ export const TabHome = () => {
             <Welcome />
           </TabsContent>
           <TabsContent value="lectura">
-            <BibleVerse searchResults={searchResults} onClearSearch={onClearSearch} />
+            <BibleVerse
+              searchResults={searchResults}
+              onClearSearch={onClearSearch}
+            />
           </TabsContent>
           <TabsContent
             value="favoritos"
