@@ -3,7 +3,7 @@ import Welcome from "./Welcome";
 import BibleVerse from "../BibleVerse";
 import { useBible } from "@/context/BIbleContext";
 import { useEffect, useState } from "react";
-import { Heart } from "lucide-react";
+import { Heart, Share2 } from "lucide-react";
 
 export const TabHome = () => {
   const {
@@ -104,7 +104,10 @@ export const TabHome = () => {
                     </p>
                     <p className="text-base text-slate-800">{favorite.text}</p>
 
-                    <button className="mt-4 text-accent-foreground hover:text-accent" onClick={() => removeFavorite(favorite.id)}>
+                    <button
+                      className="mt-4 text-accent-foreground hover:text-accent"
+                      onClick={() => removeFavorite(favorite.id)}
+                    >
                       <Heart
                         className={`w-6 h-6 ${
                           favorites.some((fav) => fav.id === favorite.id)
@@ -113,6 +116,10 @@ export const TabHome = () => {
                         }`}
                       />
                     </button>
+                    <button className="text-gray-600 hover:text-blue-500 transition-colors">
+                      <Share2 className="w-5 h-5" />
+                    </button>
+                    
                   </div>
                 ))}
               </div>
