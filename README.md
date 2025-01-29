@@ -4,6 +4,10 @@
 
 BibleApp es una aplicación web para explorar la Biblia utilizando la API de [API.BIBLE](https://scripture.api.bible/livedocs). El proyecto está construido con React, Vite, TypeScript, Tailwind CSS, ShadCN.
 
+Puedes ver la aplicación en producción en el siguiente enlace:
+
+[Acceder a BibleApp en Render](https://bibleapp-alex.onrender.com/)
+
 ## Tecnologías utilizadas
 
 - **React**: Librería para la construcción de interfaces de usuario.
