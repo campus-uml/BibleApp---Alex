@@ -4,7 +4,7 @@ import BibleVerse from "../BibleVerse";
 import { useBible } from "@/context/BIbleContext";
 
 export const TabHome = () => {
-  const {searchResults} = useBible();
+  const {searchResults , onClearSearch} = useBible();
 
 
 
@@ -39,7 +39,7 @@ export const TabHome = () => {
             <Welcome />
           </TabsContent>
           <TabsContent value="lectura">
-            <BibleVerse searchResults={searchResults} />
+            <BibleVerse searchResults={searchResults} onClearSearch={onClearSearch} />
           </TabsContent>
           <TabsContent
             value="favoritos"

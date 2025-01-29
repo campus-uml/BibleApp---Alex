@@ -3,14 +3,16 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { useBible } from "../context/BIbleContext"
-import { Copy, Forward, Heart, Play } from "lucide-react"
+import { Copy, Forward, Heart, Play, ArrowLeft } from "lucide-react"
 import type { SearchResults } from "@/types"
+import { Button } from "@/components/ui/button"
 
 interface BibleVerseProps {
   searchResults: SearchResults | null
+  onClearSearch: () => void
 }
 
-export const BibleVerse = ({ searchResults }: BibleVerseProps) => {
+export const BibleVerse = ({ searchResults, onClearSearch }: BibleVerseProps) => {
   const { bibleVerseChapters, chapterVerses, loadChapterVerses, scrollAreaRef, selectedBook, bibleVerse } = useBible()
 
   const bookName = (selectedBook: string) => {
@@ -22,7 +24,15 @@ export const BibleVerse = ({ searchResults }: BibleVerseProps) => {
     <div className="min-h-screen bg-gray-50">
       <Tabs defaultValue="1" className="w-full max-w-[22rem] md:max-w-6xl mx-auto">
         <div className="sticky top-0 bg-gray-50 z-10 pb-4">
-          {!searchResults && (
+          {searchResults ? (
+            <div className="flex items-center justify-between mb-4">
+              <Button variant="outline" onClick={onClearSearch} className="flex items-center gap-2">
+                <ArrowLeft size={16} />
+                Volver
+              </Button>
+              <h2 className="text-xl font-semibold text-gray-800">Resultados de búsqueda</h2>
+            </div>
+          ) : (
             <>
               <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">{bookName(selectedBook)}</h1>
               <TabsList className="h-12 items-center justify-start rounded-md bg-muted p-1 text-muted-foreground w-full overflow-hidden">
@@ -51,7 +61,6 @@ export const BibleVerse = ({ searchResults }: BibleVerseProps) => {
 
         {searchResults && searchResults.verses && searchResults.verses.length > 0 ? (
           <div className="space-y-4 mt-4">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Versículos encontrados</h2>
             {searchResults.verses.map((verse, index) => (
               <div key={index} className="bg-white shadow-md rounded-lg p-4">
                 <h3 className="text-sm text-slate-500 font-semibold mb-2">{verse.id}</h3>
