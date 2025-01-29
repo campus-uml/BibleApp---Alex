@@ -15,7 +15,7 @@ export const useAddFavorite = () => {
     setFavorites((prevFavorites) =>
       prevFavorites.some((fav) => fav.id === verse.id)
         ? prevFavorites
-        : [...prevFavorites, verse] // Ahora añadimos el objeto completo con datos reales
+        : [...prevFavorites, verse] 
     );
   };
 

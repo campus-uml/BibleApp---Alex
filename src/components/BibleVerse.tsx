@@ -19,6 +19,7 @@ export const BibleVerse = ({
   onClearSearch,
   addFavorite,
   favorites,
+  removeFavorite,
 }: BibleVerseProps) => {
   const {
     bibleVerseChapters,
@@ -98,14 +99,20 @@ export const BibleVerse = ({
                 <div className="flex justify-end gap-4 mt-4">
                   <button
                     onClick={() =>
-                      addFavorite({ ...verse, reference: verse.id })
+                      favorites.some((fav) => fav.id === verse.id)
+                        ? removeFavorite(verse.id)
+                        : addFavorite({ ...verse, reference: verse.id })
                     }
                     className="mt-2 focus:outline-none"
-                    aria-label={favorites ? "remover" : "agregar"}
+                    aria-label={
+                      favorites.some((fav) => fav.id === verse.id)
+                        ? "remover"
+                        : "agregar"
+                    }
                   >
                     <Heart
                       className={`w-6 h-6 ${
-                        favorites?.some((fav) => fav.id === verse.id)
+                        favorites.some((fav) => fav.id === verse.id)
                           ? "text-red-500"
                           : "text-gray-900"
                       }`}
@@ -157,14 +164,20 @@ export const BibleVerse = ({
                         <div className="flex justify-end gap-4 mt-4">
                           <button
                             onClick={() =>
-                              addFavorite({ ...verse, reference: verse.id })
+                              favorites.some((fav) => fav.id === verse.id)
+                                ? removeFavorite(verse.id)
+                                : addFavorite({ ...verse, reference: verse.id })
                             }
                             className="mt-2 focus:outline-none"
-                            aria-label={favorites ? "remover" : "agregar"}
+                            aria-label={
+                              favorites.some((fav) => fav.id === verse.id)
+                                ? "remover"
+                                : "agregar"
+                            }
                           >
                             <Heart
                               className={`w-6 h-6 ${
-                                favorites?.some((fav) => fav.id === verse.id)
+                                favorites.some((fav) => fav.id === verse.id)
                                   ? "text-red-500"
                                   : "text-gray-900"
                               }`}
