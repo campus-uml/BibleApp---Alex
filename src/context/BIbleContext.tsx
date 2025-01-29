@@ -5,10 +5,11 @@ import {
   getChapters,
   loadChapterVersesFromAPI,
 } from "../services/getData";
-import type { BibleBooks, Chapter, SearchResults, Verse } from "../types/index";
+import type { BibleBooks, Chapter, SearchResults, Verse} from "../types/index";
 import { useSidebar } from "@/components/ui/sidebar";
 import axios from "axios";
 import { API_KEY, API_URL } from "@/constants/api";
+import { useAddFavorite } from "@/Hooks/useAddFavorite";
 
 const formatVerseText = (text: string) => {
   return text.toLowerCase().replace(/^([a-z])/, (match) => match.toUpperCase());
@@ -32,6 +33,9 @@ interface BibleContextProps {
   searchResults: SearchResults | null;
   query: string;
   onClearSearch: () => void;
+  favorites: Verse[];
+  addFavorite: (verseId: string) => void;
+  removeFavorite: (verseId: string) => void;
 }
 
 const BibleContext = createContext<BibleContextProps | undefined>(undefined);
@@ -48,6 +52,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [searchResults, setSearchResults] = useState<SearchResults | null>(
     null
   );
+  const { favorites, addFavorite, removeFavorite } = useAddFavorite();
   const [query, setQuery] = useState<string>("");
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const { toggleSidebar } = useSidebar();
@@ -161,7 +166,12 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
             },
           }
         );
-        verses.push(response.data.data);
+        const verseData = response.data.data;
+        verses.push({
+          id: verseData.id,
+          reference: verseData.reference,
+          text: verseData.text,
+        });
       } catch (error) {
         console.error("Error fetching verse:", error);
       }
@@ -233,6 +243,9 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
         searchBibleVerse: setQuery,
         query,
         onClearSearch,
+        favorites,
+        addFavorite,
+        removeFavorite,
       }}
     >
       {children}

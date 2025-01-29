@@ -2,18 +2,23 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useBible } from "../context/BIbleContext";
 import { Copy, Heart, ArrowLeft, Share, Play } from "lucide-react";
-import type { SearchResults } from "@/types";
+import type { SearchResults, Verse} from "@/types";
 import { Button } from "@/components/ui/button";
 import { useActions } from "@/Hooks/useActions";
 
 interface BibleVerseProps {
   searchResults: SearchResults | null;
   onClearSearch: () => void;
+  addFavorite: (verseId: string) => void;
+  removeFavorite: (verseId: string) => void;
+  favorites: Verse[];
 }
 
 export const BibleVerse = ({
   searchResults,
   onClearSearch,
+  addFavorite,
+  
 }: BibleVerseProps) => {
   const {
     bibleVerseChapters,
@@ -24,11 +29,13 @@ export const BibleVerse = ({
     bibleVerse,
   } = useBible();
   const { copyToClipboard, shareToWhatsApp } = useActions();
-  
+
   const bookName = (selectedBook: string) => {
     const book = bibleVerse.find((book) => book.id === selectedBook);
     return book ? book.name : "Selecciona un libro";
   };
+
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -91,7 +98,10 @@ export const BibleVerse = ({
                 </h3>
                 <p className="text-base text-gray-700">{verse.text}</p>
                 <div className="flex justify-end gap-4 mt-4">
-                  <button className="text-gray-600 hover:text-red-500 transition-colors">
+                  <button
+                    className="text-gray-600 hover:text-red-500 transition-colors"
+                    onClick={() => addFavorite(verse.id)}
+                  >
                     <Heart size={20} />
                   </button>
                   <button className="text-gray-600 hover:text-blue-500 transition-colors">

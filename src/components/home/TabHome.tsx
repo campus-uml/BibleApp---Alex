@@ -3,9 +3,18 @@ import Welcome from "./Welcome";
 import BibleVerse from "../BibleVerse";
 import { useBible } from "@/context/BIbleContext";
 import { useEffect, useState } from "react";
+import { Heart } from "lucide-react";
 
 export const TabHome = () => {
-  const { searchResults, onClearSearch, selectedBook } = useBible();
+  const {
+    searchResults,
+    onClearSearch,
+    selectedBook,
+    favorites,
+    addFavorite,
+    removeFavorite,
+  } = useBible();
+
   const [activeTab, setActiveTab] = useState("Inicio");
 
   useEffect(() => {
@@ -26,6 +35,8 @@ export const TabHome = () => {
       onClearSearch();
     }
   };
+
+  console.log("estos son los favoritos", favorites);
 
   return (
     <div className="w-full max-w-4xl mx-auto">
@@ -65,6 +76,9 @@ export const TabHome = () => {
             <BibleVerse
               searchResults={searchResults}
               onClearSearch={onClearSearch}
+              favorites={favorites}
+              addFavorite={addFavorite}
+              removeFavorite={removeFavorite}
             />
           </TabsContent>
           <TabsContent
@@ -72,6 +86,29 @@ export const TabHome = () => {
             className="mt-4 p-4 rounded-lg bg-card text-card-foreground shadow-sm transition-opacity duration-300 ease-in-out"
           >
             <h2 className="text-2xl font-bold mb-4">Favoritos</h2>
+
+            {favorites.length > 0 ? (
+              <div className="grid gap-4">
+                {favorites.map((favorite, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-4 rounded-lg shadow-md"
+                  >
+                    <p className="text-sm text-slate-500 font-semibold mb-2">
+                      {favorite.reference}
+                    </p>
+                    <p className="text-base text-slate-800">{favorite.text}</p>
+
+                    <button className="mt-4 text-accent-foreground hover:text-accent">
+                      <Heart size={20} />
+                    </button>
+                    
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-muted-foreground">No hay favoritos</p>
+            )}
           </TabsContent>
         </div>
       </Tabs>
