@@ -53,7 +53,7 @@ export const TabBible = () => {
           <h3 className="text-lg font-medium mb-2">Información frecuente</h3>
           <p className="text-muted-foreground">
             Aquí puedes agregar información sobre los libros más frecuentemente
-            consultados o versículos populares.
+            consultados o versículos populares.  (en desarrollo)
           </p>
         </div>
       </TabsContent>

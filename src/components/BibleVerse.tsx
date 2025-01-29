@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useBible } from "../context/BIbleContext";
 import { Copy, Heart, ArrowLeft, Share, Play } from "lucide-react";
-import type { SearchResults, Verse} from "@/types";
+import type { SearchResults, Verse } from "@/types";
 import { Button } from "@/components/ui/button";
 import { useActions } from "@/Hooks/useActions";
 
@@ -18,7 +18,6 @@ export const BibleVerse = ({
   searchResults,
   onClearSearch,
   addFavorite,
-  
 }: BibleVerseProps) => {
   const {
     bibleVerseChapters,
@@ -34,8 +33,6 @@ export const BibleVerse = ({
     const book = bibleVerse.find((book) => book.id === selectedBook);
     return book ? book.name : "Selecciona un libro";
   };
-
-
 
   return (
     <div className="min-h-screen bg-gray-50">

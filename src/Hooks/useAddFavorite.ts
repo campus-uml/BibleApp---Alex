@@ -36,6 +36,10 @@ export const useAddFavorite = () => {
   };
 };
 
-const getVerseById = (verseId: string): Verse => {
-  return { id: verseId, text: "Example verse text", reference: "John 3:16" }; // Ejemplo
-};
+const getVerseById= (verseId: string): Verse => {
+  return {
+    id: verseId,
+    text: "En el principio Dios creo los cielos y la tierra.",
+    reference: "Genesis 1:1",
+  };
+}
