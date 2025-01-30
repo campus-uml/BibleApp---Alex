@@ -2,25 +2,18 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Search, Heart, BookMarked } from 'lucide-react';
-import { useBible } from "@/context/BIbleContext";
-import { useEffect, useState } from "react";
 
-const Welcome = () => {
-  const {  onClearSearch, selectedBook } = useBible();
-  const [activeTab, setActiveTab] = useState("Inicio");
 
-  useEffect(() => {
-    if (selectedBook) {
-      setActiveTab("lectura");
-    }
-  }, [selectedBook]);
 
-  const handleTabChange = (value: string) => {
-    setActiveTab(value);
-    if (value !== "lectura") {
-      onClearSearch();
-    }
-  };
+
+interface WelcomeProps {
+  activeTab: string
+  handleTabChange: (value: string) => void
+
+
+}
+const Welcome = ({activeTab, handleTabChange}:WelcomeProps) => {
+
 
 
 

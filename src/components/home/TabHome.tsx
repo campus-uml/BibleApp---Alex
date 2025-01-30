@@ -1,40 +1,51 @@
-"use client"
+"use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Welcome from "./Welcome"
-import BibleVerse from "../BibleVerse"
-import { useBible } from "@/context/BIbleContext"
-import { useEffect, useState } from "react"
-import { Heart, Share2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Welcome from "./Welcome";
+import BibleVerse from "../BibleVerse";
+import { useBible } from "@/context/BIbleContext";
+import { useEffect, useState } from "react";
+import { Heart, Share2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const TabHome = () => {
-  const { searchResults, onClearSearch, selectedBook, favorites, addFavorite, removeFavorite } = useBible()
+  const {
+    searchResults,
+    onClearSearch,
+    selectedBook,
+    favorites,
+    addFavorite,
+    removeFavorite,
+  } = useBible();
 
-  const [activeTab, setActiveTab] = useState("Inicio")
+  const [activeTab, setActiveTab] = useState("Inicio");
 
   useEffect(() => {
     if (selectedBook) {
-      setActiveTab("lectura")
+      setActiveTab("lectura");
     }
-  }, [selectedBook])
+  }, [selectedBook]);
 
   useEffect(() => {
     if (searchResults) {
-      setActiveTab("lectura")
+      setActiveTab("lectura");
     }
-  }, [searchResults])
+  }, [searchResults]);
 
   const handleTabChange = (value: string) => {
-    setActiveTab(value)
+    setActiveTab(value);
     if (value !== "lectura") {
-      onClearSearch()
+      onClearSearch();
     }
-  }
+  };
 
   return (
     <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full mt-4">
+      <Tabs
+        value={activeTab}
+        onValueChange={handleTabChange}
+        className="w-full mt-4"
+      >
         <TabsList className="w-full flex justify-center mb-6 bg-muted p-1 rounded-lg">
           <TabsTrigger
             value="Inicio"
@@ -65,7 +76,7 @@ export const TabHome = () => {
             value="Inicio"
             className="mt-4 p-4 rounded-lg bg-card text-card-foreground shadow-sm transition-opacity duration-300 ease-in-out"
           >
-            <Welcome />
+            <Welcome activeTab={activeTab} handleTabChange={handleTabChange} />
           </TabsContent>
           <TabsContent value="lectura">
             <BibleVerse
@@ -85,10 +96,17 @@ export const TabHome = () => {
             {favorites.length > 0 ? (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {favorites.map((favorite, index) => (
-                  <div key={index} className="bg-white p-4 rounded-lg shadow-md flex flex-col justify-between">
+                  <div
+                    key={index}
+                    className="bg-white p-4 rounded-lg shadow-md flex flex-col justify-between"
+                  >
                     <div>
-                      <p className="text-sm text-slate-500 font-semibold mb-2">{favorite.reference}</p>
-                      <p className="text-base text-slate-800">{favorite.text}</p>
+                      <p className="text-sm text-slate-500 font-semibold mb-2">
+                        {favorite.reference}
+                      </p>
+                      <p className="text-base text-slate-800">
+                        {favorite.text}
+                      </p>
                     </div>
                     <div className="flex justify-between items-center mt-4">
                       <Button
@@ -113,8 +131,13 @@ export const TabHome = () => {
             ) : (
               <div className="text-center py-12">
                 <Heart className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                <p className="text-xl font-semibold text-slate-600 mb-2">No hay favoritos aún</p>
-                <p className="text-slate-500 mb-6">Guarda tus versículos favoritos para acceder a ellos fácilmente</p>
+                <p className="text-xl font-semibold text-slate-600 mb-2">
+                  No hay favoritos aún
+                </p>
+                <p className="text-slate-500 mb-6">
+                  Guarda tus versículos favoritos para acceder a ellos
+                  fácilmente
+                </p>
                 <Button
                   onClick={() => handleTabChange("lectura")}
                   className="bg-slate-900 text-white hover:bg-slate-800"
@@ -127,6 +150,5 @@ export const TabHome = () => {
         </div>
       </Tabs>
     </div>
-  )
-}
-
+  );
+};
