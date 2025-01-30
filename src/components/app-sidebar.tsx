@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  GalleryVerticalEnd,
-  BookOpen,
-  Settings,
-  User,
-  Search,
-} from "lucide-react";
+import { GalleryVerticalEnd, Search } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -13,17 +7,10 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarRail,
-  SidebarFooter,
 } from "@/components/ui/sidebar";
 import { TabBible } from "./TabBible";
 import { SearchInput } from "../components/searchInput";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
   Tooltip,
   TooltipContent,
@@ -72,48 +59,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <SidebarMenuButton>
-                    <BookOpen className="h-4 w-4" />
-                  </SidebarMenuButton>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Estudio</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <SidebarMenuButton>
-                    <Settings className="h-4 w-4" />
-                  </SidebarMenuButton>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>Configuración</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <User className="h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-            </DropdownMenu>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
-      <SidebarRail />
     </Sidebar>
   );
 }
