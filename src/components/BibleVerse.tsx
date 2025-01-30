@@ -176,7 +176,8 @@ export const BibleVerse = ({
                             }
                           >
                             <Heart
-                              className={`w-6 h-6 ${
+                            size={20}
+                              className={` ${
                                 favorites.some((fav) => fav.id === verse.id)
                                   ? "text-red-500"
                                   : "text-gray-900"
