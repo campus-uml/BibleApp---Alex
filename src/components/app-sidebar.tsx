@@ -1,5 +1,5 @@
 import * as React from "react";
-import {  GalleryVerticalEnd } from "lucide-react";
+import { GalleryVerticalEnd } from "lucide-react";
 
 import {
   Sidebar,
@@ -15,8 +15,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { TabBible } from "./TabBible";
-
-
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -41,7 +39,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            <TabBible  />
+            <TabBible />
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
