@@ -73,4 +73,21 @@ const searchBible = async (query: string) => {
   }
 };
 
-export { getBibles, getChapters, loadChapterVersesFromAPI, searchBible };
+
+const getAudioVerse = async (verseId: string) => {
+  try {
+    const response = await axios.get(
+      `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/verses/${verseId}/audio`,
+      {
+        headers: {
+          "api-key": apiKey,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching audio verse:", error);
+  }
+}
+
+export { getBibles, getChapters, loadChapterVersesFromAPI, searchBible, getAudioVerse };
