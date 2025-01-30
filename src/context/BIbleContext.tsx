@@ -225,7 +225,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
 
   const handleBook = (bookId: string) => {
     setSelectedBook(bookId);
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 640) {
       toggleSidebar();
     }
   };
