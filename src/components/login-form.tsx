@@ -4,11 +4,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { supabase } from "../constants/api";
 import { Label } from "@/components/ui/label";
 import { Input } from "./ui/input";
+import { useNavigate } from "react-router-dom";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const navigate = useNavigate();
   const handleGithubLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
@@ -17,6 +19,8 @@ export function LoginForm({
       console.error("Error al loggear en github :( :", error);
       return;
     }
+
+    navigate("/home");
   };
 
   return (
