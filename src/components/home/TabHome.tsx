@@ -1,4 +1,3 @@
-"use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Welcome from "./Welcome";
@@ -21,16 +20,10 @@ export const TabHome = () => {
   const [activeTab, setActiveTab] = useState("Inicio");
 
   useEffect(() => {
-    if (selectedBook) {
+    if (selectedBook || searchResults) {
       setActiveTab("lectura");
     }
-  }, [selectedBook]);
-
-  useEffect(() => {
-    if (searchResults) {
-      setActiveTab("lectura");
-    }
-  }, [searchResults]);
+  }, [selectedBook, searchResults]);
 
   const handleTabChange = (value: string) => {
     setActiveTab(value);
@@ -40,42 +33,39 @@ export const TabHome = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto ">
+    <div className="w-full max-w-4xl mx-auto px-2 sm:px-4">
       <Tabs
         value={activeTab}
         onValueChange={handleTabChange}
         className="w-full mt-4"
       >
-        <TabsList className="w-full flex justify-center mb-6 bg-muted p-1 rounded-lg">
+        <TabsList className="w-full flex justify-center mb-4 bg-muted p-1 rounded-lg">
           <TabsTrigger
             value="Inicio"
-            className="flex-1 px-3 sm:px-6 py-2 sm:py-3 text-sm font-medium transition-colors duration-100 ease-in-out rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50 data-[state=active]:shadow-sm"
+            className="flex-1 px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50"
           >
             Inicio
           </TabsTrigger>
           <TabsTrigger
             value="lectura"
-            className="flex-1 px-3 sm:px-6 py-2 sm:py-3 text-sm font-medium transition-colors duration-100 ease-in-out rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50 data-[state=active]:shadow-sm"
+            className="flex-1 px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50"
           >
             Lectura
           </TabsTrigger>
           <TabsTrigger
             value="favoritos"
-            className="relative flex-1 px-3 sm:px-6 py-2 sm:py-3 text-sm font-medium transition-colors duration-100 ease-in-out rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50 data-[state=active]:shadow-sm"
+            className="relative flex-1 px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50"
           >
             Favoritos
             {favorites.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full min-w-[1.5rem] flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold px-1 py-0.5 rounded-full min-w-[1rem] flex items-center justify-center">
                 {favorites.length}
               </span>
             )}
           </TabsTrigger>
         </TabsList>
-        <div className="min-h-[500px] overflow-y-auto">
-          <TabsContent
-            value="Inicio"
-            className="mt-4 p-4 rounded-lg bg-card text-card-foreground shadow-sm transition-opacity duration-300 ease-in-out"
-          >
+        <div className="min-h-[400px] overflow-y-auto">
+          <TabsContent value="Inicio" className="p-2 sm:p-4 bg-card rounded-lg">
             <Welcome activeTab={activeTab} handleTabChange={handleTabChange} />
           </TabsContent>
           <TabsContent value="lectura">
@@ -87,61 +77,38 @@ export const TabHome = () => {
               removeFavorite={removeFavorite}
             />
           </TabsContent>
-          <TabsContent
-            value="favoritos"
-            className="mt-4 p-4 rounded-lg bg-card text-card-foreground shadow-sm transition-opacity duration-300 ease-in-out"
-          >
-            <h2 className="text-2xl font-bold mb-4">Favoritos</h2>
-
+          <TabsContent value="favoritos" className="p-2 sm:p-4 bg-card rounded-lg">
+            <h2 className="text-xl sm:text-2xl font-bold mb-3">Favoritos</h2>
             {favorites.length > 0 ? (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {favorites.map((favorite, index) => (
-                  <div
-                    key={index}
-                    className="bg-white p-4 rounded-lg shadow-md flex flex-col justify-between"
-                  >
-                    <div>
-                      <p className="text-sm text-slate-500 font-semibold mb-2">
-                        {favorite.reference}
-                      </p>
-                      <p className="text-base text-slate-800">
-                        {favorite.text}
-                      </p>
-                    </div>
-                    <div className="flex justify-between items-center mt-4">
+                  <div key={index} className="bg-white p-3 rounded-lg shadow-md">
+                    <p className="text-sm text-slate-500 font-semibold mb-2">
+                      {favorite.reference}
+                    </p>
+                    <p className="text-sm text-slate-800">{favorite.text}</p>
+                    <div className="flex justify-between items-center mt-3">
                       <Button
                         variant="ghost"
                         size="icon"
                         onClick={() => removeFavorite(favorite.id)}
-                        className="text-red-500 hover:text-red-600 hover:bg-red-100"
+                        className="text-red-500 hover:text-red-600"
                       >
-                        <Heart className="w-5 h-5" />
+                        <Heart className="w-4 h-4" />
                       </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="text-blue-500 hover:text-blue-600 hover:bg-blue-100"
-                      >
-                        <Share2 className="w-5 h-5" />
+                      <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
+                        <Share2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12">
-                <Heart className="w-16 h-16 text-slate-300 mx-auto mb-4" />
-                <p className="text-xl font-semibold text-slate-600 mb-2">
-                  No hay favoritos aún
-                </p>
-                <p className="text-slate-500 mb-6">
-                  Guarda tus versículos favoritos para acceder a ellos
-                  fácilmente
-                </p>
-                <Button
-                  onClick={() => handleTabChange("lectura")}
-                  className="bg-slate-900 text-white hover:bg-slate-800"
-                >
+              <div className="text-center py-8">
+                <Heart className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+                <p className="text-lg font-semibold text-slate-600">No hay favoritos aún</p>
+                <p className="text-slate-500 mb-4">Guarda tus versículos favoritos</p>
+                <Button onClick={() => handleTabChange("lectura")} className="bg-slate-900 text-white">
                   Ir a Lectura
                 </Button>
               </div>
