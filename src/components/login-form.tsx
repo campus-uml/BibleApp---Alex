@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PRODUCTION_URL, supabase } from '@/constants/api';
+import { supabase } from '@/constants/api';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -28,7 +28,7 @@ export function LoginForm({ className, ...props }: React.ComponentProps<"div">) 
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        redirectTo: `${PRODUCTION_URL}/home`
+        redirectTo: `${window.location.origin}/home`
       }
     });
     if (error) {
