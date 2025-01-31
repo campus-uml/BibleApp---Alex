@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { supabase } from "..//constants/api";
+import { supabase } from "../constants/api";
 import { User } from "@/types";
 
 interface AuthContextType {
@@ -14,15 +14,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const { data } = await supabase.auth.getUser();
-      if (data.user) setUser(data.user);
+      try {
+        const { data } = await supabase.auth.getUser();
+        if (data?.user) {
+          console.log("User fetched: ", data.user);
+          setUser(data.user);
+        } else {
+          console.log("No user fetched");
+        }
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
     };
 
     fetchUser();
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        console.log("Auth state changed: ", session?.user);
+        setUser(session?.user || null);
+      }
+    );
 
     return () => {
       listener?.subscription.unsubscribe();
