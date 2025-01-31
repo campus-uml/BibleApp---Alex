@@ -96,3 +96,20 @@ export interface SearchResults {
   verses: VerseSearch[]; // Versículos individuales
   passages: Passage[]; // Pasajes completos
 }
+
+export interface User {
+  id: string;
+
+  email?: string; // make email optional to match Supabase User type
+  email_confirmed_at?: string | null;
+  user_metadata: {
+    [key: string]: string | number | boolean | null;
+  };
+  app_metadata: {
+    [key: string]: string | number | boolean | null;
+  };
+  role?: string;
+  created_at?: string;
+  updated_at?: string;
+  last_sign_in_at?: string;
+}
