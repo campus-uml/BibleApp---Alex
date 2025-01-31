@@ -1,35 +1,39 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { TabHome } from "./components/home/TabHome";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { BibleProvider } from "./context/BIbleContext";
-
 import { MainLayout } from "./layout/MainLayout";
+import { TabHome } from "./components/home/TabHome";
 import LoginPage from "./app/login/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <>
+    <Router>
       <AuthProvider>
         <BibleProvider>
-          <Router>
-            <Routes>
-              <Route path="/" element={<LoginPage />} />
-              <Route
-                path="/home"
-                element={
-                  <ProtectedRoute>
-                    <MainLayout>
-                      <TabHome />
-                    </MainLayout>
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
-          </Router>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/home"
+              element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <TabHome />
+                  </MainLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/" element={<Navigate to="/home" replace />} />
+       
+          </Routes>
         </BibleProvider>
       </AuthProvider>
-    </>
+    </Router>
   );
 }
 

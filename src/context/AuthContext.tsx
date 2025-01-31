@@ -1,50 +1,64 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { supabase } from "../constants/api";
-import { User } from "@/types";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { User } from "@supabase/supabase-js";
+import { supabase } from "@/constants/api";
 
 interface AuthContextType {
   user: User | null;
-  logout: () => void;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const fetchUser = async () => {
-      try {
-        const { data } = await supabase.auth.getUser();
-        if (data?.user) {
-          console.log("User fetched: ", data.user);
-          setUser(data.user);
-        } else {
-          console.log("No user fetched");
-        }
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      }
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+      setLoading(false);
     };
 
     fetchUser();
 
-    const { data: listener } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        console.log("Auth state changed: ", session?.user);
-        setUser(session?.user || null);
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+      if (event === 'SIGNED_IN') {
+        navigate('/home');
+      } else if (event === 'SIGNED_OUT') {
+        navigate('/login');
       }
-    );
+    });
 
     return () => {
-      listener?.subscription.unsubscribe();
+      listener.subscription.unsubscribe();
     };
-  }, []);
+  }, [navigate]);
+
+  useEffect(() => {
+    if (!loading) {
+      if (user && location.pathname === '/login') {
+        navigate('/home');
+      } else if (!user && location.pathname !== '/login') {
+        navigate('/login');
+      }
+    }
+  }, [user, loading, navigate, location]);
 
   const logout = async () => {
     await supabase.auth.signOut();
     setUser(null);
+    navigate('/login');
   };
+
+  if (loading) {
+    return <div>Loading...</div>; 
+  }
 
   return (
     <AuthContext.Provider value={{ user, logout }}>
@@ -55,5 +69,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
 };
