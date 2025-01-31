@@ -23,7 +23,7 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8">
+          <div className="p-6 md:p-8">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">Bienvenido a BibleApp</h1>
@@ -95,7 +95,7 @@ export function LoginForm({
                 </a>
               </div>
             </div>
-          </form>
+          </div>
           <div className="relative hidden bg-muted md:block">
             <img
               src="https://th.bing.com/th/id/R.2e1213504f697b8b6d0a1a7c9043fe7d?rik=sYZBctqIfVFsUw&pid=ImgRaw&r=0"
