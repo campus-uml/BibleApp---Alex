@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { supabase } from "../constants/api";
+import { PRODUCTION_URL, supabase } from "../constants/api";
 import { Label } from "@/components/ui/label";
 import { Input } from "./ui/input";
 import { useNavigate } from "react-router-dom";
@@ -11,15 +11,19 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
   const navigate = useNavigate();
+
   const handleGithubLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "github",
+      options: {
+        redirectTo: PRODUCTION_URL,
+      },
     });
+
     if (error) {
-      console.error("Error al loggear en github :( :", error);
+      console.error("Error al loggear en GitHub:", error);
       return;
     }
-
     navigate("/home");
   };
 
