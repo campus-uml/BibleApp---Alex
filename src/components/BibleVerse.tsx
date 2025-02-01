@@ -40,7 +40,7 @@ export const BibleVerse = ({
     <div className="min-h-screen bg-gray-50">
       <Tabs
         defaultValue="1"
-        className="w-full max-w-[22rem] md:max-w-6xl mx-auto"
+        className="w-full max-w-[21.2rem] md:max-w-6xl mx-auto"
       >
         <div className="sticky top-0 bg-gray-50 z-10 pb-4">
           {searchResults ? (
