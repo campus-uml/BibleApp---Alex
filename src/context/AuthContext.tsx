@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { User } from "@supabase/supabase-js";
 import { supabase } from "@/constants/api";
+import { Loading } from "../components/Loading";
 
 interface AuthContextType {
   user: User | null;
@@ -61,7 +62,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <Loading/>; 
   }
 
   return (

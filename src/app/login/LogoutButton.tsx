@@ -28,7 +28,7 @@ const LogoutButton = () => {
           Cerrar sesión
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+    <AlertDialogContent className="p-2 xs:p-4">
         <AlertDialogHeader>
           <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -40,7 +40,7 @@ const LogoutButton = () => {
           <AlertDialogCancel onClick={() => setOpen(false)}>
             Cancelar
           </AlertDialogCancel>
-          <Button variant="destructive" onClick={handleLogout}>
+          <Button  onClick={handleLogout}>
             Cerrar sesión
           </Button>
         </AlertDialogFooter>

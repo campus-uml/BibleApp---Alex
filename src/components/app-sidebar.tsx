@@ -13,7 +13,6 @@ import { SearchInput } from "../components/searchInput";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
-  TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
@@ -53,9 +52,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <Search className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>
-                  <p>Buscar en la Biblia</p>
-                </TooltipContent>
+
               </Tooltip>
             </TooltipProvider>
             <DropdownUser />
