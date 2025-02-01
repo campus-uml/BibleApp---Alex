@@ -84,7 +84,7 @@ export const BibleVerse = ({
                   </ScrollArea>
                 </TabsList>
               ) : (
-                <div className="text-center py-8">
+                <div className="text-center py-8 ">
                   <Book className="w-12 h-12 text-slate-300 mx-auto mb-3" />
                   <p className="text-lg font-semibold text-slate-600">
                     No hay versículos aún

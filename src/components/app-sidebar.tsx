@@ -18,15 +18,16 @@ import {
 } from "@/components/ui/tooltip";
 import { DropdownUser } from "../components/DropdownUser";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
-
+  const [searchTerm, setSearchTerm] = useState("");
+  const { avatarUrl } = useAuth();
+  
   const handleSearch = (term: string) => {
-    setSearchTerm(term)
-  }
-
+    setSearchTerm(term);
+  };
 
   return (
     <Sidebar {...props}>
@@ -52,10 +53,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     <Search className="h-4 w-4" />
                   </Button>
                 </TooltipTrigger>
-
               </Tooltip>
             </TooltipProvider>
-            <DropdownUser />
+            <DropdownUser avatarUrl={avatarUrl} />
           </div>
         </div>
         {showSearch && <SearchInput onSearch={handleSearch} />}
@@ -69,7 +69,4 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
     </Sidebar>
   );
-
-
 }
-

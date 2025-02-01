@@ -56,10 +56,10 @@ export const TabHome = () => {
             value="favoritos"
             className="relative flex-1 px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50"
           >
-            Favoritos
+            <Heart className="w-4 h-4 mr-1" />
             {favorites.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold px-1 py-0.5 rounded-full min-w-[1rem] flex items-center justify-center">
-                {favorites.length}
+              <span className="absolute -top-1 right-2  bg-red-500 text-white text-xs font-bold px-1 py-0.5 rounded-full min-w-[1rem] flex items-center justify-center">
+              {favorites.length}
               </span>
             )}
           </TabsTrigger>

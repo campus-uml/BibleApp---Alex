@@ -7,38 +7,46 @@ import { Loading } from "../components/Loading";
 interface AuthContextType {
   user: User | null;
   logout: () => Promise<void>;
+  avatarUrl: string | null;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
 
-  
-
   useEffect(() => {
     const fetchUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
       setUser(user);
-      
       setLoading(false);
+
+      if (user?.user_metadata.avatar_url) {
+        setAvatarUrl(user.user_metadata.avatar_url);
+      }
     };
 
     fetchUser();
 
-    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
-      
-      setUser(session?.user ?? null);
-      setLoading(false);
-      if (event === 'SIGNED_IN') {
-        navigate('/home');
-      } else if (event === 'SIGNED_OUT') {
-        navigate('/login');
+    const { data: listener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null);
+        setLoading(false);
+        if (event === "SIGNED_IN") {
+          navigate("/home");
+        } else if (event === "SIGNED_OUT") {
+          navigate("/login");
+        }
       }
-    });
+    );
 
     return () => {
       listener.subscription.unsubscribe();
@@ -47,10 +55,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     if (!loading) {
-      if (user && location.pathname === '/login') {
-        navigate('/home');
-      } else if (!user && location.pathname !== '/login') {
-        navigate('/login');
+      if (user && location.pathname === "/login") {
+        navigate("/home");
+      } else if (!user && location.pathname !== "/login") {
+        navigate("/login");
       }
     }
   }, [user, loading, navigate, location]);
@@ -58,21 +66,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = async () => {
     await supabase.auth.signOut();
     setUser(null);
-    navigate('/login');
+    navigate("/login");
   };
 
   if (loading) {
-    return <Loading/>; 
+    return <Loading />;
   }
 
   return (
-    <AuthContext.Provider value={{ user, logout }}>
-      
+    <AuthContext.Provider value={{avatarUrl, user, logout }}>
       {children}
     </AuthContext.Provider>
   );
 };
-
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
