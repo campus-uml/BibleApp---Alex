@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Welcome from "./Welcome";
 import BibleVerse from "../BibleVerse";
@@ -68,7 +67,10 @@ export const TabHome = () => {
           <TabsContent value="Inicio" className="p-2 sm:p-4 bg-card rounded-lg">
             <Welcome activeTab={activeTab} handleTabChange={handleTabChange} />
           </TabsContent>
-          <TabsContent value="lectura">
+          <TabsContent
+            value="lectura"
+            className="p-2 sm:p-4 bg-card rounded-lg"
+          >
             <BibleVerse
               searchResults={searchResults}
               onClearSearch={onClearSearch}
@@ -77,12 +79,18 @@ export const TabHome = () => {
               removeFavorite={removeFavorite}
             />
           </TabsContent>
-          <TabsContent value="favoritos" className="p-2 sm:p-4 bg-card rounded-lg">
+          <TabsContent
+            value="favoritos"
+            className="p-2 sm:p-4 bg-card rounded-lg"
+          >
             <h2 className="text-xl sm:text-2xl font-bold mb-3">Favoritos</h2>
             {favorites.length > 0 ? (
               <div className="grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {favorites.map((favorite, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-md">
+                  <div
+                    key={index}
+                    className="bg-white p-3 rounded-lg shadow-md"
+                  >
                     <p className="text-sm text-slate-500 font-semibold mb-2">
                       {favorite.reference}
                     </p>
@@ -96,7 +104,11 @@ export const TabHome = () => {
                       >
                         <Heart className="w-4 h-4" />
                       </Button>
-                      <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-blue-500 hover:text-blue-600"
+                      >
                         <Share2 className="w-4 h-4" />
                       </Button>
                     </div>
@@ -106,9 +118,16 @@ export const TabHome = () => {
             ) : (
               <div className="text-center py-8">
                 <Heart className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                <p className="text-lg font-semibold text-slate-600">No hay favoritos aún</p>
-                <p className="text-slate-500 mb-4">Guarda tus versículos favoritos</p>
-                <Button onClick={() => handleTabChange("lectura")} className="bg-slate-900 text-white">
+                <p className="text-lg font-semibold text-slate-600">
+                  No hay favoritos aún
+                </p>
+                <p className="text-slate-500 mb-4">
+                  Guarda tus versículos favoritos
+                </p>
+                <Button
+                  onClick={() => handleTabChange("lectura")}
+                  className="bg-slate-900 text-white"
+                >
                   Ir a Lectura
                 </Button>
               </div>
