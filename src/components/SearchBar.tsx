@@ -34,7 +34,7 @@ const SearchBar: React.FC = () => {
       <Button
         type="submit"
         className="p-2 rounded-lg text-sidebar-primary-foreground bg-sidebar-primary"
-        disabled={loading} // Deshabilita mientras carga
+        disabled={loading} 
       >
         {loading ? (
           <Loader2 className="w-5 h-5 animate-spin" />

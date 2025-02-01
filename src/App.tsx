@@ -8,7 +8,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { BibleProvider } from "./context/BIbleContext";
 import { MainLayout } from "./layout/MainLayout";
 import { TabHome } from "./components/home/TabHome";
-import LoginPage from "./app/login/LoginPage";
+import LoginPage from "./components/login/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -29,7 +29,6 @@ function App() {
               }
             />
             <Route path="/" element={<Navigate to="/home" replace />} />
-       
           </Routes>
         </BibleProvider>
       </AuthProvider>

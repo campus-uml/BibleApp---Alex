@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import LogoutButton from "@/app/login/LogoutButton";
+import LogoutButton from "@/components/login/LogoutButton";
 
 interface DropdownUserProps {
   avatarUrl: string | null;
