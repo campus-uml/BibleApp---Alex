@@ -18,9 +18,16 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DropdownUser } from "../components/DropdownUser";
+import { useState } from "react";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const [showSearch, setShowSearch] = React.useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term)
+  }
+
 
   return (
     <Sidebar {...props}>
@@ -54,15 +61,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <DropdownUser />
           </div>
         </div>
-        {showSearch && <SearchInput />}
+        {showSearch && <SearchInput onSearch={handleSearch} />}
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            <TabBible />
+            <TabBible searchTerm={searchTerm} />
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
   );
+
+
 }
+
