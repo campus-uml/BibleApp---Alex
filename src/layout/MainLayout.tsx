@@ -3,11 +3,11 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import SearchBar from "@/components/SearchBar";
 import { useScrollHeader } from "@/Hooks/useScrollHeader";
-import { useAuth } from "@/context/AuthContext";
+
 
 export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   const isVisible = useScrollHeader();
-  const { logout } = useAuth();
+
 
   return (
     <>
@@ -28,9 +28,7 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
           <div className="flex-1 max-w-[calc(100%-4rem)]">
             <SearchBar />
           </div>
-          <button onClick={logout} className="btn btn-primary">
-            Logout
-          </button>
+
         </header>
 
         <div className="pt-16 flex flex-1 flex-col gap-4">
