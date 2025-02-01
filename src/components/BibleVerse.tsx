@@ -103,7 +103,7 @@ export const BibleVerse = ({
         searchResults.verses.length > 0 ? (
           <div className="space-y-4 mt-4">
             {searchResults.verses.map((verse, index) => (
-              <div key={index} className="bg-white shadow-md rounded-lg p-4">
+              <div key={index} className="bg-white shadow-md rounded-lg p-2">
                 <h3 className="text-sm text-slate-500 font-semibold mb-2">
                   {verse.id}
                 </h3>
@@ -155,7 +155,7 @@ export const BibleVerse = ({
               <TabsContent
                 key={chapter.id}
                 value={chapter.number.toString()}
-                className="bg-white rounded-lg shadow-sm p-4"
+                className="bg-white rounded-lg shadow-sm p-2"
               >
                 <h2 className="text-xl text-center font-semibold mb-4 text-gray-800">
                   Capítulo {chapter.number}
