@@ -1,5 +1,4 @@
-import { User } from 'lucide-react';
-import { useAuth } from "@/context/AuthContext";
+import { User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,17 +9,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import LogoutButton from "@/app/login/LogoutButton";
 
 export function DropdownUser() {
-  const {  logout } = useAuth();
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage  />
-            <AvatarFallback>{ <User className="h-4 w-4" />}</AvatarFallback>
+            <AvatarImage />
+            <AvatarFallback>{<User className="h-4 w-4" />}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
@@ -30,8 +28,8 @@ export function DropdownUser() {
         <DropdownMenuItem>Perfil</DropdownMenuItem>
         <DropdownMenuItem>Configuración</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={logout}>
-          Cerrar Sesión
+        <DropdownMenuItem asChild>
+          <LogoutButton />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

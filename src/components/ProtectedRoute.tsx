@@ -9,6 +9,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { user } = useAuth();
   const location = useLocation();
 
+
+
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

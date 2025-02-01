@@ -28,6 +28,7 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
           <div className="flex-1 max-w-[calc(100%-4rem)]">
             <SearchBar />
           </div>
+  
 
         </header>
 

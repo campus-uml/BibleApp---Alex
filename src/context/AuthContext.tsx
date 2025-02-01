@@ -16,16 +16,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const navigate = useNavigate();
   const location = useLocation();
 
+  
+
   useEffect(() => {
     const fetchUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       setUser(user);
+      
       setLoading(false);
     };
 
     fetchUser();
 
     const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      
       setUser(session?.user ?? null);
       setLoading(false);
       if (event === 'SIGNED_IN') {
@@ -62,10 +66,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <AuthContext.Provider value={{ user, logout }}>
+      
       {children}
     </AuthContext.Provider>
   );
 };
+
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {

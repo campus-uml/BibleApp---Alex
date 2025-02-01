@@ -99,11 +99,11 @@ export interface SearchResults {
 
 export interface User {
   id: string;
-
   email?: string; // make email optional to match Supabase User type
   email_confirmed_at?: string | null;
   user_metadata: {
     [key: string]: string | number | boolean | null;
+    avatar_url: string | null; // added avatar_url to user_metadata
   };
   app_metadata: {
     [key: string]: string | number | boolean | null;
