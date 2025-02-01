@@ -1,38 +1,43 @@
-
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Search, Heart, BookMarked } from 'lucide-react';
-
-
-
+import { BookOpen, Search, Heart, BookMarked } from "lucide-react";
 
 interface WelcomeProps {
-  activeTab: string
-  handleTabChange: (value: string) => void
-
-
+  activeTab: string;
+  handleTabChange: (value: string) => void;
 }
-const Welcome = ({activeTab, handleTabChange}:WelcomeProps) => {
-
-
-
-
+const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
   return (
     <div className="space-y-6">
       <Card className="w-full">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-center">Bienvenido a la BibliaApp</CardTitle>
+          <CardTitle className="text-3xl font-bold text-center">
+            Bienvenido a la BibliaApp
+          </CardTitle>
           <CardDescription className="text-center text-lg">
             Explora, estudia y comparte la palabra de Dios
           </CardDescription>
         </CardHeader>
         <CardContent className="text-center">
           <p className="text-muted-foreground">
-            Selecciona un libro de la Biblia para comenzar a leer o utiliza la búsqueda para encontrar versículos específicos.
+            Selecciona un libro de la Biblia para comenzar a leer o utiliza la
+            búsqueda para encontrar versículos específicos.
           </p>
         </CardContent>
         <CardFooter className="flex justify-center space-x-4">
-          <Button variant="outline" className="flex items-center space-x-2" value={activeTab} onClick={() => handleTabChange("lectura")}>
+          <Button
+            variant="outline"
+            className="flex items-center space-x-2"
+            value={activeTab}
+            onClick={() => handleTabChange("lectura")}
+          >
             <BookOpen className="w-4 h-4" />
             <span>Leer</span>
           </Button>
@@ -50,7 +55,9 @@ const Welcome = ({activeTab, handleTabChange}:WelcomeProps) => {
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground italic">
-              "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna."
+              "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo
+              unigénito, para que todo aquel que en él cree, no se pierda, mas
+              tenga vida eterna."
             </p>
             <p className="mt-2 font-semibold">Juan 3:16</p>
           </CardContent>
@@ -67,7 +74,10 @@ const Welcome = ({activeTab, handleTabChange}:WelcomeProps) => {
             <CardTitle>Lectura Recomendada</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground">Explora el Libro de los Salmos, una colección de poemas y canciones que expresan una amplia gama de emociones humanas.</p>
+            <p className="text-muted-foreground">
+              Explora el Libro de los Salmos, una colección de poemas y
+              canciones que expresan una amplia gama de emociones humanas.
+            </p>
           </CardContent>
           <CardFooter>
             <Button variant="ghost" className="w-full">
@@ -82,10 +92,15 @@ const Welcome = ({activeTab, handleTabChange}:WelcomeProps) => {
             <CardTitle>Guía de Estudio</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground">Descubre cómo realizar un estudio bíblico efectivo con nuestra guía paso a paso.</p>
+            <p className="text-muted-foreground">
+              Descubre cómo realizar un estudio bíblico efectivo con nuestra
+              guía paso a paso.
+            </p>
           </CardContent>
           <CardFooter>
-            <Button variant="ghost" className="w-full">Ver Guía</Button>
+            <Button variant="ghost" className="w-full">
+              Ver Guía
+            </Button>
           </CardFooter>
         </Card>
       </div>
