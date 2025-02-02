@@ -77,7 +77,7 @@ export function LoginForm({
                     {loading ? "Cargando..." : "Login"}
                   </Button>
                 </form>
-                <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+                <div className="flex items-center justify-center gap-4">
                   <span className="relative z-10 bg-transparent px-2 text-gray-800">
                     Or continue with
                   </span>
