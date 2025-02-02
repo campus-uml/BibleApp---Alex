@@ -48,6 +48,7 @@ const useLogin = () => {
     }
   }
 
+  //no se usara por ahora
   const handleAzureLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "azure",

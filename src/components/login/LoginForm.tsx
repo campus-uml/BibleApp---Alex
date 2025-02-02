@@ -19,7 +19,7 @@ export function LoginForm({
     handleEmailLogin,
     handleGithubLogin,
     handleGoogleLogin,
-    handleAzureLogin,
+ 
   } = useLogin();
 
   return (
@@ -109,20 +109,7 @@ export function LoginForm({
                     </svg>
                     <span className="sr-only">Login with Google</span>
                   </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={handleAzureLogin}
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23">
-                      <path fill="#f3f3f3" d="M0 0h23v23H0z" />
-                      <path fill="#f35325" d="M1 1h10v10H1z" />
-                      <path fill="#81bc06" d="M12 1h10v10H12z" />
-                      <path fill="#05a6f0" d="M1 12h10v10H1z" />
-                      <path fill="#ffba08" d="M12 12h10v10H12z" />
-                    </svg>
-                    <span className="sr-only">Login with Microsoft</span>
-                  </Button>
+
                 </div>
                 <div className="text-center text-sm">
                   Don&apos;t have an account?{" "}
