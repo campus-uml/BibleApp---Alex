@@ -9,7 +9,7 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { TabBible } from "./TabBible";
-import { SearchInput } from "@/components/SearchInput";
+import { SearchInput } from "./SearchInput";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
