@@ -9,14 +9,14 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { TabBible } from "./TabBible";
-import { SearchInput } from "../components/SearchInput";
+import { SearchInput } from "./SearchInput";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { DropdownUser } from "../components/DropdownUser";
+import { DropdownUser } from "./DropdownUser";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 
@@ -24,7 +24,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { avatarUrl, user } = useAuth();
-  
+
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
@@ -55,7 +55,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </TooltipTrigger>
               </Tooltip>
             </TooltipProvider>
-            <DropdownUser avatarUrl={avatarUrl} user={user}/>
+            <DropdownUser avatarUrl={avatarUrl} user={user} />
           </div>
         </div>
         {showSearch && <SearchInput onSearch={handleSearch} />}

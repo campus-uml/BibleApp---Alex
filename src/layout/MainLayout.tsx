@@ -1,13 +1,11 @@
 import { FC, PropsWithChildren } from "react";
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import SearchBar from "@/components/SearchBar";
 import { useScrollHeader } from "@/Hooks/useScrollHeader";
 
-
 export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   const isVisible = useScrollHeader();
-
 
   return (
     <>
@@ -28,8 +26,6 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
           <div className="flex-1 max-w-[calc(100%-4rem)]">
             <SearchBar />
           </div>
-  
-
         </header>
 
         <div className="pt-16 flex flex-1 flex-col gap-4">
