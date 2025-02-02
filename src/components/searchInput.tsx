@@ -1,12 +1,12 @@
 import React from "react";
-import { Search } from 'lucide-react';
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 interface SearchInputProps {
   onSearch: (searchTerm: string) => void;
 }
 
-export function SearchInput({ onSearch }: SearchInputProps) {
+const SearchInput = ({ onSearch }: SearchInputProps) => {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(event.target.value);
   };
@@ -22,4 +22,6 @@ export function SearchInput({ onSearch }: SearchInputProps) {
       />
     </div>
   );
-}
+};
+
+export default SearchInput;
