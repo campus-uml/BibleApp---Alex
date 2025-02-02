@@ -68,6 +68,7 @@ export function LoginForm({
                       id="password"
                       type="password"
                       value={password}
+                      placeholder="********"
                       onChange={(e) => setPassword(e.target.value)}
                       required
                       className="bg-slate-50"

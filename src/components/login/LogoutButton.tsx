@@ -28,8 +28,8 @@ const LogoutButton = () => {
           Cerrar sesión
         </Button>
       </AlertDialogTrigger>
-    <AlertDialogContent className="p-2 xs:p-4">
-        <AlertDialogHeader>
+    <AlertDialogContent className="w-[22rem] p-5 rounded-sm  xs:p-4">
+        <AlertDialogHeader >
           <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
           <AlertDialogDescription>
             Esta acción cerrará tu sesión y te redirigirá a la página de inicio
