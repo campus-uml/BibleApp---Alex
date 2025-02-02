@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setLoading(false);
 
       if (user?.user_metadata.avatar_url) {
-        setAvatarUrl(user.user_metadata.avatar_url );
+        setAvatarUrl(user.user_metadata.avatar_url);
       }
     };
 
@@ -57,7 +57,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!loading) {
       if (user && location.pathname === "/login") {
         navigate("/home");
-      } else if (!user && location.pathname !== "/login") {
+      } else if (
+        !user &&
+        location.pathname !== "/login" &&
+        location.pathname !== "/register"
+      ) {
         navigate("/login");
       }
     }
@@ -74,7 +78,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   return (
-    <AuthContext.Provider value={{avatarUrl, user, logout }}>
+    <AuthContext.Provider value={{ avatarUrl, user, logout }}>
       {children}
     </AuthContext.Provider>
   );

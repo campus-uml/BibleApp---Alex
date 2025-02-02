@@ -18,6 +18,10 @@ interface DropdownUserProps {
 }
 
 export function DropdownUser({ avatarUrl, user }: DropdownUserProps) {
+
+  const displayName = user?.user_metadata.full_name || user?.user_metadata.name;
+
+  console.log('user', user);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -44,10 +48,10 @@ export function DropdownUser({ avatarUrl, user }: DropdownUserProps) {
           </Avatar>
           <div className="flex flex-col space-y-1">
             <DropdownMenuLabel className="font-medium">
-              {user?.user_metadata.name}
+              {displayName}
             </DropdownMenuLabel>
             <p className="text-xs text-muted-foreground">
-              @{user?.user_metadata.user_name}
+              @{user?.user_metadata.user_name || "Usuario"}
             </p>
           </div>
         </div>

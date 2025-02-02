@@ -10,6 +10,7 @@ import { MainLayout } from "./layout/MainLayout";
 import { TabHome } from "./components/home/TabHome";
 import LoginPage from "./components/login/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./components/login/Register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <BibleProvider>
           <Routes>
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<Register />} />
             <Route
               path="/home"
               element={

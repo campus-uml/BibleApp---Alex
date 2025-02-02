@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useLogin from "@/Hooks/useLogin";
+import { Link } from "react-router-dom";
 
 export function LoginForm({
   className,
@@ -19,7 +20,6 @@ export function LoginForm({
     handleEmailLogin,
     handleGithubLogin,
     handleGoogleLogin,
- 
   } = useLogin();
 
   return (
@@ -110,13 +110,15 @@ export function LoginForm({
                     </svg>
                     <span className="sr-only">Login with Google</span>
                   </Button>
-
                 </div>
                 <div className="text-center text-sm">
-                  no tienes una cuenta?{' '}
-                  <a href="#" className="underline underline-offset-4">
+                  no tienes una cuenta?{" "}
+                  <Link
+                    to={"/register"}
+                    className="underline underline-offset-4"
+                  >
                     Registrarse
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
