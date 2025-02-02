@@ -23,7 +23,7 @@ import { useAuth } from "@/context/AuthContext";
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const { avatarUrl } = useAuth();
+  const { avatarUrl, user } = useAuth();
   
   const handleSearch = (term: string) => {
     setSearchTerm(term);
@@ -55,7 +55,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </TooltipTrigger>
               </Tooltip>
             </TooltipProvider>
-            <DropdownUser avatarUrl={avatarUrl} />
+            <DropdownUser avatarUrl={avatarUrl} user={user}/>
           </div>
         </div>
         {showSearch && <SearchInput onSearch={handleSearch} />}

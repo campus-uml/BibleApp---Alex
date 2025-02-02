@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       setLoading(false);
 
       if (user?.user_metadata.avatar_url) {
-        setAvatarUrl(user.user_metadata.avatar_url);
+        setAvatarUrl(user.user_metadata.avatar_url );
       }
     };
 
