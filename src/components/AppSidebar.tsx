@@ -9,7 +9,6 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { TabBible } from "./TabBible";
-import SearchInput from "./SearchInput";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -19,6 +18,7 @@ import {
 import { DropdownUser } from "./DropdownUser";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
+import SearchBook from "./SearchBook";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [showSearch, setShowSearch] = useState(false);
@@ -58,7 +58,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <DropdownUser avatarUrl={avatarUrl} user={user} />
           </div>
         </div>
-        {showSearch && <SearchInput onSearch={handleSearch} />}
+        {showSearch && <SearchBook onSearch={handleSearch} />}
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

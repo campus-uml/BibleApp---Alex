@@ -6,7 +6,7 @@ interface SearchInputProps {
   onSearch: (searchTerm: string) => void;
 }
 
-const SearchInput = ({ onSearch }: SearchInputProps) => {
+const SearchBook = ({ onSearch }: SearchInputProps) => {
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(event.target.value);
   };
@@ -24,4 +24,4 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
   );
 };
 
-export default SearchInput;
+export default SearchBook;
