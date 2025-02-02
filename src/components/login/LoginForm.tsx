@@ -47,7 +47,7 @@ export function LoginForm({
                     <Input
                       id="email"
                       type="email"
-                      placeholder="m@example.com"
+                      placeholder="example@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
@@ -61,7 +61,7 @@ export function LoginForm({
                         href="#"
                         className="ml-auto text-sm underline-offset-2 hover:underline"
                       >
-                        Forgot your password?
+                        Olvidaste tu clave?
                       </a>
                     </div>
                     <Input
@@ -79,7 +79,7 @@ export function LoginForm({
                 </form>
                 <div className="flex items-center justify-center gap-4">
                   <span className="relative z-10 bg-transparent px-2 text-gray-800">
-                    Or continue with
+                    Continuar con
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
@@ -112,9 +112,9 @@ export function LoginForm({
 
                 </div>
                 <div className="text-center text-sm">
-                  Don&apos;t have an account?{" "}
+                  no tienes una cuenta?{' '}
                   <a href="#" className="underline underline-offset-4">
-                    Sign up
+                    Registrarse
                   </a>
                 </div>
               </div>
