@@ -9,7 +9,7 @@ import { BibleProvider } from "./context/BIbleContext";
 import { MainLayout } from "./layout/MainLayout";
 import { TabHome } from "./components/home/TabHome";
 import LoginPage from "./components/login/LoginPage";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./utils/ProtectedRoute";
 import Register from "./components/login/Register";
 
 function App() {
