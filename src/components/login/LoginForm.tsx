@@ -31,13 +31,14 @@ export function LoginForm({
   return (
     <>
       <div
-        className="absolute inset-0 -z-10 h-full w-full bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 -z-10 w-full h-full bg-cover bg-center bg-no-repeat"
         style={{
           background: "linear-gradient(to bottom, #7c3aed, #f97316)",
+          height: "100vh",
         }}
       ></div>
 
-      <div className={`w-full max-w-5xl relative ${className}`} {...props}>
+      <div className={`w-full max-w-5xl relative p-3 ${className}`} {...props}>
         <Card className="overflow-hidden border-none bg-white/90 dark:bg-gray-900/90 shadow-2xl">
           <CardContent className="p-0 grid md:grid-cols-2">
             <div className="p-6 md:p-8">
@@ -46,7 +47,7 @@ export function LoginForm({
                   BibleApp
                 </CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-400">
-                  Inicia sesión para continuar tu viaje espiritual
+                  Inicia sesión para continuar 
                 </CardDescription>
               </CardHeader>
 
