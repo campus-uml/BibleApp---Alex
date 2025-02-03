@@ -6,6 +6,7 @@ import { AuthError } from "@supabase/supabase-js";
 const useLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState(""); 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -45,7 +46,10 @@ const useLogin = () => {
         const { error: profileError } = await supabase.from("profiles").upsert({
           id: data.user.id,
           full_name: fullName,
+
         });
+        setFullName(fullName);
+
 
         if (profileError) {
           throw profileError;
@@ -125,6 +129,8 @@ const useLogin = () => {
     handleGoogleLogin,
     handleAzureLogin,
     signUpNewUser,
+    fullName,
+    
   };
 };
 

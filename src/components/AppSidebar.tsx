@@ -20,14 +20,18 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import SearchBook from "./SearchBook";
 
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const { avatarUrl, user } = useAuth();
+  const { avatarUrl } = useAuth();
+
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
+
+
 
   return (
     <Sidebar {...props}>
@@ -55,7 +59,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </TooltipTrigger>
               </Tooltip>
             </TooltipProvider>
-            <DropdownUser avatarUrl={avatarUrl} user={user} />
+            <DropdownUser avatarUrl={avatarUrl} />
           </div>
         </div>
         {showSearch && <SearchBook onSearch={handleSearch} />}
