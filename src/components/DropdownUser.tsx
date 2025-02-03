@@ -21,7 +21,6 @@ export function DropdownUser({ avatarUrl }: DropdownUserProps) {
 
   const displayName = user?.user_metadata.full_name || user?.user_metadata.name;
 
-  console.log("user", user);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -33,7 +32,7 @@ export function DropdownUser({ avatarUrl }: DropdownUserProps) {
           <Avatar className="h-8 w-8 transition-transform hover:scale-110">
             <AvatarImage src={avatarUrl ?? undefined} alt="User Avatar" />
             <AvatarFallback className="bg-primary text-primary-foreground">
-            {user?.email?.[0].toUpperCase() ?? "?"}
+              {user?.email?.[0].toUpperCase() ?? "?"}
             </AvatarFallback>
           </Avatar>
         </Button>
@@ -43,7 +42,7 @@ export function DropdownUser({ avatarUrl }: DropdownUserProps) {
           <Avatar className="h-8 w-8">
             <AvatarImage src={avatarUrl ?? undefined} alt="User Avatar" />
             <AvatarFallback className="bg-primary text-primary-foreground">
-            {user?.email?.[0].toUpperCase() ?? "?"}
+              {user?.email?.[0].toUpperCase() ?? "?"}
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col space-y-1">
