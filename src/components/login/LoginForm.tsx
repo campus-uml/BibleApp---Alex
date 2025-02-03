@@ -123,7 +123,7 @@ export function LoginForm({
                     <div className="w-full border-t border-gray-300"></div>
                   </div>
                   <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white/90 dark:bg-gray-900/90 text-gray-500">
+                    <span className="px-2 bg-white rounded-sm dark:bg-gray-900/90 text-gray-500 border border-gray-300 dark:border-gray-700">
                       Continuar con
                     </span>
                   </div>
@@ -189,11 +189,11 @@ export function LoginForm({
           </CardContent>
         </Card>
 
-        <div className="mt-4 text-center text-sm text-white dark:text-gray-400">
+        <div className="mt-4 text-center text-sm text-gray-950 dark:text-gray-400">
           Al continuar, aceptas nuestros{" "}
           <Link
             to="/terms"
-            className="text-slate-950 hover:text-purple-700 dark:text-purple-400"
+            className="text-slate-950 underline hover:text-purple-700 dark:text-purple-400"
           >
             Términos de Servicio
           </Link>{" "}
