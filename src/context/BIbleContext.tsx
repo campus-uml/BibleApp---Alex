@@ -4,12 +4,20 @@ import {
   getBibles,
   getChapters,
   loadChapterVersesFromAPI,
+  getRamdonPassage,
 } from "../services/getData";
-import type { BibleBooks, Chapter, SearchResults, Verse} from "../types/index";
+import type {
+  BibleBooks,
+  Chapter,
+  Passage,
+  SearchResults,
+  Verse,
+} from "../types/index";
 import { useSidebar } from "@/components/ui/sidebar";
 import axios from "axios";
 import { API_KEY, API_URL } from "@/constants/api";
 import { useAddFavorite } from "@/Hooks/useAddFavorite";
+import { getRandomPassageId } from "@/utils/BookChapters";
 
 const formatVerseText = (text: string) => {
   return text.toLowerCase().replace(/^([a-z])/, (match) => match.toUpperCase());
@@ -34,8 +42,9 @@ interface BibleContextProps {
   query: string;
   onClearSearch: () => void;
   favorites: Verse[];
-  addFavorite: (verse: Verse) => void
+  addFavorite: (verse: Verse) => void;
   removeFavorite: (verseId: string) => void;
+  passage?: Passage;
 }
 
 const BibleContext = createContext<BibleContextProps | undefined>(undefined);
@@ -49,6 +58,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   const [selectedBook, setSelectedBook] = useState<BibleBooks["id"]>("");
   const [bibleVerseChapters, setBibleVerseChapters] = useState<Chapter[]>([]);
   const [chapterVerses, setChapterVerses] = useState<Verse[]>([]);
+  const [passage, setPassage] = useState<Passage>();
   const [searchResults, setSearchResults] = useState<SearchResults | null>(
     null
   );
@@ -149,6 +159,22 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
     }
   };
 
+  const fetchRamdonPassage = async () => {
+    try {
+      const response = await getRamdonPassage(getRandomPassageId());
+      if (response?.data) {
+        setPassage(response.data);
+      } else {
+        console.error(
+          "Estructura inesperada en la respuesta del API:",
+          response
+        );
+      }
+    } catch (error) {
+      console.error("Error al obtener el pasaje aleatorio:", error);
+    }
+  };
+
   const getVersesFromPassage = async (passageId: string) => {
     const [book, range] = passageId.split(".");
     const [startVerse, endVerse] = range
@@ -206,6 +232,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
   }, [query]);
 
   useEffect(() => {
+    fetchRamdonPassage();
     fetchData();
   }, []);
 
@@ -248,6 +275,7 @@ export const BibleProvider: React.FC<BibleProviderProps> = ({ children }) => {
         favorites,
         addFavorite,
         removeFavorite,
+        passage,
       }}
     >
       {children}

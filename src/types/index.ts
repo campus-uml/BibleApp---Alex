@@ -81,10 +81,13 @@ export interface Passage {
   orgId: string;
   bibleId: string;
   bookId: string;
-  chapterIds: string[]; // Aquí manejamos los capítulos
-  text: string; // Texto general del pasaje
-  verses: VerseSearch[]; // Versículos detallados de ese pasaje
+  chapterIds: string[]; 
+  text: string; 
+  verses: VerseSearch[];
+  content: string; 
+  reference: string;
 }
+
 
 export interface SearchResults {
   length: number;

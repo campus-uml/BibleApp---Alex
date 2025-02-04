@@ -15,7 +15,10 @@ export const TabHome = () => {
     favorites,
     addFavorite,
     removeFavorite,
+
   } = useBible();
+
+
 
   const [activeTab, setActiveTab] = useState("Inicio");
 
