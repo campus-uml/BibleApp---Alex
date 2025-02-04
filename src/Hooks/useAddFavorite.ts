@@ -43,6 +43,7 @@ export const useAddFavorite = () => {
           id: verse.id,
           text: verse.text,
           reference: verse.reference,
+          
           // Añade aquí cualquier otro campo que necesites guardar
         },
       })

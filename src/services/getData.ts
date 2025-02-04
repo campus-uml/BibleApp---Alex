@@ -39,7 +39,7 @@ const getChapters = async (bookId: string) => {
 const getRamdonPassage = async (passageId: string) => {
   try {
     const response = await axios.get(
-      `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/passages/${passageId}?content-type=text`,
+      `https://api.scripture.api.bible/v1/bibles/592420522e16049f-01/verses/${passageId}?content-type=text`,
       {
         headers: {
           "api-key": apiKey,
@@ -50,7 +50,7 @@ const getRamdonPassage = async (passageId: string) => {
   } catch (error) {
     console.error("Error fetching random verse:", error);
   }
-}
+};
 
 const loadChapterVersesFromAPI = async (chapterId: string) => {
   try {
@@ -89,7 +89,6 @@ const searchBible = async (query: string) => {
   }
 };
 
-
 const getAudioVerse = async (verseId: string) => {
   try {
     const response = await axios.get(
@@ -104,6 +103,13 @@ const getAudioVerse = async (verseId: string) => {
   } catch (error) {
     console.error("Error fetching audio verse:", error);
   }
-}
+};
 
-export { getBibles, getChapters, loadChapterVersesFromAPI, searchBible, getAudioVerse , getRamdonPassage};
+export {
+  getBibles,
+  getChapters,
+  loadChapterVersesFromAPI,
+  searchBible,
+  getAudioVerse,
+  getRamdonPassage,
+};

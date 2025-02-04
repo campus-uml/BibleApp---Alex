@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { BookOpen, Search, Heart, BookMarked } from "lucide-react";
 import { useBible } from "@/context/BIbleContext";
+import { useAddFavorite } from "@/Hooks/useAddFavorite";
 
 interface WelcomeProps {
   activeTab: string;
@@ -17,7 +18,7 @@ interface WelcomeProps {
 
 const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
   const { passage } = useBible();
-
+  const { addFavorite, removeFavorite, favorites } = useAddFavorite();
 
   return (
     <div className="space-y-6">
@@ -58,12 +59,28 @@ const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
           <CardHeader>
             <CardTitle>Versículo del Día</CardTitle>
           </CardHeader>
-              <CardContent className="space-y-2">
-              <p className="italic text-slate-800">{passage?.content ?? "No hay versículo disponible."}</p>
-              <h3 className="text-sm text-muted-foreground">{passage?.reference}</h3>
-              </CardContent>
+          <CardContent className="space-y-2">
+            <p className="italic text-slate-800">
+              {passage?.content ?? "No hay versículo disponible."}
+            </p>
+            <h3 className="text-sm text-muted-foreground">
+              {passage?.reference}
+            </h3>
+          </CardContent>
           <CardFooter>
-            <Button variant="ghost" className="w-full">
+            <Button
+              variant="ghost"
+              className="w-full"
+              onClick={() => {
+                if (passage) {
+                  if (favorites.some((fav) => fav.id === passage.id)) {
+                    removeFavorite(passage.id);
+                  } else {
+                    addFavorite({ ...passage, reference: passage.content});
+                  }
+                }
+              }}
+            >
               <Heart className="w-4 h-4 mr-2" />
               Guardar
             </Button>

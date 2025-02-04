@@ -83,7 +83,7 @@ export interface Passage {
   bookId: string;
   chapterIds: string[]; 
   text: string; 
-  verses: VerseSearch[];
+  verses: verses[];
   content: string; 
   reference: string;
 }
