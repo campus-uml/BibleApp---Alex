@@ -1,5 +1,5 @@
 import * as React from "react";
-import { GalleryVerticalEnd, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -19,19 +19,16 @@ import { DropdownUser } from "./DropdownUser";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import SearchBook from "./SearchBook";
-
+import BibleApp from "../assets/bible-icon.svg";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const { avatarUrl } = useAuth();
 
-
   const handleSearch = (term: string) => {
     setSearchTerm(term);
   };
-
-
 
   return (
     <Sidebar {...props}>
@@ -39,8 +36,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <div className="flex items-center justify-between">
           <SidebarMenuButton size="sm" asChild>
             <a href="#" className="flex items-center space-x-2">
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                <GalleryVerticalEnd className="size-4" />
+              <div className="flex aspect-square size-8">
+                <img src={BibleApp} className="bg-transparent dark:invert" />
               </div>
               <span className="font-semibold">BibleApp</span>
             </a>
