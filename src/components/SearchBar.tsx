@@ -33,7 +33,7 @@ const SearchBar: React.FC = () => {
       />
       <Button
         type="submit"
-        className="p-2 rounded-lg text-sidebar-primary-foreground bg-sidebar-primary dark:bg-slate-900"
+        className="p-2 rounded-lg text-sidebar-primary-foreground bg-sidebar-primary dark:bg-slate-50 dark:text-slate-900"
         disabled={loading}
       >
         {loading ? (

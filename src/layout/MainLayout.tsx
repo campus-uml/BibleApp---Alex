@@ -14,7 +14,8 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
       <SidebarInset>
         <header
           className={`fixed flex h-16 shrink-0 items-center gap-2 px-4 z-50 w-full
-            bg-background shadow-sm transition-transform duration-500 ease-in-out
+            bg-background shadow-sm transition-transform duration-500 ease-in-out 
+            dark:bg-neutral-900 dark:text-slate-50
             ${
               isVisible
                 ? "translate-y-0 opacity-100"
