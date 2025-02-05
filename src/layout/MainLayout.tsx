@@ -3,6 +3,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import SearchBar from "@/components/SearchBar";
 import { useScrollHeader } from "@/Hooks/useScrollHeader";
+import FooterCustom from "@/components/FooterCustom";
 
 export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   const isVisible = useScrollHeader();
@@ -31,6 +32,7 @@ export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
         <div className="pt-16 flex flex-1 flex-col gap-4">
           <div className="w-full flex-1 ">{children}</div>
         </div>
+        <FooterCustom />
       </SidebarInset>
     </>
   );
