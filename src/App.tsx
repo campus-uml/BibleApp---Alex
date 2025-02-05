@@ -11,6 +11,7 @@ import { TabHome } from "./components/home/TabHome";
 import LoginPage from "./components/login/LoginPage";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import Register from "./components/login/Register";
+import TermsAndServices from "./components/home/TermsAndServices";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
       <AuthProvider>
         <BibleProvider>
           <Routes>
+            <Route path="/terms" element={<TermsAndServices />} />
             <Route path="/login" element={<LoginPage />} />
+
             <Route path="/register" element={<Register />} />
             <Route
               path="/home"

@@ -47,7 +47,7 @@ export function LoginForm({
                   BibleApp
                 </CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-400">
-                  Inicia sesión para continuar 
+                  Inicia sesión para continuar
                 </CardDescription>
               </CardHeader>
 
