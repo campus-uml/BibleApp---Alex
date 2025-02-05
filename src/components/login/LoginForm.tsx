@@ -189,22 +189,24 @@ export function LoginForm({
           </CardContent>
         </Card>
 
-        <div className="mt-4 text-center text-sm text-gray-950 dark:text-gray-400">
-          Al continuar, aceptas nuestros{" "}
-          <Link
-            to="/terms"
-            className="text-slate-950 underline hover:text-purple-700 dark:text-purple-400"
-          >
-            Términos de Servicio
-          </Link>{" "}
-          y{" "}
-          <Link
-            to="/privacy"
-            className="text-slate-950 hover:text-purple-700 dark:text-purple-400"
-          >
-            Política de Privacidad
-          </Link>
-          .
+        <div className="mt-6 text-center text-sm font-medium">
+          <p className="text-gray-800 dark:text-gray-200">
+            Al continuar, aceptas nuestros{" "}
+            <Link
+              to="/terms"
+              className="text-purple-700 hover:text-purple-900 underline transition-colors duration-200 dark:text-purple-400 dark:hover:text-purple-300"
+            >
+              Términos de Servicio
+            </Link>{" "}
+            y{" "}
+            <Link
+              to="/privacy"
+              className="text-purple-700 hover:text-purple-900 underline transition-colors duration-200 dark:text-purple-400 dark:hover:text-purple-300"
+            >
+              Política de Privacidad
+            </Link>
+            .
+          </p>
         </div>
       </div>
     </>
