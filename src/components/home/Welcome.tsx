@@ -59,8 +59,8 @@ const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
           <CardHeader>
             <CardTitle>Versículo del Día</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-2">
-            <p className="italic text-slate-800">
+          <CardContent className="space-y-2 ">
+            <p className="italic text-slate-800 dark:text-slate-200 ">
               {passage?.content ?? "No hay versículo disponible."}
             </p>
             <h3 className="text-sm text-muted-foreground">

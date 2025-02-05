@@ -81,15 +81,15 @@ export const TabHome = () => {
             />
           </TabsContent>
           <TabsContent value="favoritos" className="p-2 sm:p-4 bg-card rounded-lg">
-            <h2 className="text-xl sm:text-2xl font-bold mb-3">Favoritos</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-3 dark:text-slate-50">Favoritos</h2>
             {favorites.length > 0 ? (
               <div className="grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {favorites.map((favorite, index) => (
-                  <div key={index} className="bg-white p-3 rounded-lg shadow-md">
-                    <p className="text-sm text-slate-500 font-semibold mb-2">
+                  <div key={index} className=" p-3 rounded-lg shadow-md dark:border dark:border-slate-800">
+                    <p className="text-sm text-slate-500 font-semibold mb-2 dark:text-slate-300">
                       {favorite.reference}
                     </p>
-                    <p className="text-sm text-slate-800">{favorite.text}</p>
+                    <p className="text-sm text-slate-800 dark:text-white">{favorite.text}</p>
                     <div className="flex justify-between items-center mt-3">
                       <Button
                         variant="ghost"

@@ -28,13 +28,13 @@ const SearchBar: React.FC = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Ejemplo: 'Dios', 'fe', 'esperanza'"
-        className="border rounded-lg p-2 flex-grow sm:max-w-[250px] w-4/5"
+        className="border rounded-lg p-2 flex-grow sm:max-w-[250px] w-4/5 dark:bg-slate-800"
         disabled={loading}
       />
       <Button
         type="submit"
-        className="p-2 rounded-lg text-sidebar-primary-foreground bg-sidebar-primary"
-        disabled={loading} 
+        className="p-2 rounded-lg text-sidebar-primary-foreground bg-sidebar-primary dark:bg-slate-900"
+        disabled={loading}
       >
         {loading ? (
           <Loader2 className="w-5 h-5 animate-spin" />

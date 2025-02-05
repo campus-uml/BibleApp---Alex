@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import LogoutButton from "@/components/login/LogoutButton";
-import { Settings, UserIcon } from "lucide-react";
+import { Settings } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import { ModeToggle } from "./ui/mode-toggle";
 
 interface DropdownUserProps {
   avatarUrl: string | null;
@@ -55,10 +56,10 @@ export function DropdownUser({ avatarUrl }: DropdownUserProps) {
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <UserIcon className="mr-2 h-4 w-4" />
-          <span>Perfil</span>
-        </DropdownMenuItem>
+        <div className="p-2 flex justify-self-end">
+          <ModeToggle />
+        </div>
+
         <DropdownMenuItem>
           <Settings className="mr-2 h-4 w-4" />
           <span>Configuración</span>
