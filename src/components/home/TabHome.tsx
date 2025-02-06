@@ -111,7 +111,7 @@ export const TabHome = () => {
                 <Heart className="w-12 h-12 text-slate-300 mx-auto mb-3" />
                 <p className="text-lg font-semibold text-slate-600">No hay favoritos aún</p>
                 <p className="text-slate-500 mb-4">Guarda tus versículos favoritos</p>
-                <Button onClick={() => handleTabChange("lectura")} className="bg-slate-900 text-white">
+                <Button onClick={() => handleTabChange("lectura")} className="bg-slate-900 text-white dark:bg-slate-800">
                   Ir a Lectura
                 </Button>
               </div>

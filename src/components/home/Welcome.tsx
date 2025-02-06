@@ -94,7 +94,7 @@ const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
           <CardContent>
             <p className="text-muted-foreground">
               Explora el Libro de los Salmos, una colección de poemas y
-              canciones que expresan una amplia gama de emociones humanas.
+              canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
             </p>
           </CardContent>
           <CardFooter>
@@ -112,7 +112,7 @@ const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
           <CardContent>
             <p className="text-muted-foreground">
               Descubre cómo realizar un estudio bíblico efectivo con nuestra
-              guía paso a paso.
+              guía paso a paso. (en desarrollo)
             </p>
           </CardContent>
           <CardFooter>
