@@ -14,6 +14,7 @@ import { Settings, ChevronRight } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { ModeToggle } from "./ui/mode-toggle";
 import { motion } from "framer-motion";
+import { AboutModal } from "./home/AboutModal";
 
 interface DropdownUserProps {
   avatarUrl: string | null;
@@ -74,6 +75,10 @@ export function DropdownUser({ avatarUrl }: DropdownUserProps) {
           <span>Configuración</span>
           <ChevronRight className="ml-auto h-4 w-4" />
         </DropdownMenuItem>
+        <DropdownMenuSeparator className="my-2" />
+        <div className="p-2 flex justify-center">
+          <AboutModal/>
+        </div>
         <DropdownMenuSeparator className="my-2" />
         <DropdownMenuItem asChild>
           <LogoutButton />
