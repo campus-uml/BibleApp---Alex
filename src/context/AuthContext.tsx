@@ -60,7 +60,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       } else if (
         !user &&
         location.pathname !== "/login" &&
-        location.pathname !== "/register"
+        location.pathname !== "/register" &&
+        location.pathname !== "/terminos"
       ) {
         navigate("/login");
       }

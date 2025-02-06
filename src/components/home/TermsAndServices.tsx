@@ -1,7 +1,15 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const TermsAndServices = () => {
+  const navigate = useNavigate();
+
+  const handleAccept = () => {
+    // Add your logic her
+    navigate("/login");
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 bg-background text-foreground">
       <h1 className="text-3xl font-bold mb-6 text-center">
@@ -87,7 +95,9 @@ const TermsAndServices = () => {
         </div>
       </ScrollArea>
       <div className="mt-6 flex justify-center">
-        <Button className="px-6 py-2">Acepto los Términos y Servicios</Button>
+        <Button onClick={handleAccept} className="px-6 py-2">
+          Acepto los Términos y Servicios
+        </Button>
       </div>
     </div>
   );

@@ -193,7 +193,7 @@ export function LoginForm({
           <p className="text-gray-800 dark:text-gray-200">
             Al continuar, aceptas nuestros{" "}
             <Link
-              to="/terms"
+              to="/terminos"
               className="text-purple-700 hover:text-purple-900 underline transition-colors duration-200 dark:text-purple-400 dark:hover:text-purple-300"
             >
               Términos de Servicio

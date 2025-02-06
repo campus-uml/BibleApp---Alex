@@ -19,9 +19,8 @@ function App() {
       <AuthProvider>
         <BibleProvider>
           <Routes>
-            <Route path="/terms" element={<TermsAndServices />} />
             <Route path="/login" element={<LoginPage />} />
-
+            <Route path="/terminos" element={<TermsAndServices />} />
             <Route path="/register" element={<Register />} />
             <Route
               path="/home"
