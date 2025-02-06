@@ -1,4 +1,3 @@
-import { newTestamentIds, oldTestamentIds } from "./Abreviations";
 
 const bookChapters: Record<string, number> = {
   PSA: 150,
@@ -21,8 +20,7 @@ const bookChapters: Record<string, number> = {
 };
 
 export const getRandomPassageId = (): string => {
-  const isNewTestament = Math.random() > 0.5;
-  const books = isNewTestament ? newTestamentIds : oldTestamentIds;
+  const books = Object.keys(bookChapters);
   // Seleccionar un libro aleatorio
   const book = books[Math.floor(Math.random() * books.length)];
   // Obtener el número máximo de capítulos del libro
