@@ -76,7 +76,8 @@ export function DropdownUser({ avatarUrl }: DropdownUserProps) {
           <ChevronRight className="ml-auto h-4 w-4" />
         </DropdownMenuItem>
         <DropdownMenuSeparator className="my-2" />
-        <div className="p-2 flex justify-center">
+        <div className="p-2 flex justify-between items-center">
+          <p className="text-sm font-medium">Acerca de</p>
           <AboutModal/>
         </div>
         <DropdownMenuSeparator className="my-2" />

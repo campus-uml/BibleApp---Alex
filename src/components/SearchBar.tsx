@@ -19,6 +19,7 @@ const SearchBar: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await handleSearch();
+    setQuery("");
   };
 
   return (
