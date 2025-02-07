@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { BookOpen, Search, Heart, BookMarked } from "lucide-react";
 import { useBible } from "@/context/BIbleContext";
-import { useAddFavorite } from "@/Hooks/useAddFavorite";
+import { useAddFavorite } from "@/hooks/useAddFavorite";
 
 interface WelcomeProps {
   activeTab: string;
@@ -76,7 +76,7 @@ const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
                   if (favorites.some((fav) => fav.id === passage.id)) {
                     removeFavorite(passage.id);
                   } else {
-                    addFavorite({ ...passage, reference: passage.content});
+                    addFavorite({ ...passage, reference: passage.content });
                   }
                 }
               }}
@@ -94,7 +94,8 @@ const Welcome = ({ activeTab, handleTabChange }: WelcomeProps) => {
           <CardContent>
             <p className="text-muted-foreground">
               Explora el Libro de los Salmos, una colección de poemas y
-              canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
+              canciones que expresan una amplia gama de emociones humanas. (en
+              desarrollo)
             </p>
           </CardContent>
           <CardFooter>

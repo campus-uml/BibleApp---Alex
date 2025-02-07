@@ -1,9 +1,15 @@
 import type React from "react";
 import { useState } from "react";
-import useLogin from "../../Hooks/useLogin";
+import useLogin from "../../hooks/useLogin";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, CheckCircle2, User, Mail, Lock } from "lucide-react";
@@ -44,14 +50,14 @@ const Register = () => {
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 p-4">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-grid-white/[0.02]" />
       <div className="absolute inset-0 flex items-center justify-center bg-white/[0.02] backdrop-blur-3xl" />
-      
+
       <Card className="w-full max-w-lg relative overflow-hidden border-none bg-white/90 dark:bg-gray-900/90 shadow-2xl">
         <CardHeader className="space-y-1 text-center pb-8">
           <CardTitle className="text-3xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
             BibleApp
           </CardTitle>
           <CardDescription className="text-gray-600 dark:text-gray-400">
-            Crea tu cuenta para comenzar 
+            Crea tu cuenta para comenzar
           </CardDescription>
         </CardHeader>
 
@@ -132,7 +138,10 @@ const Register = () => {
               </div>
 
               <div className="relative">
-                <Label htmlFor="confirm-password" className="text-sm font-medium">
+                <Label
+                  htmlFor="confirm-password"
+                  className="text-sm font-medium"
+                >
                   Confirmar Contraseña
                 </Label>
                 <div className="relative mt-1">
