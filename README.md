@@ -46,7 +46,12 @@ yarn install
 
 VITE_API_URL=https://api.scripture.api.bible/v1
 
-VITE_API_KEY=<tu-api-key>
+VITE_API_KEY= tu-api-key
+
+VITE_API_SUPABASE_URL=  dirección de tu proyecto de Supabase
+
+VITE_API_SUPABASE_ANON_KEY= clave anónima proporcionada por Supabase
+
 
 Asegúrate de reemplazar <url-de-la-api> y <tu-api-key> con los valores correctos proporcionados por la API de API.BIBLE.
 
