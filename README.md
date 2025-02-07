@@ -17,6 +17,7 @@ Puedes ver la aplicación en producción en el siguiente enlace:
 - **ShadCN**: Conjunto de componentes UI listos para usar con Tailwind CSS.
 - **Axios**: Cliente HTTP para realizar solicitudes a la API.
 - **API.BIBLE**: API que proporciona acceso a versiones y datos de la Biblia.
+- **Supabase**: plataforma de backend como servicio (BaaS) de código abierto que facilita la creación de aplicaciones al ofrecer servicios como bases de datos relacionales (usando PostgreSQL), autenticación de usuarios, almacenamiento de archivos, y funcionalidades en tiempo real.
 
 ## Requisitos
 
@@ -46,7 +47,12 @@ yarn install
 
 VITE_API_URL=https://api.scripture.api.bible/v1
 
-VITE_API_KEY=<tu-api-key>
+VITE_API_KEY= tu-api-key
+
+VITE_API_SUPABASE_URL=  dirección de tu proyecto de Supabase
+
+VITE_API_SUPABASE_ANON_KEY= clave anónima proporcionada por Supabase
+
 
 Asegúrate de reemplazar <url-de-la-api> y <tu-api-key> con los valores correctos proporcionados por la API de API.BIBLE.
 
