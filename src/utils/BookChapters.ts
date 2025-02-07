@@ -2,21 +2,7 @@
 const bookChapters: Record<string, number> = {
   PSA: 150,
   PRO: 31,
-  MAT: 28,
-  MRK: 16,
-  LUK: 24,
-  JHN: 21,
-  ROM: 16,
-  "1CO": 16,
-  "2CO": 13,
-  GAL: 6,
-  EPH: 6,
-  PHP: 4,
-  COL: 4,
-  JAS: 5,
-  "1PE": 5,
-  "2PE": 3,
-  "1JN": 5,
+  
 };
 
 export const getRandomPassageId = (): string => {
