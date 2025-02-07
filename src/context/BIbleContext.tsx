@@ -16,7 +16,7 @@ import type {
 import { useSidebar } from "@/components/ui/sidebar";
 import axios from "axios";
 import { API_KEY, API_URL } from "@/constants/api";
-import { useAddFavorite } from "@/hooks/useAddFavorite";
+import { useAddFavorite } from "@/Hooks/useAddFavorite";
 import { getRandomPassageId } from "@/utils/BookChapters";
 
 const formatVerseText = (text: string) => {

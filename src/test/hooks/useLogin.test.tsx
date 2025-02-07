@@ -9,7 +9,7 @@ import {
   vi,
   Mock,
 } from "vitest";
-import useLogin from "../../hooks/useLogin";
+import useLogin from "../../Hooks/useLogin";
 import { supabase } from "@/constants/api";
 
 // Mock de `useNavigate`
@@ -48,7 +48,6 @@ describe("Pruebas en el hook useLogin.ts", () => {
     });
 
     const { result } = renderHook(() => useLogin(), { wrapper: MemoryRouter });
-
 
     // Simulamos el llenado de los campos de email y password
     act(() => {

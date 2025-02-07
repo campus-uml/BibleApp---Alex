@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from "react";
 import { AppSidebar } from "@/components/AppSidebar";
 import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import SearchBar from "@/components/SearchBar";
-import { useScrollHeader } from "@/hooks/useScrollHeader";
+import { useScrollHeader } from "@/Hooks/useScrollHeader";
 import FooterCustom from "@/components/FooterCustom";
 
 export const MainLayout: FC<PropsWithChildren> = ({ children }) => {

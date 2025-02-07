@@ -4,7 +4,7 @@ import { useBible } from "../context/BIbleContext";
 import { Copy, Heart, ArrowLeft, Share, Play, Book } from "lucide-react";
 import type { SearchResults, Verse } from "@/types";
 import { Button } from "@/components/ui/button";
-import { useActions } from "@/hooks/useActions";
+import { useActions } from "@/Hooks/useActions";
 
 interface BibleVerseProps {
   searchResults: SearchResults | null;

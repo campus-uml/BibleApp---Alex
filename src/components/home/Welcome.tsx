@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { BookOpen, Search, Heart, BookMarked } from "lucide-react";
 import { useBible } from "@/context/BIbleContext";
-import { useAddFavorite } from "@/hooks/useAddFavorite";
+import { useAddFavorite } from "@/Hooks/useAddFavorite";
 
 interface WelcomeProps {
   activeTab: string;

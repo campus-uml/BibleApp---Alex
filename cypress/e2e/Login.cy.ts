@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 describe("Login Form", () => {
   beforeEach(() => {
     cy.visit("http://localhost:5173/login");
@@ -22,9 +24,8 @@ describe("Login Form", () => {
     cy.visit("/terminos");
     cy.contains("Términos y Servicios").should("be.visible");
     cy.contains("Acepto los Términos y Servicios").click();
-    cy.url().should("include", "/login"); 
+    cy.url().should("include", "/login");
   });
-
 
   it("Debería permitir hacer login", () => {
     cy.get('input[type="email"]').type("eddytalavera073@gmail.com");
