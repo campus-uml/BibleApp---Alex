@@ -19,8 +19,8 @@ jobs:
       - name: 🔧 Configurar Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # Usa Node LTS estable
-          cache: "yarn" # Cache para acelerar Yarn
+          node-version: "20" 
+          cache: "yarn" 
 
       - name: 📦 Instalar dependencias con Yarn
         run: yarn install --frozen-lockfile

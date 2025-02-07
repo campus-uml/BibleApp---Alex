@@ -56,6 +56,7 @@ describe("Pruebas en el hook useLogin.ts", () => {
       result.current.setPassword("123456");
     });
 
+    // Simulamos el envío del formulario
     await act(async () => {
       await result.current.handleEmailLogin({
         preventDefault: () => {},
