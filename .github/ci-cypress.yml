@@ -83,3 +83,8 @@ jobs:
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API_KEY }}
           wait-for-success: true
+
+- name: Upload coverage reports to Codecov
+    uses: codecov/codecov-action@v5
+    with:
+      token: ${{ secrets.CODECOV_TOKEN }}
