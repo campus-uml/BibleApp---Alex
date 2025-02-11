@@ -27,7 +27,7 @@ describe("Register Page", () => {
     cy.get("input#password").type("Password123!");
     cy.get("input#confirm-password").type("Password123!");
     cy.get("button[type='submit']").click();
-    cy.contains("El nombre completo es obligatorio").should("be.visible");
+    cy.contains("El Nombre es obligatorio").should("be.visible");
   });
 
   it("deberia enviar los datos", () => {
@@ -36,13 +36,15 @@ describe("Register Page", () => {
       body: { success: true, message: "Registro exitoso" },
     });
 
-    cy.get("input#full-name").type("Juan Pérez");
-    cy.get("input#email").type("juan@example.com");
+    cy.get("input#full-name").type("Alex Talavera");
+    cy.get("input#email").type("movilrecuperacion97@gmail.com");
     cy.get("input#password").type("Password123!");
     cy.get("input#confirm-password").type("Password123!");
     cy.get("button[type='submit']").click();
 
     cy.contains("Éxito").should("be.visible");
-    cy.contains("Registro exitoso").should("be.visible");
+    cy.contains("Registro exitoso. Por favor, verifica tu email").should(
+      "be.visible"
+    );
   });
 });
