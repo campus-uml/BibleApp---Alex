@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react-hooks";
+import { renderHook, act } from "@testing-library/react-hooks";
 import { vi, describe, it, expect, beforeEach } from "vitest";
 import { BibleProvider, useBible } from "../../context/BIbleContext";
 import * as getData from "../../services/getData";
@@ -40,6 +40,27 @@ describe("useBible", () => {
     await waitForNextUpdate();
 
     expect(result.current.bibleVerse).toEqual(mockBibles);
+  });
+
+  it("debería cargar capítulos cuando se selecciona un libro", async () => {
+    const mockChapters = [{ id: "chapter1", number: "1" }];
+    vi.mocked(getData.getChapters).mockResolvedValue({ data: mockChapters });
+    vi.mocked(getData.loadChapterVersesFromAPI).mockResolvedValue({
+      data: { content: "1 Verse text" },
+    });
+
+    const { result, waitForNextUpdate } = renderHook(() => useBible(), {
+      wrapper: BibleProvider,
+    });
+
+    act(() => {
+      result.current.handleBook("book1");
+    });
+
+    await waitForNextUpdate();
+
+    expect(result.current.bibleVerseChapters).toEqual(mockChapters);
+    expect(result.current.selectedBook).toBe("book1");
   });
 
  
