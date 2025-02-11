@@ -63,5 +63,20 @@ describe("useBible", () => {
     expect(result.current.selectedBook).toBe("book1");
   });
 
- 
+  it("debería limpiar los resultados de búsqueda", () => {
+    const { result } = renderHook(() => useBible(), {
+      wrapper: BibleProvider,
+    });
+
+    act(() => {
+      result.current.searchBibleVerse("search query");
+    });
+
+    act(() => {
+      result.current.onClearSearch();
+    });
+
+    expect(result.current.searchResults).toBeNull();
+    expect(result.current.query).toBe("");
+  });
 });
