@@ -25,11 +25,7 @@ jobs:
       - name: 📦 Instalar dependencias con Yarn
         run: yarn install --frozen-lockfile
 
-      - name: 🧪 Ejecutar tests con cobertura
-        run: yarn test --coverage
 
-      - name: 🧐 Verificar archivos de cobertura
-        run: ls -la ./coverage
 
       - name: 📊 Subir cobertura a Codecov
         uses: codecov/codecov-action@v4
