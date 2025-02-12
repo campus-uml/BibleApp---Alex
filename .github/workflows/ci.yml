@@ -52,7 +52,7 @@ jobs:
 
       - name: 🔥 Iniciar Vite en segundo plano
         run: yarn dev &
-      
+
       - name: 🕒 Esperar a que Vite esté listo
         run: npx wait-on http://localhost:5173 --timeout 180000
 
@@ -65,6 +65,8 @@ jobs:
           parallel: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
 
   deploy:
     runs-on: ubuntu-latest
