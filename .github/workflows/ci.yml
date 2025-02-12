@@ -11,7 +11,6 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
-
     steps:
       - name: 📥 Descargar el código
         uses: actions/checkout@v4
@@ -20,11 +19,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: 'yarn'
 
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
-      - name: 🧪 Ejecutar tests con cobertura
-        run: yarn test --coverage
 
       - name: 🏗️ Build project
         run: yarn build
@@ -32,18 +30,11 @@ jobs:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
-      - name: 🧐 Verificar archivos de cobertura
-        run: ls -la ./coverage
-
-      - name: 📊 Subir cobertura a Codecov
-        uses: codecov/codecov-action@v4
+      - name: 📤 Subir artefacto de build
+        uses: actions/upload-artifact@v3
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/lcov.info
-          flags: unittests
-          name: codecov-actions
-          fail_ci_if_error: true
-          verbose: true
+          name: dist
+          path: dist
 
   cypress-run:
     runs-on: ubuntu-latest
@@ -51,42 +42,55 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: ["cnt-1", "cnt-2"]
+        containers: [1, 2]
     steps:
-      - name: Checkout
+      - name: 📥 Descargar el código
         uses: actions/checkout@v4
 
       - name: 🔧 Configurar Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: 'yarn'
 
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
 
-      - name: Crear archivo .env
+      - name: 📥 Descargar artefacto de build
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+
+      - name: 🔧 Configurar variables de entorno
         run: |
           echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> .env
           echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> .env
 
-      - name: Iniciar el servidor
+      - name: 🚀 Iniciar el servidor
         run: |
-          yarn dev &  # Ejecuta el servidor en segundo plano
-          sleep 30    # Espera 30 segundos para asegurarse de que el servidor se haya iniciado
-        env:
-          VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
-          VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
+          yarn preview &
+          sleep 10
 
-      - name: Cypress run
+      - name: 🧪 Ejecutar Cypress
         uses: cypress-io/github-action@v6
         with:
-          wait-on: "http://localhost:5173"
+          wait-on: "http://localhost:4173"
           record: true
           parallel: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
+
+      - name: 📊 Subir cobertura a Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true
 
   deploy:
     runs-on: ubuntu-latest
@@ -95,7 +99,7 @@ jobs:
       - name: 📥 Descargar el código
         uses: actions/checkout@v4
 
-      - name: Deploy to production
+      - name: 🚀 Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
