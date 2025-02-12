@@ -30,6 +30,16 @@ jobs:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
+      - name: 🚨 Ejecutar pruebas con Vitest y generar informe de cobertura
+        run: yarn test --coverage
+
+      - name: 📈 Subir cobertura a Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov-report/index.js 
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}  
+
   cypress-run:
     runs-on: ubuntu-latest
     needs: ci
