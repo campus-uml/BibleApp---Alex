@@ -23,6 +23,8 @@ jobs:
 
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
+      - name: 🧪 Ejecutar tests con cobertura
+        run: yarn test --coverage
 
       - name: 🏗️ Build project
         run: yarn build
@@ -30,15 +32,18 @@ jobs:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
-      - name: 🚨 Ejecutar pruebas con Vitest y generar informe de cobertura
-        run: yarn test --coverage
+      - name: 🧐 Verificar archivos de cobertura
+        run: ls -la ./coverage
 
-      - name: 📈 Subir cobertura a Codecov
-        uses: codecov/codecov-action@v3
+      - name: 📊 Subir cobertura a Codecov
+        uses: codecov/codecov-action@v4
         with:
-          file: ./coverage/lcov-report/index.js 
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}  
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-actions
+          fail_ci_if_error: true
+          verbose: true
 
   cypress-run:
     runs-on: ubuntu-latest
