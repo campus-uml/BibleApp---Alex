@@ -75,7 +75,7 @@ jobs:
       - name: 🧪 Ejecutar Cypress
         uses: cypress-io/github-action@v6
         with:
-          wait-on: "http://localhost:4173"
+          wait-on: "http://localhost:5173"
           record: true
           parallel: true
         env:
