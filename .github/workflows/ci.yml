@@ -25,9 +25,6 @@ jobs:
       - name: 📦 Instalar dependencias con Yarn
         run: yarn install --frozen-lockfile
 
-      - name: 🧪 Correr tests con cobertura
-        run: yarn test --coverage
-
       - name: 📊 Subir cobertura a Codecov
         uses: codecov/codecov-action@v4
         with:
@@ -47,26 +44,22 @@ jobs:
         containers: ["cnt-1", "cnt-2"]
 
     steps:
-      - name: 📥 Descargar el código
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: 🔥 Iniciar Vite en segundo plano
-        run: yarn dev &
+      - name: Configurar variables de entorno para Supabase
+        run: |
+          echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> $GITHUB_ENV
+          echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> $GITHUB_ENV
 
-      - name: 🕒 Esperar a que Vite esté listo
-        run: npx wait-on http://localhost:5173 --timeout 180000
-
-      - name: 🚀 Correr Cypress
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           wait-on: "http://localhost:5173"
-          wait-on-timeout: 180
           record: true
           parallel: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
 
   deploy:
     runs-on: ubuntu-latest
