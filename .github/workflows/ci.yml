@@ -22,7 +22,7 @@ jobs:
           node-version: "22"
 
       - name: 📦 Instalar dependencias
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
   cypress-run:
     runs-on: ubuntu-latest
@@ -35,10 +35,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Configurar variables de entorno para Supabase
+        run: |
+          echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> $GITHUB_ENV
+          echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> $GITHUB_ENV
+
+      - name: Iniciar el servidor
+        run: |
+          yarn dev &  # Ejecuta el servidor en segundo plano
+          sleep 10    # Espera 10 segundos para asegurarse de que el servidor se haya iniciado
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm run dev
           wait-on: "http://localhost:5173"
           record: true
           parallel: true
