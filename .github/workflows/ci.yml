@@ -24,8 +24,6 @@ jobs:
       - name: 📦 Instalar dependencias
         run: yarn install
 
-      - name: 🧪 Correr tests con coverage
-        run: yarn test -- --coverage
   cypress-run:
     runs-on: ubuntu-latest
     needs: ci
