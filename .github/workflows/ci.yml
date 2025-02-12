@@ -26,6 +26,9 @@ jobs:
 
       - name: 🏗️ Build project
         run: yarn build
+        env:
+          VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
+          VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
   cypress-run:
     runs-on: ubuntu-latest
@@ -46,15 +49,18 @@ jobs:
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
 
-      - name: Configurar variables de entorno para Supabase
+      - name: Crear archivo .env
         run: |
-          echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> $GITHUB_ENV
-          echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> $GITHUB_ENV
+          echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> .env
+          echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> .env
 
       - name: Iniciar el servidor
         run: |
           yarn dev &  # Ejecuta el servidor en segundo plano
           sleep 30    # Espera 30 segundos para asegurarse de que el servidor se haya iniciado
+        env:
+          VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
+          VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
@@ -64,6 +70,8 @@ jobs:
           parallel: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
+          VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
   deploy:
     runs-on: ubuntu-latest
