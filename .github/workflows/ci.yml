@@ -44,22 +44,9 @@ jobs:
         containers: ["cnt-1", "cnt-2"]
 
     steps:
-      - name: 📥 Descargar el código
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: 🔧 Configurar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: "yarn"
-
-      - name: 📦 Instalar dependencias con Yarn
-        run: yarn install --frozen-lockfile
-
-      - name: 🏗 Iniciar aplicación en segundo plano
-        run: yarn dev &
-
-      - name: 🧪 Ejecutar pruebas Cypress en paralelo
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           wait-on: "http://localhost:5173"
@@ -67,8 +54,6 @@ jobs:
           parallel: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -83,4 +68,3 @@ jobs:
         with:
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
           api-key: ${{ secrets.RENDER_API_KEY }}
-          wait-for-success: true
