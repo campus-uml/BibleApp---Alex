@@ -19,9 +19,8 @@ jobs:
       - name: 🔧 Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "yarn"
-
+          node-version: "22"
+       
       - name: 📦 Instalar dependencias con Yarn
         run: yarn install --frozen-lockfile
 
@@ -52,15 +51,28 @@ jobs:
           echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> $GITHUB_ENV
           echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> $GITHUB_ENV
 
+      - name: Cache Cypress dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
       - name: Iniciar el servidor
         run: |
           yarn dev &  # Ejecuta el servidor en segundo plano
-          sleep 10    # Espera 10 segundos para asegurarse de que el servidor se haya iniciado
+          until curl --silent --fail http://localhost:5173; do
+            echo "Esperando que el servidor esté listo..."
+            sleep 5
+          done
+          echo "Servidor listo"
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on: "http://localhost:5173"  # Asegúrate de que la URL y puerto coincidan con tu configuración
+          wait-on: "http://localhost:5173"
+          wait-on-timeout: 120  # Aumenta el tiempo de espera si es necesario
           record: true
           parallel: true
         env:
