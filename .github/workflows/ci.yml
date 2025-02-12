@@ -11,6 +11,7 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+
     steps:
       - name: 📥 Descargar el código
         uses: actions/checkout@v4
@@ -19,7 +20,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: 'yarn'
 
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
@@ -30,52 +30,42 @@ jobs:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
-      - name: 📤 Subir artefacto de build
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist
-
   cypress-run:
     runs-on: ubuntu-latest
     needs: ci
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: ["cnt-1", "cnt-2"]
     steps:
-      - name: 📥 Descargar el código
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: 🔧 Configurar Node
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: 'yarn'
 
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
 
-      - name: 📥 Descargar artefacto de build
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-          path: dist
-
-      - name: 🔧 Configurar variables de entorno
+      - name: Crear archivo .env
         run: |
           echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> .env
           echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> .env
 
-      - name: 🚀 Iniciar el servidor
+      - name: Iniciar el servidor
         run: |
-          yarn preview &
-          sleep 10
+          yarn dev &  # Ejecuta el servidor en segundo plano
+          sleep 30    # Espera 30 segundos para asegurarse de que el servidor se haya iniciado
+        env:
+          VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
+          VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
 
-      - name: 🧪 Ejecutar Cypress
+      - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          wait-on: "http://localhost:4173"
+          wait-on: "http://localhost:5173"
           record: true
           parallel: true
         env:
@@ -90,7 +80,7 @@ jobs:
       - name: 📥 Descargar el código
         uses: actions/checkout@v4
 
-      - name: 🚀 Deploy to production
+      - name: Deploy to production
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
