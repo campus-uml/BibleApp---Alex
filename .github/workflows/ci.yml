@@ -82,7 +82,7 @@ jobs:
           name: codecov-actions
           fail_ci_if_error: true
           verbose: true
-          branch: main
+          override_branch: main
   deploy:
     runs-on: ubuntu-latest
     needs: cypress-run
