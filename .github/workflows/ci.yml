@@ -24,8 +24,19 @@ jobs:
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
 
+      - name: 🔑 Crear archivo .env
+        run: |
+          echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> .env
+          echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> .env
+
       - name: 🧪 Correr tests con coverage
-        run: npm run test -- --coverage
+        run: yarn test --coverage
+        env:
+          VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
+          VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
+
+      - name: 📊 Verificar si Codecov generó `lcov.info`
+        run: ls -lah coverage/ && cat coverage/lcov.info || echo "lcov.info no encontrado"
 
       - name: 📊 Subir los resultados a Codecov
         uses: codecov/codecov-action@v4
@@ -37,7 +48,6 @@ jobs:
       - name: 📋 Subir los detalles de los test a Codecov
         if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
-
       - name: 🏗️ Build project
         run: yarn build
         env:
