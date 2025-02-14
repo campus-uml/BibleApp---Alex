@@ -73,7 +73,7 @@ jobs:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
       - name: 🧪 Correr tests con coverage
-        run: yarn test -- --coverage
+        run: yarn test --coverage
 
       - name: 📊 Subir los resultados a Codecov
         uses: codecov/codecov-action@v4
@@ -81,6 +81,7 @@ jobs:
           file: ./coverage/lcov.info
           flags: unittests
           name: codecov-actions
+          branch: main
 
       - name: 📋 Subir los detalles de los test a Codecov
         if: ${{ !cancelled() }}
