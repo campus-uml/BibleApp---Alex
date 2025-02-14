@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
       coverage: {
         provider: "v8",
         reporter: ['text', 'lcov'],
+        reportsDirectory: './coverage'
       },
     },
     define: {
