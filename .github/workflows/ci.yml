@@ -49,6 +49,20 @@ jobs:
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
 
+      - name: 🧪 Correr tests con coverage
+        run: yarn test --coverage
+
+      - name: 📊 Subir los resultados a Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-actions
+
+      - name: 📋 Subir los detalles de los test a Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+
       - name: Crear archivo .env
         run: |
           echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> .env
@@ -72,20 +86,6 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
-      - name: 🧪 Correr tests con coverage
-        run: yarn test --coverage
-
-      - name: 📊 Subir los resultados a Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          file: ./coverage/lcov.info
-          flags: unittests
-          name: codecov-actions
-          branch: main
-
-      - name: 📋 Subir los detalles de los test a Codecov
-        if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
 
   deploy:
     runs-on: ubuntu-latest
