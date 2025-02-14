@@ -18,8 +18,6 @@ export default defineConfig(({ mode }) => {
       setupFiles: ["./setupTest.ts"],
       coverage: {
         provider: "v8",
-        reporter: ['text', 'lcov'],
-        reportsDirectory: './coverage'
       },
     },
     define: {

@@ -24,6 +24,20 @@ jobs:
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
 
+      - name: 🧪 Correr tests con coverage
+        run: npm run test -- --coverage
+
+      - name: 📊 Subir los resultados a Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-actions
+
+      - name: 📋 Subir los detalles de los test a Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+
       - name: 🏗️ Build project
         run: yarn build
         env:
@@ -48,20 +62,6 @@ jobs:
 
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
-
-      - name: 🧪 Correr tests con coverage
-        run: yarn test --coverage
-
-      - name: 📊 Subir los resultados a Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          file: ./coverage/lcov.info
-          flags: unittests
-          name: codecov-actions
-
-      - name: 📋 Subir los detalles de los test a Codecov
-        if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
 
       - name: Crear archivo .env
         run: |
