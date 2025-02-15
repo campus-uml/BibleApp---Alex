@@ -11,7 +11,8 @@ export const AboutModal = () => {
           ?
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-transparent border-none">
+      <DialogContent  className="sm:max-w-[425px] bg-transparent border-none">
+        
         <DialogTitle className="text-2xl font-semibold text-center text-white">
           Acerca del Desarrollador
         </DialogTitle>
