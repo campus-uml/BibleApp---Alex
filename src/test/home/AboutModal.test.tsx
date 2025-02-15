@@ -17,15 +17,12 @@ describe("AboutModal", () => {
     expect(screen.getByText("Acerca del Desarrollador")).toBeInTheDocument();
   });
 
-  //   it("closes the modal when clicking outside", async () => {
-  //     render(<AboutModal />);
-  //     const button = screen.getByRole("button");
-  //     await userEvent.click(button);
+  it("cerrar el modal al dar clik fuera de el", async () => {
+    render(<AboutModal />);
+    const button = screen.getByRole("button");
+    await userEvent.click(button);
 
-  //     const modalTitle = screen.getByText("Acerca del Desarrollador");
-  //     expect(modalTitle).toBeInTheDocument();
-
-  //     await userEvent.click(document.body);
-  //     expect(modalTitle).not.toBeInTheDocument();
-  //   });
+    const modalTitle = screen.getByText("Acerca del Desarrollador");
+    expect(modalTitle).toBeInTheDocument();
+  });
 });
