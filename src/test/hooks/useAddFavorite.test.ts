@@ -26,7 +26,11 @@ vi.mock("@/constants/api", () => ({
           error: null,
         })),
       })),
-      delete: vi.fn(() => ({ error: null })),
+      delete: vi.fn(() => ({
+        eq: vi.fn(() => ({
+          eq: vi.fn(() => ({ data: [], error: null })),
+        })),
+      })),
     })),
   },
 }));
@@ -57,5 +61,20 @@ describe("Pruebas en useAddFavorite", () => {
     });
 
     expect(result.current.favorites).toEqual([verse]);
+  });
+
+  it("debería eliminar un favorito", async () => {
+    const { result } = renderHook(() => useAddFavorite());
+    const verse = { id: "verse1", text: "Verse text", reference: "1:1" };
+
+    await act(async () => {
+      await result.current.addFavorite(verse);
+    });
+
+    await act(async () => {
+      await result.current.removeFavorite("verse1");
+    });
+
+    expect(result.current.favorites).toEqual([]);
   });
 });
