@@ -87,6 +87,100 @@ describe("Pruebas en BibleVerse", () => {
     expect(screen.getByText("Resultados de búsqueda")).toBeInTheDocument();
   });
 
+  it("debería renderizar un mensaje cuando no hay resultados de búsqueda disponibles", () => {
+    const mockSearchResults = null;
+    const mockClearSearch = vi.fn();
+    const mockAddFavorite = vi.fn();
+    const mockRemoveFavorite = vi.fn();
+    const mockFavorites: {
+      id: string;
+      reference: string;
+      text: string;
+      orgId: string;
+      bookId: string;
+      bibleId: string;
+      chapterId: string;
+    }[] = [];
+
+    (useBible as Mock).mockReturnValue({
+      bibleVerseChapters: [],
+      chapterVerses: [],
+      loadChapterVerses: vi.fn(),
+      scrollAreaRef: null,
+      selectedBook: "genesis",
+      bibleVerse: [],
+    });
+    (useActions as Mock).mockReturnValue({
+      copyToClipboard: vi.fn(),
+      shareToWhatsApp: vi.fn(),
+    });
+
+    render(
+      <BibleVerse
+        searchResults={mockSearchResults}
+        onClearSearch={mockClearSearch}
+        addFavorite={mockAddFavorite}
+        removeFavorite={mockRemoveFavorite}
+        favorites={mockFavorites}
+      />
+    );
+
+    expect(screen.getByText("No hay versículos aún")).toBeInTheDocument();
+  });
+  // it("debería renderizar el nombre del libro y capítulo seleccionado", async () => {
+  //   const mockSearchResults = null;
+  //   const mockClearSearch = vi.fn();
+  //   const mockAddFavorite = vi.fn();
+  //   const mockRemoveFavorite = vi.fn();
+  //   const mockFavorites: {
+  //     id: string;
+  //     reference: string;
+  //     text: string;
+  //     orgId: string;
+  //     bookId: string;
+  //     bibleId: string;
+  //     chapterId: string;
+  //   }[] = [];
+  
+  //   (useBible as Mock).mockReturnValue({
+  //     bibleVerseChapters: [],
+  //     chapterVerses: [],
+  //     loadChapterVerses: vi.fn(),
+  //     scrollAreaRef: null,
+  //     selectedBook: "genesis", // 'genesis' en minúsculas
+  //     selectedChapter: 1,
+  //     bibleVerse: [
+  //       {
+  //         id: "1",
+  //         name: "Génesis", // 'Génesis' con mayúscula en la respuesta
+  //         abbreviation: "Gn",
+  //         chapters: 50,
+  //         orgId: "1",
+  //         bibleId: "1",
+  //       },
+  //     ],
+  //   });
+  
+  //   (useActions as Mock).mockReturnValue({
+  //     copyToClipboard: vi.fn(),
+  //     shareToWhatsApp: vi.fn(),
+  //   });
+  
+  //   render(
+  //     <BibleVerse
+  //       searchResults={mockSearchResults}
+  //       onClearSearch={mockClearSearch}
+  //       addFavorite={mockAddFavorite}
+  //       removeFavorite={mockRemoveFavorite}
+  //       favorites={mockFavorites}
+  //     />
+  //   );
+  
+  //   // Usa findByText y espera que el texto esté en el documento
+  //   expect(await screen.findByText("Génesis")).toBeInTheDocument();
+  //   expect(await screen.findByText("Capítulo 1")).toBeInTheDocument();
+  // });
+  
 
   
 });
