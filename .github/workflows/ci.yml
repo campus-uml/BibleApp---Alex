@@ -28,12 +28,16 @@ jobs:
         run: |
           echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> .env
           echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> .env
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
+          echo "API_URL=${{ secrets.API_URL }}" >> .env
 
       - name: 🧪 Correr tests con coverage
         run: yarn test --coverage
         env:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_URL: ${{ secrets.API_URL }}
 
       - name: 📊 Verificar si Codecov generó `lcov.info`
         run: ls -lah coverage/ && cat coverage/lcov.info || echo "lcov.info no encontrado"
@@ -49,11 +53,14 @@ jobs:
       - name: 📋 Subir los detalles de los test a Codecov
         if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
+
       - name: 🏗️ Build project
         run: yarn build
         env:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_URL: ${{ secrets.API_URL }}
 
   cypress-run:
     runs-on: ubuntu-latest
@@ -63,7 +70,7 @@ jobs:
       matrix:
         containers: ["cnt-1", "cnt-2"]
     steps:
-      - name: Checkout
+      - name: 📥 Descargar el código
         uses: actions/checkout@v4
 
       - name: 🔧 Configurar Node
@@ -74,20 +81,24 @@ jobs:
       - name: 📦 Instalar dependencias
         run: yarn install --frozen-lockfile
 
-      - name: Crear archivo .env
+      - name: 🔑 Crear archivo .env
         run: |
           echo "VITE_API_SUPABASE_URL=${{ secrets.VITE_API_SUPABASE_URL }}" >> .env
           echo "VITE_API_SUPABASE_ANON_KEY=${{ secrets.VITE_API_SUPABASE_ANON_KEY }}" >> .env
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
+          echo "API_URL=${{ secrets.API_URL }}" >> .env
 
-      - name: Iniciar el servidor
+      - name: 🚀 Iniciar el servidor
         run: |
           yarn dev &  # Ejecuta el servidor en segundo plano
           sleep 30    # Espera 30 segundos para asegurarse de que el servidor se haya iniciado
         env:
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_URL: ${{ secrets.API_URL }}
 
-      - name: Cypress run
+      - name: 🧪 Ejecutar Cypress tests
         uses: cypress-io/github-action@v6
         with:
           wait-on: "http://localhost:5173"
@@ -97,6 +108,8 @@ jobs:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           VITE_API_SUPABASE_URL: ${{ secrets.VITE_API_SUPABASE_URL }}
           VITE_API_SUPABASE_ANON_KEY: ${{ secrets.VITE_API_SUPABASE_ANON_KEY }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_URL: ${{ secrets.API_URL }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -105,7 +118,7 @@ jobs:
       - name: 📥 Descargar el código
         uses: actions/checkout@v4
 
-      - name: Deploy to production
+      - name: 🚀 Deploy a producción
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
