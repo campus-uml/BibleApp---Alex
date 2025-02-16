@@ -79,4 +79,19 @@ describe("useBible", () => {
     expect(result.current.searchResults).toBeNull();
     expect(result.current.query).toBe("");
   });
+
+  it("debería obtener un pasaje aleatorio", async () => {
+    const mockPassage = { content: "Random passage" };
+    vi.mocked(getData.getRamdonPassage).mockResolvedValue({
+      data: mockPassage,
+    });
+
+    const { result, waitForNextUpdate } = renderHook(() => useBible(), {
+      wrapper: BibleProvider,
+    });
+
+    await waitForNextUpdate();
+
+    expect(result.current.passage).toEqual(mockPassage);
+  });
 });
