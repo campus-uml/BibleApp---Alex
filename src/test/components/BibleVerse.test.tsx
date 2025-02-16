@@ -86,4 +86,7 @@ describe("Pruebas en BibleVerse", () => {
 
     expect(screen.getByText("Resultados de búsqueda")).toBeInTheDocument();
   });
+
+
+  
 });
