@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach, Mock, beforeAll } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach, Mock } from "vitest";
 import axios from "axios";
 import {
   getBibles,
@@ -11,14 +11,12 @@ import {
 vi.mock("axios");
 
 describe("Bible API Service", () => {
-  let apiKey: string;
-  let apiUrl: string;
-
-  beforeAll(() => {
-    process.env.VITE_API_KEY = "38df74b1430e95a95cace0a192e306f4";
-    process.env.VITE_API_URL = "https://api.scripture.api.bible/v1/bibles/592420522e16049f-01";
-    apiKey = process.env.VITE_API_KEY!;
-    apiUrl = process.env.VITE_API_URL!;
+  beforeEach(() => {
+    vi.stubEnv("VITE_API_KEY", "38df74b1430e95a95cace0a192e306f4");
+    vi.stubEnv(
+      "VITE_API_URL",
+      "https://api.scripture.api.bible/v1/bibles/592420522e16049f-01"
+    );
   });
 
   afterEach(() => {
@@ -31,9 +29,10 @@ describe("Bible API Service", () => {
 
     const result = await getBibles();
     expect(result).toEqual(mockData);
-    expect(axios.get).toHaveBeenCalledWith(`${apiUrl}/books`, {
-      headers: { "api-key": apiKey },
-    });
+    expect(axios.get).toHaveBeenCalledWith(
+      `${process.env.VITE_API_URL}/books`,
+      { headers: { "api-key": process.env.VITE_API_KEY } }
+    );
   });
 
   it("should fetch chapters", async () => {
@@ -44,10 +43,8 @@ describe("Bible API Service", () => {
     const result = await getChapters(bookId);
     expect(result).toEqual(mockData);
     expect(axios.get).toHaveBeenCalledWith(
-      `${apiUrl}/books/${bookId}/chapters`,
-      {
-        headers: { "api-key": apiKey },
-      }
+      `${process.env.VITE_API_URL}/books/${bookId}/chapters`,
+      { headers: { "api-key": process.env.VITE_API_KEY } }
     );
   });
 
@@ -59,8 +56,8 @@ describe("Bible API Service", () => {
     const result = await getRamdonPassage(passageId);
     expect(result).toEqual(mockData);
     expect(axios.get).toHaveBeenCalledWith(
-      `${apiUrl}/verses/${passageId}?content-type=text`,
-      { headers: { "api-key": apiKey } }
+      `${process.env.VITE_API_URL}/verses/${passageId}?content-type=text`,
+      { headers: { "api-key": process.env.VITE_API_KEY } }
     );
   });
 
@@ -71,9 +68,10 @@ describe("Bible API Service", () => {
 
     const result = await loadChapterVersesFromAPI(chapterId);
     expect(result).toEqual(mockData);
-    expect(axios.get).toHaveBeenCalledWith(`${apiUrl}/chapters/${chapterId}`, {
-      headers: { "api-key": apiKey },
-    });
+    expect(axios.get).toHaveBeenCalledWith(
+      `${process.env.VITE_API_URL}/chapters/${chapterId}`,
+      { headers: { "api-key": process.env.VITE_API_KEY } }
+    );
   });
 
   it("should search bible", async () => {
@@ -83,9 +81,12 @@ describe("Bible API Service", () => {
 
     const result = await searchBible(query);
     expect(result).toEqual(mockData);
-    expect(axios.get).toHaveBeenCalledWith(`${apiUrl}/search?`, {
-      headers: { "api-key": apiKey },
-      params: { query, limit: 10 },
-    });
+    expect(axios.get).toHaveBeenCalledWith(
+      `${process.env.VITE_API_URL}/search?`,
+      {
+        headers: { "api-key": process.env.VITE_API_KEY },
+        params: { query, limit: 10 },
+      }
+    );
   });
 });
