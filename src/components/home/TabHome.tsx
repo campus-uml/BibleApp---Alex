@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Welcome from "./Welcome";
 import BibleVerse from "../BibleVerse";
@@ -15,10 +14,7 @@ export const TabHome = () => {
     favorites,
     addFavorite,
     removeFavorite,
-
   } = useBible();
-
-
 
   const [activeTab, setActiveTab] = useState("Inicio");
 
@@ -56,13 +52,15 @@ export const TabHome = () => {
             Lectura
           </TabsTrigger>
           <TabsTrigger
+            data-testid="favoritos-tab"
             value="favoritos"
+            role="tab"
             className="relative flex-1 px-2 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm font-medium rounded-md data-[state=active]:bg-slate-900 data-[state=active]:text-slate-50"
           >
             <Heart className="w-4 h-4 mr-1" />
             {favorites.length > 0 && (
               <span className="absolute -top-1 right-2  bg-red-500 text-white text-xs font-bold px-1 py-0.5 rounded-full min-w-[1rem] flex items-center justify-center">
-              {favorites.length}
+                {favorites.length}
               </span>
             )}
           </TabsTrigger>
@@ -71,7 +69,7 @@ export const TabHome = () => {
           <TabsContent value="Inicio" className="p-2 sm:p-4 bg-card rounded-lg">
             <Welcome activeTab={activeTab} handleTabChange={handleTabChange} />
           </TabsContent>
-          <TabsContent value="lectura" >
+          <TabsContent value="lectura">
             <BibleVerse
               searchResults={searchResults}
               onClearSearch={onClearSearch}
@@ -80,16 +78,26 @@ export const TabHome = () => {
               removeFavorite={removeFavorite}
             />
           </TabsContent>
-          <TabsContent value="favoritos" className="p-2 sm:p-4 bg-card rounded-lg">
-            <h2 className="text-xl sm:text-2xl font-bold mb-3 dark:text-slate-50">Favoritos</h2>
+          <TabsContent
+            value="favoritos"
+            className="p-2 sm:p-4 bg-card rounded-lg"
+          >
+            <h2 className="text-xl sm:text-2xl font-bold mb-3 dark:text-slate-50">
+              Favoritos
+            </h2>
             {favorites.length > 0 ? (
               <div className="grid gap-2 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {favorites.map((favorite, index) => (
-                  <div key={index} className=" p-3 rounded-lg shadow-md dark:border dark:border-slate-800">
+                  <div
+                    key={index}
+                    className=" p-3 rounded-lg shadow-md dark:border dark:border-slate-800"
+                  >
                     <p className="text-sm text-slate-500 font-semibold mb-2 dark:text-slate-300">
                       {favorite.reference}
                     </p>
-                    <p className="text-sm text-slate-800 dark:text-white">{favorite.text}</p>
+                    <p className="text-sm text-slate-800 dark:text-white">
+                      {favorite.text}
+                    </p>
                     <div className="flex justify-between items-center mt-3">
                       <Button
                         variant="ghost"
@@ -99,7 +107,11 @@ export const TabHome = () => {
                       >
                         <Heart className="w-4 h-4" />
                       </Button>
-                      <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-blue-500 hover:text-blue-600"
+                      >
                         <Share2 className="w-4 h-4" />
                       </Button>
                     </div>
@@ -109,9 +121,16 @@ export const TabHome = () => {
             ) : (
               <div className="text-center py-8">
                 <Heart className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-                <p className="text-lg font-semibold text-slate-600">No hay favoritos aún</p>
-                <p className="text-slate-500 mb-4">Guarda tus versículos favoritos</p>
-                <Button onClick={() => handleTabChange("lectura")} className="bg-slate-900 text-white dark:bg-slate-800">
+                <p className="text-lg font-semibold text-slate-600">
+                  No hay favoritos aún
+                </p>
+                <p className="text-slate-500 mb-4">
+                  Guarda tus versículos favoritos
+                </p>
+                <Button
+                  onClick={() => handleTabChange("lectura")}
+                  className="bg-slate-900 text-white dark:bg-slate-800"
+                >
                   Ir a Lectura
                 </Button>
               </div>
