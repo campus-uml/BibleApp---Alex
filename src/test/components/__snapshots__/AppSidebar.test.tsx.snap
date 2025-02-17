@@ -1,0 +1,240 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AppSidebar Component > should render sidebar after loading 1`] = `
+<DocumentFragment>
+  <div
+    class="group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar"
+    style="--sidebar-width: 16rem; --sidebar-width-icon: 3rem;"
+  >
+    <div
+      class="group peer hidden md:block text-sidebar-foreground"
+      data-collapsible=""
+      data-side="left"
+      data-state="expanded"
+      data-variant="sidebar"
+    >
+      <div
+        class="duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear group-data-[collapsible=offcanvas]:w-0 group-data-[side=right]:rotate-180 group-data-[collapsible=icon]:w-[--sidebar-width-icon]"
+      />
+      <div
+        class="duration-200 fixed inset-y-0 z-10 hidden h-svh w-[--sidebar-width] transition-[left,right,width] ease-linear md:flex left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)] group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l"
+      >
+        <div
+          class="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
+          data-sidebar="sidebar"
+        >
+          <div
+            class="gap-2 flex flex-col space-y-2 p-2"
+            data-sidebar="header"
+          >
+            <div
+              class="flex items-center justify-between"
+            >
+              <a
+                class="peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none ring-sidebar-ring transition-[width,height,padding] focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground h-7 text-xs flex items-center space-x-2"
+                data-active="false"
+                data-sidebar="menu-button"
+                data-size="sm"
+                href="#"
+              >
+                <div
+                  class="flex aspect-square size-8"
+                >
+                  <img
+                    class="bg-transparent dark:invert"
+                    src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3e%3cpath%20d='M3%2019a9%209%200%200%201%209%200%209%209%200%200%201%209%200'/%3e%3cpath%20d='M3%206a9%209%200%200%201%209%200%209%209%200%200%201%209%200'/%3e%3cline%20x1='3'%20y1='6'%20x2='3'%20y2='19'/%3e%3cline%20x1='12'%20y1='6'%20x2='12'%20y2='19'/%3e%3cline%20x1='21'%20y1='6'%20x2='21'%20y2='19'/%3e%3c/svg%3e"
+                  />
+                </div>
+                <span
+                  class="font-semibold"
+                >
+                  BibleApp
+                </span>
+              </a>
+              <div
+                class="flex items-center space-x-2"
+              >
+                <button
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 w-9"
+                  data-state="closed"
+                >
+                  <svg
+                    class="lucide lucide-search h-4 w-4"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="11"
+                      cy="11"
+                      r="8"
+                    />
+                    <path
+                      d="m21 21-4.3-4.3"
+                    />
+                  </svg>
+                </button>
+                <button
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:text-accent-foreground h-9 w-9 rounded-full hover:bg-accent transition-all duration-300 ease-in-out"
+                  data-state="closed"
+                  id="radix-:r1:"
+                  type="button"
+                >
+                  <span
+                    class="relative flex shrink-0 overflow-hidden rounded-full h-8 w-8 transition-transform duration-300 ease-in-out hover:scale-110"
+                  >
+                    <span
+                      class="flex h-full w-full items-center justify-center rounded-full bg-primary text-primary-foreground"
+                    >
+                      ?
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden"
+            data-sidebar="content"
+          >
+            <div
+              class="relative flex w-full min-w-0 flex-col p-2"
+              data-sidebar="group"
+            >
+              <ul
+                class="flex w-full min-w-0 flex-col gap-1"
+                data-sidebar="menu"
+              >
+                <div
+                  class="w-full"
+                  data-orientation="horizontal"
+                  dir="ltr"
+                >
+                  <div
+                    aria-orientation="horizontal"
+                    class="h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground grid w-full grid-cols-3 mb-4"
+                    data-orientation="horizontal"
+                    role="tablist"
+                    style="outline: none;"
+                    tabindex="-1"
+                  >
+                    <button
+                      aria-controls="radix-:r3:-content-Antiguo"
+                      aria-selected="true"
+                      class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+                      data-orientation="horizontal"
+                      data-radix-collection-item=""
+                      data-state="active"
+                      id="radix-:r3:-trigger-Antiguo"
+                      role="tab"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      Antiguo
+                    </button>
+                    <button
+                      aria-controls="radix-:r3:-content-Nuevo"
+                      aria-selected="false"
+                      class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+                      data-orientation="horizontal"
+                      data-radix-collection-item=""
+                      data-state="inactive"
+                      id="radix-:r3:-trigger-Nuevo"
+                      role="tab"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      Nuevo
+                    </button>
+                    <button
+                      aria-controls="radix-:r3:-content-Frecuentes"
+                      aria-selected="false"
+                      class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+                      data-orientation="horizontal"
+                      data-radix-collection-item=""
+                      data-state="inactive"
+                      id="radix-:r3:-trigger-Frecuentes"
+                      role="tab"
+                      tabindex="-1"
+                      type="button"
+                    >
+                      Frecuentes
+                    </button>
+                  </div>
+                  <div
+                    aria-labelledby="radix-:r3:-trigger-Antiguo"
+                    class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    data-orientation="horizontal"
+                    data-state="active"
+                    id="radix-:r3:-content-Antiguo"
+                    role="tabpanel"
+                    style="animation-duration: 0s;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="relative overflow-hidden h-[80vh] w-full rounded-md border"
+                      dir="ltr"
+                      style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"
+                    >
+                      <style>
+                        [data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}
+                      </style>
+                      <div
+                        class="h-full w-full rounded-[inherit]"
+                        data-radix-scroll-area-viewport=""
+                        style="overflow-x: hidden; overflow-y: hidden;"
+                      >
+                        <div
+                          style="min-width: 100%; display: table;"
+                        >
+                          <div
+                            class="p-4"
+                          >
+                            <p
+                              class="text-muted-foreground"
+                            >
+                              No se encontraron libros
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    aria-labelledby="radix-:r3:-trigger-Nuevo"
+                    class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    data-orientation="horizontal"
+                    data-state="inactive"
+                    hidden=""
+                    id="radix-:r3:-content-Nuevo"
+                    role="tabpanel"
+                    tabindex="0"
+                  />
+                  <div
+                    aria-labelledby="radix-:r3:-trigger-Frecuentes"
+                    class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    data-orientation="horizontal"
+                    data-state="inactive"
+                    hidden=""
+                    id="radix-:r3:-content-Frecuentes"
+                    role="tabpanel"
+                    tabindex="0"
+                  />
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AboutModal > abre el modal al hacer clic en el botón 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="radix-:r3:"
+    aria-expanded="true"
+    aria-haspopup="dialog"
+    class="justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center gap-2 dark:text-slate-50"
+    data-state="open"
+    type="button"
+  >
+    ?
+  </button>
+</DocumentFragment>
+`;
+
+exports[`AboutModal > cerrar el modal al dar clik fuera de el 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="radix-:r6:"
+    aria-expanded="true"
+    aria-haspopup="dialog"
+    class="justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center gap-2 dark:text-slate-50"
+    data-state="open"
+    type="button"
+  >
+    ?
+  </button>
+</DocumentFragment>
+`;
+
+exports[`AboutModal > renderiza el botón del modal 1`] = `
+<DocumentFragment>
+  <button
+    aria-controls="radix-:r0:"
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    class="justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center gap-2 dark:text-slate-50"
+    data-state="closed"
+    type="button"
+  >
+    ?
+  </button>
+</DocumentFragment>
+`;

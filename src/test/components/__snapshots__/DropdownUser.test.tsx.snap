@@ -1,0 +1,26 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DropdownUser > renders fallback avatar when no avatarUrl is provided 1`] = `
+<DocumentFragment>
+  <div>
+    <button
+      aria-expanded="false"
+      aria-haspopup="menu"
+      class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:text-accent-foreground h-9 w-9 rounded-full hover:bg-accent transition-all duration-300 ease-in-out"
+      data-state="closed"
+      id="radix-:r0:"
+      type="button"
+    >
+      <span
+        class="relative flex shrink-0 overflow-hidden rounded-full h-8 w-8 transition-transform duration-300 ease-in-out hover:scale-110"
+      >
+        <span
+          class="flex h-full w-full items-center justify-center rounded-full bg-primary text-primary-foreground"
+        >
+          J
+        </span>
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;

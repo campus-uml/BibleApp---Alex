@@ -34,7 +34,7 @@ vi.mock("@/components/login/LogoutButton", () => ({
 
 describe("DropdownUser", () => {
   it("renders fallback avatar when no avatarUrl is provided", () => {
-    render(
+    const { asFragment } = render(
       <AuthProvider>
         <DropdownUser avatarUrl={null} />
       </AuthProvider>
@@ -42,5 +42,6 @@ describe("DropdownUser", () => {
     const avatarButton = screen.getByRole("button");
     expect(avatarButton).toBeInTheDocument();
     expect(avatarButton).toHaveTextContent("J");
+    expect(asFragment()).toMatchSnapshot();
   });
 });

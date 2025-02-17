@@ -1,0 +1,1393 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Pruebas en el componente Welcome.tsx > debe renderizar el componente welcome 1`] = `
+<DocumentFragment>
+  <div
+    class="space-y-6"
+  >
+    <div
+      class="rounded-xl border bg-card text-card-foreground shadow w-full"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-6"
+      >
+        <div
+          class="tracking-tight text-3xl font-bold text-center"
+        >
+          Bienvenido a la BibliaApp
+        </div>
+        <div
+          class="text-muted-foreground text-center text-lg"
+        >
+          Explora, estudia y comparte la palabra de Dios
+        </div>
+      </div>
+      <div
+        class="p-6 pt-0 text-center"
+      >
+        <p
+          class="text-muted-foreground"
+        >
+          Selecciona un libro de la Biblia para comenzar a leer o utiliza la búsqueda para encontrar versículos específicos.
+        </p>
+      </div>
+      <div
+        class="items-center p-6 pt-0 flex justify-center space-x-4"
+      >
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+          value="lectura"
+        >
+          <svg
+            class="lucide lucide-book-open w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 7v14"
+            />
+            <path
+              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+            />
+          </svg>
+          <span>
+            Leer
+          </span>
+        </button>
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+        >
+          <svg
+            class="lucide lucide-search w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+            />
+            <path
+              d="m21 21-4.3-4.3"
+            />
+          </svg>
+          <span>
+            Usa el buscador
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+    >
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Versículo del Día
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0 space-y-2"
+        >
+          <p
+            class="italic text-slate-800 dark:text-slate-200 "
+          >
+            Por que Dios amo al mundo...
+          </p>
+          <h3
+            class="text-sm text-muted-foreground"
+          >
+            Juan 3:16
+          </h3>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-heart w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            Guardar
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Lectura Recomendada
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Explora el Libro de los Salmos, una colección de poemas y canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-book-marked w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2v8l3-3 3 3V2"
+              />
+              <path
+                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+              />
+            </svg>
+            Comenzar Lectura
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow md:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Guía de Estudio
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Descubre cómo realizar un estudio bíblico efectivo con nuestra guía paso a paso. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            Ver Guía
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pruebas en el componente Welcome.tsx > elimina de favoritos cuando se hace clic nuevamente en el botón 'Guardar' 1`] = `
+<DocumentFragment>
+  <div
+    class="space-y-6"
+  >
+    <div
+      class="rounded-xl border bg-card text-card-foreground shadow w-full"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-6"
+      >
+        <div
+          class="tracking-tight text-3xl font-bold text-center"
+        >
+          Bienvenido a la BibliaApp
+        </div>
+        <div
+          class="text-muted-foreground text-center text-lg"
+        >
+          Explora, estudia y comparte la palabra de Dios
+        </div>
+      </div>
+      <div
+        class="p-6 pt-0 text-center"
+      >
+        <p
+          class="text-muted-foreground"
+        >
+          Selecciona un libro de la Biblia para comenzar a leer o utiliza la búsqueda para encontrar versículos específicos.
+        </p>
+      </div>
+      <div
+        class="items-center p-6 pt-0 flex justify-center space-x-4"
+      >
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+          value="lectura"
+        >
+          <svg
+            class="lucide lucide-book-open w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 7v14"
+            />
+            <path
+              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+            />
+          </svg>
+          <span>
+            Leer
+          </span>
+        </button>
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+        >
+          <svg
+            class="lucide lucide-search w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+            />
+            <path
+              d="m21 21-4.3-4.3"
+            />
+          </svg>
+          <span>
+            Usa el buscador
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+    >
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Versículo del Día
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0 space-y-2"
+        >
+          <p
+            class="italic text-slate-800 dark:text-slate-200 "
+          >
+            Por que Dios amo al mundo...
+          </p>
+          <h3
+            class="text-sm text-muted-foreground"
+          >
+            Juan 3:16
+          </h3>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-heart w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            Guardar
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Lectura Recomendada
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Explora el Libro de los Salmos, una colección de poemas y canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-book-marked w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2v8l3-3 3 3V2"
+              />
+              <path
+                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+              />
+            </svg>
+            Comenzar Lectura
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow md:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Guía de Estudio
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Descubre cómo realizar un estudio bíblico efectivo con nuestra guía paso a paso. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            Ver Guía
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pruebas en el componente Welcome.tsx > llama a handleTabChange cuando se hace clic en el botón 'Leer' 1`] = `
+<DocumentFragment>
+  <div
+    class="space-y-6"
+  >
+    <div
+      class="rounded-xl border bg-card text-card-foreground shadow w-full"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-6"
+      >
+        <div
+          class="tracking-tight text-3xl font-bold text-center"
+        >
+          Bienvenido a la BibliaApp
+        </div>
+        <div
+          class="text-muted-foreground text-center text-lg"
+        >
+          Explora, estudia y comparte la palabra de Dios
+        </div>
+      </div>
+      <div
+        class="p-6 pt-0 text-center"
+      >
+        <p
+          class="text-muted-foreground"
+        >
+          Selecciona un libro de la Biblia para comenzar a leer o utiliza la búsqueda para encontrar versículos específicos.
+        </p>
+      </div>
+      <div
+        class="items-center p-6 pt-0 flex justify-center space-x-4"
+      >
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+          value="lectura"
+        >
+          <svg
+            class="lucide lucide-book-open w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 7v14"
+            />
+            <path
+              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+            />
+          </svg>
+          <span>
+            Leer
+          </span>
+        </button>
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+        >
+          <svg
+            class="lucide lucide-search w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+            />
+            <path
+              d="m21 21-4.3-4.3"
+            />
+          </svg>
+          <span>
+            Usa el buscador
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+    >
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Versículo del Día
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0 space-y-2"
+        >
+          <p
+            class="italic text-slate-800 dark:text-slate-200 "
+          >
+            Por que Dios amo al mundo...
+          </p>
+          <h3
+            class="text-sm text-muted-foreground"
+          >
+            Juan 3:16
+          </h3>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-heart w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            Guardar
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Lectura Recomendada
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Explora el Libro de los Salmos, una colección de poemas y canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-book-marked w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2v8l3-3 3 3V2"
+              />
+              <path
+                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+              />
+            </svg>
+            Comenzar Lectura
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow md:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Guía de Estudio
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Descubre cómo realizar un estudio bíblico efectivo con nuestra guía paso a paso. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            Ver Guía
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pruebas en el componente Welcome.tsx > muestra el contenido y la referencia del pasaje 1`] = `
+<DocumentFragment>
+  <div
+    class="space-y-6"
+  >
+    <div
+      class="rounded-xl border bg-card text-card-foreground shadow w-full"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-6"
+      >
+        <div
+          class="tracking-tight text-3xl font-bold text-center"
+        >
+          Bienvenido a la BibliaApp
+        </div>
+        <div
+          class="text-muted-foreground text-center text-lg"
+        >
+          Explora, estudia y comparte la palabra de Dios
+        </div>
+      </div>
+      <div
+        class="p-6 pt-0 text-center"
+      >
+        <p
+          class="text-muted-foreground"
+        >
+          Selecciona un libro de la Biblia para comenzar a leer o utiliza la búsqueda para encontrar versículos específicos.
+        </p>
+      </div>
+      <div
+        class="items-center p-6 pt-0 flex justify-center space-x-4"
+      >
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+          value="lectura"
+        >
+          <svg
+            class="lucide lucide-book-open w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 7v14"
+            />
+            <path
+              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+            />
+          </svg>
+          <span>
+            Leer
+          </span>
+        </button>
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+        >
+          <svg
+            class="lucide lucide-search w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+            />
+            <path
+              d="m21 21-4.3-4.3"
+            />
+          </svg>
+          <span>
+            Usa el buscador
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+    >
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Versículo del Día
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0 space-y-2"
+        >
+          <p
+            class="italic text-slate-800 dark:text-slate-200 "
+          >
+            Por que Dios amo al mundo...
+          </p>
+          <h3
+            class="text-sm text-muted-foreground"
+          >
+            Juan 3:16
+          </h3>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-heart w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            Guardar
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Lectura Recomendada
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Explora el Libro de los Salmos, una colección de poemas y canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-book-marked w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2v8l3-3 3 3V2"
+              />
+              <path
+                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+              />
+            </svg>
+            Comenzar Lectura
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow md:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Guía de Estudio
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Descubre cómo realizar un estudio bíblico efectivo con nuestra guía paso a paso. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            Ver Guía
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pruebas en el componente Welcome.tsx > renderiza la sección 'Guía de Estudio' 1`] = `
+<DocumentFragment>
+  <div
+    class="space-y-6"
+  >
+    <div
+      class="rounded-xl border bg-card text-card-foreground shadow w-full"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-6"
+      >
+        <div
+          class="tracking-tight text-3xl font-bold text-center"
+        >
+          Bienvenido a la BibliaApp
+        </div>
+        <div
+          class="text-muted-foreground text-center text-lg"
+        >
+          Explora, estudia y comparte la palabra de Dios
+        </div>
+      </div>
+      <div
+        class="p-6 pt-0 text-center"
+      >
+        <p
+          class="text-muted-foreground"
+        >
+          Selecciona un libro de la Biblia para comenzar a leer o utiliza la búsqueda para encontrar versículos específicos.
+        </p>
+      </div>
+      <div
+        class="items-center p-6 pt-0 flex justify-center space-x-4"
+      >
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+          value="lectura"
+        >
+          <svg
+            class="lucide lucide-book-open w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 7v14"
+            />
+            <path
+              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+            />
+          </svg>
+          <span>
+            Leer
+          </span>
+        </button>
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+        >
+          <svg
+            class="lucide lucide-search w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+            />
+            <path
+              d="m21 21-4.3-4.3"
+            />
+          </svg>
+          <span>
+            Usa el buscador
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+    >
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Versículo del Día
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0 space-y-2"
+        >
+          <p
+            class="italic text-slate-800 dark:text-slate-200 "
+          >
+            Por que Dios amo al mundo...
+          </p>
+          <h3
+            class="text-sm text-muted-foreground"
+          >
+            Juan 3:16
+          </h3>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-heart w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            Guardar
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Lectura Recomendada
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Explora el Libro de los Salmos, una colección de poemas y canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-book-marked w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2v8l3-3 3 3V2"
+              />
+              <path
+                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+              />
+            </svg>
+            Comenzar Lectura
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow md:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Guía de Estudio
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Descubre cómo realizar un estudio bíblico efectivo con nuestra guía paso a paso. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            Ver Guía
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Pruebas en el componente Welcome.tsx > renderiza la sección 'Lectura Recomendada' 1`] = `
+<DocumentFragment>
+  <div
+    class="space-y-6"
+  >
+    <div
+      class="rounded-xl border bg-card text-card-foreground shadow w-full"
+    >
+      <div
+        class="flex flex-col space-y-1.5 p-6"
+      >
+        <div
+          class="tracking-tight text-3xl font-bold text-center"
+        >
+          Bienvenido a la BibliaApp
+        </div>
+        <div
+          class="text-muted-foreground text-center text-lg"
+        >
+          Explora, estudia y comparte la palabra de Dios
+        </div>
+      </div>
+      <div
+        class="p-6 pt-0 text-center"
+      >
+        <p
+          class="text-muted-foreground"
+        >
+          Selecciona un libro de la Biblia para comenzar a leer o utiliza la búsqueda para encontrar versículos específicos.
+        </p>
+      </div>
+      <div
+        class="items-center p-6 pt-0 flex justify-center space-x-4"
+      >
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+          value="lectura"
+        >
+          <svg
+            class="lucide lucide-book-open w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 7v14"
+            />
+            <path
+              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"
+            />
+          </svg>
+          <span>
+            Leer
+          </span>
+        </button>
+        <button
+          class="justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 flex items-center space-x-2"
+        >
+          <svg
+            class="lucide lucide-search w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+            />
+            <path
+              d="m21 21-4.3-4.3"
+            />
+          </svg>
+          <span>
+            Usa el buscador
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+    >
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Versículo del Día
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0 space-y-2"
+        >
+          <p
+            class="italic text-slate-800 dark:text-slate-200 "
+          >
+            Por que Dios amo al mundo...
+          </p>
+          <h3
+            class="text-sm text-muted-foreground"
+          >
+            Juan 3:16
+          </h3>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-heart w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+              />
+            </svg>
+            Guardar
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Lectura Recomendada
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Explora el Libro de los Salmos, una colección de poemas y canciones que expresan una amplia gama de emociones humanas. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            <svg
+              class="lucide lucide-book-marked w-4 h-4 mr-2"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2v8l3-3 3 3V2"
+              />
+              <path
+                d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"
+              />
+            </svg>
+            Comenzar Lectura
+          </button>
+        </div>
+      </div>
+      <div
+        class="rounded-xl border bg-card text-card-foreground shadow md:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="flex flex-col space-y-1.5 p-6"
+        >
+          <div
+            class="font-semibold leading-none tracking-tight"
+          >
+            Guía de Estudio
+          </div>
+        </div>
+        <div
+          class="p-6 pt-0"
+        >
+          <p
+            class="text-muted-foreground"
+          >
+            Descubre cómo realizar un estudio bíblico efectivo con nuestra guía paso a paso. (en desarrollo)
+          </p>
+        </div>
+        <div
+          class="flex items-center p-6 pt-0"
+        >
+          <button
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 w-full"
+          >
+            Ver Guía
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

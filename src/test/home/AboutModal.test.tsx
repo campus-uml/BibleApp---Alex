@@ -6,23 +6,26 @@ import { AboutModal } from "../../components/home/AboutModal";
 
 describe("AboutModal", () => {
   it("renderiza el botón del modal", () => {
-    render(<AboutModal />);
+    const { asFragment } = render(<AboutModal />);
     expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("abre el modal al hacer clic en el botón", async () => {
-    render(<AboutModal />);
+    const { asFragment } = render(<AboutModal />);
     const button = screen.getByRole("button");
     await userEvent.click(button);
     expect(screen.getByText("Acerca del Desarrollador")).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("cerrar el modal al dar clik fuera de el", async () => {
-    render(<AboutModal />);
+    const { asFragment } = render(<AboutModal />);
     const button = screen.getByRole("button");
     await userEvent.click(button);
 
     const modalTitle = screen.getByText("Acerca del Desarrollador");
     expect(modalTitle).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

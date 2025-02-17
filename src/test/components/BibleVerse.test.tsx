@@ -74,7 +74,7 @@ describe("Pruebas en BibleVerse", () => {
       shareToWhatsApp: vi.fn(),
     });
 
-    render(
+    const { asFragment } = render(
       <BibleVerse
         searchResults={mockSearchResults}
         onClearSearch={mockClearSearch}
@@ -85,6 +85,7 @@ describe("Pruebas en BibleVerse", () => {
     );
 
     expect(screen.getByText("Resultados de búsqueda")).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("debería renderizar un mensaje cuando no hay resultados de búsqueda disponibles", () => {
@@ -115,7 +116,7 @@ describe("Pruebas en BibleVerse", () => {
       shareToWhatsApp: vi.fn(),
     });
 
-    render(
+    const { asFragment } = render(
       <BibleVerse
         searchResults={mockSearchResults}
         onClearSearch={mockClearSearch}
@@ -126,7 +127,9 @@ describe("Pruebas en BibleVerse", () => {
     );
 
     expect(screen.getByText("No hay versículos aún")).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
+
   // it("debería renderizar el nombre del libro y capítulo seleccionado", async () => {
   //   const mockSearchResults = null;
   //   const mockClearSearch = vi.fn();
@@ -166,7 +169,7 @@ describe("Pruebas en BibleVerse", () => {
   //     shareToWhatsApp: vi.fn(),
   //   });
   
-  //   render(
+  //   const { asFragment } = render(
   //     <BibleVerse
   //       searchResults={mockSearchResults}
   //       onClearSearch={mockClearSearch}
@@ -179,8 +182,6 @@ describe("Pruebas en BibleVerse", () => {
   //   // Usa findByText y espera que el texto esté en el documento
   //   expect(await screen.findByText("Génesis")).toBeInTheDocument();
   //   expect(await screen.findByText("Capítulo 1")).toBeInTheDocument();
+  //   expect(asFragment()).toMatchSnapshot();
   // });
-  
-
-  
 });

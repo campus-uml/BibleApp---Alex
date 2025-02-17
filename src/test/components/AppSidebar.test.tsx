@@ -27,7 +27,7 @@ vi.stubGlobal(
 
 describe("AppSidebar Component", () => {
   it("should render sidebar after loading", async () => {
-    render(
+    const { asFragment } = render(
       <BrowserRouter>
         <SidebarProvider>
           <AuthProvider>
@@ -44,5 +44,6 @@ describe("AppSidebar Component", () => {
     });
 
     expect(screen.getByText(/BibleApp/i)).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

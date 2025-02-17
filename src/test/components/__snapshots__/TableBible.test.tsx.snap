@@ -1,0 +1,243 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TabBible Component > deberia renderizar pestañas y lista de libros 1`] = `
+<div>
+  <div
+    class="w-full"
+    data-orientation="horizontal"
+    dir="ltr"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground grid w-full grid-cols-3 mb-4"
+      data-orientation="horizontal"
+      role="tablist"
+      style="outline: none;"
+      tabindex="0"
+    >
+      <button
+        aria-controls="radix-:r0:-content-Antiguo"
+        aria-selected="true"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="active"
+        id="radix-:r0:-trigger-Antiguo"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Antiguo
+      </button>
+      <button
+        aria-controls="radix-:r0:-content-Nuevo"
+        aria-selected="false"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        id="radix-:r0:-trigger-Nuevo"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Nuevo
+      </button>
+      <button
+        aria-controls="radix-:r0:-content-Frecuentes"
+        aria-selected="false"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        id="radix-:r0:-trigger-Frecuentes"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Frecuentes
+      </button>
+    </div>
+    <div
+      aria-labelledby="radix-:r0:-trigger-Antiguo"
+      class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      data-orientation="horizontal"
+      data-state="active"
+      id="radix-:r0:-content-Antiguo"
+      role="tabpanel"
+      style="animation-duration: 0s;"
+      tabindex="0"
+    >
+      <div
+        class="relative overflow-hidden h-[80vh] w-full rounded-md border"
+        dir="ltr"
+        style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"
+      >
+        <style>
+          [data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}
+        </style>
+        <div
+          class="h-full w-full rounded-[inherit]"
+          data-radix-scroll-area-viewport=""
+          style="overflow-x: hidden; overflow-y: scroll;"
+        >
+          <div
+            style="min-width: 100%; display: table;"
+          >
+            <div
+              class="p-4"
+            >
+              <p
+                class="text-muted-foreground"
+              >
+                No se encontraron libros
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-labelledby="radix-:r0:-trigger-Nuevo"
+      class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      data-orientation="horizontal"
+      data-state="inactive"
+      hidden=""
+      id="radix-:r0:-content-Nuevo"
+      role="tabpanel"
+      tabindex="0"
+    />
+    <div
+      aria-labelledby="radix-:r0:-trigger-Frecuentes"
+      class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      data-orientation="horizontal"
+      data-state="inactive"
+      hidden=""
+      id="radix-:r0:-content-Frecuentes"
+      role="tabpanel"
+      tabindex="0"
+    />
+  </div>
+</div>
+`;
+
+exports[`TabBible Component > filtra libros basado en el término de búsqueda 1`] = `
+<div>
+  <div
+    class="w-full"
+    data-orientation="horizontal"
+    dir="ltr"
+  >
+    <div
+      aria-orientation="horizontal"
+      class="h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground grid w-full grid-cols-3 mb-4"
+      data-orientation="horizontal"
+      role="tablist"
+      style="outline: none;"
+      tabindex="0"
+    >
+      <button
+        aria-controls="radix-:r4:-content-Antiguo"
+        aria-selected="true"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="active"
+        id="radix-:r4:-trigger-Antiguo"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Antiguo
+      </button>
+      <button
+        aria-controls="radix-:r4:-content-Nuevo"
+        aria-selected="false"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        id="radix-:r4:-trigger-Nuevo"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Nuevo
+      </button>
+      <button
+        aria-controls="radix-:r4:-content-Frecuentes"
+        aria-selected="false"
+        class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow"
+        data-orientation="horizontal"
+        data-radix-collection-item=""
+        data-state="inactive"
+        id="radix-:r4:-trigger-Frecuentes"
+        role="tab"
+        tabindex="-1"
+        type="button"
+      >
+        Frecuentes
+      </button>
+    </div>
+    <div
+      aria-labelledby="radix-:r4:-trigger-Antiguo"
+      class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      data-orientation="horizontal"
+      data-state="active"
+      id="radix-:r4:-content-Antiguo"
+      role="tabpanel"
+      style="animation-duration: 0s;"
+      tabindex="0"
+    >
+      <div
+        class="relative overflow-hidden h-[80vh] w-full rounded-md border"
+        dir="ltr"
+        style="position: relative; --radix-scroll-area-corner-width: 0px; --radix-scroll-area-corner-height: 0px;"
+      >
+        <style>
+          [data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}
+        </style>
+        <div
+          class="h-full w-full rounded-[inherit]"
+          data-radix-scroll-area-viewport=""
+          style="overflow-x: hidden; overflow-y: scroll;"
+        >
+          <div
+            style="min-width: 100%; display: table;"
+          >
+            <div
+              class="p-4"
+            >
+              <p
+                class="text-muted-foreground"
+              >
+                No se encontraron libros
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-labelledby="radix-:r4:-trigger-Nuevo"
+      class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      data-orientation="horizontal"
+      data-state="inactive"
+      hidden=""
+      id="radix-:r4:-content-Nuevo"
+      role="tabpanel"
+      tabindex="0"
+    />
+    <div
+      aria-labelledby="radix-:r4:-trigger-Frecuentes"
+      class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      data-orientation="horizontal"
+      data-state="inactive"
+      hidden=""
+      id="radix-:r4:-content-Frecuentes"
+      role="tabpanel"
+      tabindex="0"
+    />
+  </div>
+</div>
+`;

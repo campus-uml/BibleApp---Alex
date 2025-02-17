@@ -11,7 +11,7 @@ describe("SearchBar", () => {
     const searchBibleVerse = vi.fn();
     (useBible as Mock).mockReturnValue({ searchBibleVerse });
 
-    render(<SearchBar />);
+    const { asFragment } = render(<SearchBar />);
     const input = screen.getByPlaceholderText(
       "Ejemplo: 'Dios', 'fe', 'esperanza'"
     );
@@ -21,13 +21,14 @@ describe("SearchBar", () => {
     fireEvent.click(button);
 
     expect(searchBibleVerse).toHaveBeenCalledWith("Dios");
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("deshabilita el input y el botón mientras se carga", async () => {
     const searchBibleVerse = vi.fn();
     (useBible as Mock).mockReturnValue({ searchBibleVerse });
 
-    render(<SearchBar />);
+    const { asFragment } = render(<SearchBar />);
     const input = screen.getByPlaceholderText(
       "Ejemplo: 'Dios', 'fe', 'esperanza'"
     );
@@ -38,5 +39,6 @@ describe("SearchBar", () => {
 
     expect(input).toBeDisabled();
     expect(button).toBeDisabled();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

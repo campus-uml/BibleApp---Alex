@@ -1,5 +1,5 @@
 import { vi, describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import TermsAndServices from "../../components/home/TermsAndServices"; // Adjust the import as necessary
 import { BrowserRouter } from "react-router-dom";
 
@@ -16,12 +16,12 @@ vi.mock("react-router-dom", async () => {
 
 describe("TermsAndServices", () => {
   it("displays the scroll area content properly", () => {
-    render(
+    const { container } = render(
       <BrowserRouter>
         <TermsAndServices />
       </BrowserRouter>
     );
 
-    expect(screen.getByText(/Aceptación de los Términos/)).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

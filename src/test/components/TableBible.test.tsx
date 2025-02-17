@@ -21,15 +21,17 @@ describe("TabBible Component", () => {
     });
   });
 
-test(" deberia renderizar pestañas y lista de libros", () => {
-    render(<TabBible searchTerm="" />);
+  test("deberia renderizar pestañas y lista de libros", () => {
+    const { container } = render(<TabBible searchTerm="" />);
     expect(screen.getByText("Antiguo")).toBeInTheDocument();
     expect(screen.getByText("Nuevo")).toBeInTheDocument();
     expect(screen.getByText("Frecuentes")).toBeInTheDocument();
-});
+    expect(container).toMatchSnapshot();
+  });
 
-test("filtra libros basado en el término de búsqueda", () => {
-    render(<TabBible searchTerm="g" />);
+  test("filtra libros basado en el término de búsqueda", () => {
+    const { container } = render(<TabBible searchTerm="g" />);
     expect(screen.queryByText("Génesis")).not.toBeInTheDocument();
-});
+    expect(container).toMatchSnapshot();
+  });
 });

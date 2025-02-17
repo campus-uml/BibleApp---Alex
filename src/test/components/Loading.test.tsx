@@ -4,7 +4,8 @@ import { Loading } from "../../components/Loading";
 
 describe("Pruebas en el componente Loading", () => {
     it("se renderiza sin fallar", () => {
-        render(<Loading />);
+        const { asFragment } = render(<Loading />);
         expect(screen.getByText("Cargando...")).toBeInTheDocument();
+        expect(asFragment()).toMatchSnapshot();
     });
 });

@@ -2,9 +2,9 @@ import { render } from "@testing-library/react";
 import FooterCustom from "../../components/FooterCustom";
 import { describe, it, expect } from "vitest";
 
-describe("FooterCustom", () => {
-  it("renders correctly", () => {
-    const { getByText, getByRole } = render(<FooterCustom />);
+describe("Pruebas en FooterCustom", () => {
+  it("Deberia renderizar el componente", () => {
+    const { getByText, getByRole, asFragment } = render(<FooterCustom />);
 
     const currentYear = new Date().getFullYear().toString();
     expect(getByText(`© ${currentYear} BibleApp`)).toBeInTheDocument();
@@ -17,5 +17,8 @@ describe("FooterCustom", () => {
 
     const termsOfServiceLink = getByRole("link", { name: /Terms of Service/i });
     expect(termsOfServiceLink).toHaveAttribute("href", "/terms-of-service");
+
+    // Generate snapshot
+    expect(asFragment()).toMatchSnapshot();
   });
 });
