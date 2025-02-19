@@ -26,4 +26,6 @@ describe("Select Component", () => {
         expect(screen.getByText("Opción 1")).toBeInTheDocument();
         expect(screen.getByText("Opción 2")).toBeInTheDocument();
     });
+
+    
 });
