@@ -9,7 +9,7 @@ vi.mock("react-router-dom", async () => {
     ...actual,
     BrowserRouter: ({ children }: React.PropsWithChildren<object>) => (
       <div>{children}</div>
-    ), 
+    ),
     useNavigate: () => vi.fn(),
   };
 });
