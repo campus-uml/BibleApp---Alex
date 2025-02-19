@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TabHome > renderiza el componente BibleVerse en la pestaña Lectura 1`] = `<DocumentFragment />`;
+
+exports[`TabHome > renderiza la pestaña de favoritos correctamente cuando no hay favoritos 1`] = `<DocumentFragment />`;
