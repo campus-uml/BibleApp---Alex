@@ -54,6 +54,7 @@ describe("TabHome", () => {
         </SidebarProvider>
       </MemoryRouter>
     );
+
   it('Reviar si todos los tabs de encuentrar"', async () => {
     renderComponent();
     expect(await screen.findByText("Inicio")).toBeInTheDocument();
@@ -62,22 +63,24 @@ describe("TabHome", () => {
   });
 
   it("renderiza el componente BibleVerse en la pestaña Lectura", () => {
-    render(
+    const { asFragment } = render(
       <MemoryRouter>
         <AuthProvider>
           <TabHome />
         </AuthProvider>
       </MemoryRouter>
     );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it("renderiza la pestaña de favoritos correctamente cuando no hay favoritos", () => {
-    render(
+    const { asFragment } = render(
       <MemoryRouter>
         <AuthProvider>
           <TabHome />
         </AuthProvider>
       </MemoryRouter>
     );
+    expect(asFragment()).toMatchSnapshot();
   });
 });
